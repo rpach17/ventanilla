@@ -127,6 +127,9 @@
     <EmbeddedResource Include="Formularios\frmConfig.resx">
       <DependentUpon>frmConfig.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
