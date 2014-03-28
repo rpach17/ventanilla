@@ -283,10 +283,6 @@
             <End Role="USUARIOS" EntitySet="USUARIOS" />
             <End Role="PERFILES" EntitySet="PERFILES" />
           </AssociationSet>
-          <AssociationSet Name="PETICION_GESTIONESDETALLE_SUCURSAL_OFICINA" Association="Modelo.PETICION_GESTIONESDETALLE_SUCURSAL_OFICINA">
-            <End Role="PETICION_GESTIONES" EntitySet="PETICION_GESTIONES" />
-            <End Role="DETALLE_SUCURSAL_OFICINA" EntitySet="DETALLE_SUCURSAL_OFICINA" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DETALLE_SUCURSAL_OFICINA">
           <Key>
@@ -299,7 +295,6 @@
           <NavigationProperty Name="OFICINAS" Relationship="Modelo.DETALLE_SUCURSAL_OFICINA_FK2" FromRole="DETALLE_SUCURSAL_OFICINA" ToRole="OFICINAS" />
           <NavigationProperty Name="USUARIOS" Relationship="Modelo.USUARIOS_FK1" FromRole="DETALLE_SUCURSAL_OFICINA" ToRole="USUARIOS" />
           <NavigationProperty Name="VENTANILLAS" Relationship="Modelo.VENTANILLAS_FK1" FromRole="DETALLE_SUCURSAL_OFICINA" ToRole="VENTANILLAS" />
-          <NavigationProperty Name="PETICION_GESTIONES" Relationship="Modelo.PETICION_GESTIONESDETALLE_SUCURSAL_OFICINA" FromRole="DETALLE_SUCURSAL_OFICINA" ToRole="PETICION_GESTIONES" />
         </EntityType>
         <EntityType Name="GESTIONES">
           <Key>
@@ -353,7 +348,6 @@
           <Property Name="ATENDIDO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
           <Property Name="ENESPERA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
           <NavigationProperty Name="GESTIONES" Relationship="Modelo.PETICION_GESTIONES_FK1" FromRole="PETICION_GESTIONES" ToRole="GESTIONES" />
-          <NavigationProperty Name="DETALLE_SUCURSAL_OFICINA" Relationship="Modelo.PETICION_GESTIONESDETALLE_SUCURSAL_OFICINA" FromRole="PETICION_GESTIONES" ToRole="DETALLE_SUCURSAL_OFICINA" />
         </EntityType>
         <EntityType Name="SUCURSALES">
           <Key>
@@ -467,10 +461,6 @@
         <Association Name="DETALLE_USUARIOS_PERFILES">
           <End Type="Modelo.USUARIOS" Role="USUARIOS" Multiplicity="*" />
           <End Type="Modelo.PERFILES" Role="PERFILES" Multiplicity="*" />
-        </Association>
-        <Association Name="PETICION_GESTIONESDETALLE_SUCURSAL_OFICINA">
-          <End Type="Modelo.PETICION_GESTIONES" Role="PETICION_GESTIONES" Multiplicity="*" />
-          <End Type="Modelo.DETALLE_SUCURSAL_OFICINA" Role="DETALLE_SUCURSAL_OFICINA" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -641,10 +631,6 @@
         <AssociationConnector Association="Modelo.DETALLE_USUARIOS_PERFILES" >
           <ConnectorPoint PointX="9" PointY="3.672841796875" />
           <ConnectorPoint PointX="10.625" PointY="3.672841796875" />
-        </AssociationConnector>
-        <AssociationConnector Association="Modelo.PETICION_GESTIONESDETALLE_SUCURSAL_OFICINA">
-          <ConnectorPoint PointX="5.8125" PointY="6.625" />
-          <ConnectorPoint PointX="5.8125" PointY="5.9321907552083326" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

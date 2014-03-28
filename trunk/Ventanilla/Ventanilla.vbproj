@@ -76,6 +76,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\eAPPCA.vb" />
     <Compile Include="Clases\ModuleFunciones.vb" />
     <Compile Include="Clases\SocketCliente.vb" />
     <Compile Include="Entity\appca.Designer.vb">

@@ -44,6 +44,36 @@ Partial Class frmConfigVentanilla
         Me.TabPage2.SuspendLayout()
         Me.SuspendLayout()
         '
+        'NOMBRE_OFICINALabel
+        '
+        NOMBRE_OFICINALabel.AutoSize = True
+        NOMBRE_OFICINALabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        NOMBRE_OFICINALabel.Location = New System.Drawing.Point(138, 66)
+        NOMBRE_OFICINALabel.Name = "NOMBRE_OFICINALabel"
+        NOMBRE_OFICINALabel.Size = New System.Drawing.Size(58, 20)
+        NOMBRE_OFICINALabel.TabIndex = 5
+        NOMBRE_OFICINALabel.Text = "Oficina"
+        '
+        'NOMBRELabel
+        '
+        NOMBRELabel.AutoSize = True
+        NOMBRELabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        NOMBRELabel.Location = New System.Drawing.Point(125, 32)
+        NOMBRELabel.Name = "NOMBRELabel"
+        NOMBRELabel.Size = New System.Drawing.Size(71, 20)
+        NOMBRELabel.TabIndex = 3
+        NOMBRELabel.Text = "Sucursal"
+        '
+        'NUMERO_VENTANILLALabel
+        '
+        NUMERO_VENTANILLALabel.AutoSize = True
+        NUMERO_VENTANILLALabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        NUMERO_VENTANILLALabel.Location = New System.Drawing.Point(39, 99)
+        NUMERO_VENTANILLALabel.Name = "NUMERO_VENTANILLALabel"
+        NUMERO_VENTANILLALabel.Size = New System.Drawing.Size(157, 20)
+        NUMERO_VENTANILLALabel.TabIndex = 7
+        NUMERO_VENTANILLALabel.Text = "Número de ventanilla"
+        '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
@@ -71,16 +101,6 @@ Partial Class frmConfigVentanilla
         Me.TabPage1.Text = "Ventanilla"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'NOMBRE_OFICINALabel
-        '
-        NOMBRE_OFICINALabel.AutoSize = True
-        NOMBRE_OFICINALabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        NOMBRE_OFICINALabel.Location = New System.Drawing.Point(138, 66)
-        NOMBRE_OFICINALabel.Name = "NOMBRE_OFICINALabel"
-        NOMBRE_OFICINALabel.Size = New System.Drawing.Size(58, 20)
-        NOMBRE_OFICINALabel.TabIndex = 5
-        NOMBRE_OFICINALabel.Text = "Oficina"
-        '
         'btnGuardar
         '
         Me.btnGuardar.Location = New System.Drawing.Point(219, 136)
@@ -100,26 +120,6 @@ Partial Class frmConfigVentanilla
         Me.NUMERO_VENTANILLAComboBox.Size = New System.Drawing.Size(42, 28)
         Me.NUMERO_VENTANILLAComboBox.TabIndex = 8
         Me.NUMERO_VENTANILLAComboBox.ValueMember = "IDVENTANILLA"
-        '
-        'NOMBRELabel
-        '
-        NOMBRELabel.AutoSize = True
-        NOMBRELabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        NOMBRELabel.Location = New System.Drawing.Point(125, 32)
-        NOMBRELabel.Name = "NOMBRELabel"
-        NOMBRELabel.Size = New System.Drawing.Size(71, 20)
-        NOMBRELabel.TabIndex = 3
-        NOMBRELabel.Text = "Sucursal"
-        '
-        'NUMERO_VENTANILLALabel
-        '
-        NUMERO_VENTANILLALabel.AutoSize = True
-        NUMERO_VENTANILLALabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        NUMERO_VENTANILLALabel.Location = New System.Drawing.Point(39, 99)
-        NUMERO_VENTANILLALabel.Name = "NUMERO_VENTANILLALabel"
-        NUMERO_VENTANILLALabel.Size = New System.Drawing.Size(157, 20)
-        NUMERO_VENTANILLALabel.TabIndex = 7
-        NUMERO_VENTANILLALabel.Text = "Número de ventanilla"
         '
         'NOMBRELabel1
         '

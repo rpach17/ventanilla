@@ -56,8 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("DATA SOURCE=ronypacheco-pc;PASSWORD=miclave;PERSIST SECURITY INFO=True;USER ID=AP"& _ 
-            "PCA")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property Miconexion() As String
             Get
                 Return CType(Me("Miconexion"),String)
@@ -81,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2")>  _
         Public Property IDPerfil() As Integer
             Get
                 Return CType(Me("IDPerfil"),Integer)
@@ -112,6 +111,18 @@ Namespace My
             End Get
             Set
                 Me("IdVentanilla") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ConexionEntity() As String
+            Get
+                Return CType(Me("ConexionEntity"),String)
+            End Get
+            Set
+                Me("ConexionEntity") = value
             End Set
         End Property
     End Class
