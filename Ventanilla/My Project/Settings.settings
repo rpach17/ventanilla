@@ -3,18 +3,21 @@
   <Profiles />
   <Settings>
     <Setting Name="Miconexion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DATA SOURCE=ronypacheco-pc;PASSWORD=miclave;PERSIST SECURITY INFO=True;USER ID=APPCA</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Host" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IDPerfil" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="NumeroVentanilla" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IdVentanilla" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ConexionEntity" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

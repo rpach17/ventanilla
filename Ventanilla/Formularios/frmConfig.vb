@@ -14,7 +14,10 @@
         Dim _cadena As String = String.Format("DATA SOURCE={0};PASSWORD={1};PERSIST SECURITY INFO=True;USER ID={2}", txtDS.Text, txtPass.Text, txtUserID.Text)
 
         If ProbarConexion(_cadena) Then
-            My.Settings.MiConexion = _cadena
+            My.Settings.Miconexion = _cadena
+            My.Settings.ConexionEntity = "metadata=res://*/Entity.appca.csdl|res://*/Entity.appca.ssdl|" _
+                                       & "res://*/Entity.appca.msl;provider=Oracle.DataAccess.Client;provider connection string='" _
+                                       & _cadena & "' "
             My.Settings.Save()
             MsgBox("Nueva configuración guardada", MsgBoxStyle.Information, "OK")
             frmLogin.Show()
@@ -23,5 +26,6 @@
             MsgBox("Error de conexión", MsgBoxStyle.Critical, "ERROR")
         End If
     End Sub
+
 
 End Class

@@ -118,6 +118,7 @@ Partial Class frmConfig
         Me.Controls.Add(Me.txtUserID)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmConfig"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmConfig"
         Me.ResumeLayout(False)
         Me.PerformLayout()
