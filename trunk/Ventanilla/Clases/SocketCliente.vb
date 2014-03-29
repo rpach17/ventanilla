@@ -41,6 +41,7 @@ Public Class SocketCliente
     Public Sub Conectar()
         clienteTCP = New TcpClient()
 
+
         'Conectar con el servidor
         clienteTCP.Connect(IP, Puerto)
         mensajesEnviarRecibir = clienteTCP.GetStream()
@@ -49,6 +50,8 @@ Public Class SocketCliente
         'enviados por el servidor al cliente
         hiloMensajeServidor = New Thread(AddressOf LeerSocket)
         hiloMensajeServidor.Start()
+
+
     End Sub
 
     'Procedimiento para cerrar la conexión con el servidor
