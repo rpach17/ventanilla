@@ -119,7 +119,7 @@ Partial Class frmConfig
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmConfig"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmConfig"
+        Me.Text = "Conexión"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
