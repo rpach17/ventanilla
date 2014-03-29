@@ -37,4 +37,14 @@
     End Sub
 #End Region
 
+#Region "Datos Ventanilla"
+    Public Shared Sub ticketEspera(ByVal grid As DataGridView)
+        Dim ges = (From p In ctx.PETICION_GESTIONES
+                  Where p.ENESPERA = 1 AndAlso p.IDDETALLE_SUCURSAL_OFICINA = SesionActiva.IdSucursalOficina
+                  Select p.IDPETICION, Ticket = p.GESTIONES.CODIGO + p.SECUENCIA, p.GESTIONES.CODIGO, p.SECUENCIA).ToList
+        grid.DataSource = ges
+
+    End Sub
+#End Region
+
 End Class
