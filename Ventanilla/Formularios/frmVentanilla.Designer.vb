@@ -45,6 +45,7 @@ Partial Class frmVentanilla
         '
         'btnRellamar
         '
+        Me.btnRellamar.Image = Global.Ventanilla.My.Resources.Resources.bocina
         Me.btnRellamar.Location = New System.Drawing.Point(0, 0)
         Me.btnRellamar.Name = "btnRellamar"
         Me.btnRellamar.Size = New System.Drawing.Size(50, 43)
@@ -56,7 +57,7 @@ Partial Class frmVentanilla
         Me.PanelConexion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PanelConexion.Controls.Add(Me.Label1)
         Me.PanelConexion.Controls.Add(Me.btnReinicar)
-        Me.PanelConexion.Location = New System.Drawing.Point(465, 100)
+        Me.PanelConexion.Location = New System.Drawing.Point(44, 92)
         Me.PanelConexion.Name = "PanelConexion"
         Me.PanelConexion.Size = New System.Drawing.Size(372, 193)
         Me.PanelConexion.TabIndex = 17
@@ -67,7 +68,7 @@ Partial Class frmVentanilla
         Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(-1, 65)
+        Me.Label1.Location = New System.Drawing.Point(-1, 68)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(372, 41)
         Me.Label1.TabIndex = 1
@@ -77,13 +78,14 @@ Partial Class frmVentanilla
         'btnReinicar
         '
         Me.btnReinicar.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnReinicar.Location = New System.Drawing.Point(139, 125)
+        Me.btnReinicar.Location = New System.Drawing.Point(137, 123)
         Me.btnReinicar.Name = "btnReinicar"
         Me.btnReinicar.Size = New System.Drawing.Size(93, 38)
         Me.btnReinicar.TabIndex = 0
         Me.btnReinicar.Tag = "NoDeshabilitar"
         Me.btnReinicar.Text = "Reiniciar sesión"
         Me.btnReinicar.UseVisualStyleBackColor = True
+        Me.btnReinicar.Visible = False
         '
         'btnLlamarEspecial
         '
@@ -102,7 +104,7 @@ Partial Class frmVentanilla
         Me.lblTicketActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTicketActual.Location = New System.Drawing.Point(0, 0)
         Me.lblTicketActual.Name = "lblTicketActual"
-        Me.lblTicketActual.Size = New System.Drawing.Size(876, 44)
+        Me.lblTicketActual.Size = New System.Drawing.Size(446, 44)
         Me.lblTicketActual.TabIndex = 16
         Me.lblTicketActual.Text = "sfsdfsdf"
         Me.lblTicketActual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -200,7 +202,7 @@ Partial Class frmVentanilla
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(876, 393)
+        Me.ClientSize = New System.Drawing.Size(446, 350)
         Me.Controls.Add(Me.btnRellamar)
         Me.Controls.Add(Me.PanelConexion)
         Me.Controls.Add(Me.btnLlamarEspecial)
@@ -211,8 +213,9 @@ Partial Class frmVentanilla
         Me.Controls.Add(Me.btnTerminar)
         Me.Controls.Add(Me.btnLlamar)
         Me.Controls.Add(Me.lblNumVentanilla)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "frmVentanilla"
-        Me.Text = "frmVentanilla"
         Me.PanelConexion.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.dgvEnEspera, System.ComponentModel.ISupportInitialize).EndInit()
@@ -224,7 +227,6 @@ Partial Class frmVentanilla
     Friend WithEvents btnRellamar As System.Windows.Forms.Button
     Friend WithEvents PanelConexion As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents btnReinicar As System.Windows.Forms.Button
     Friend WithEvents btnLlamarEspecial As System.Windows.Forms.Button
     Friend WithEvents lblTicketActual As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
@@ -235,4 +237,5 @@ Partial Class frmVentanilla
     Friend WithEvents btnTerminar As System.Windows.Forms.Button
     Friend WithEvents btnLlamar As System.Windows.Forms.Button
     Friend WithEvents lblNumVentanilla As System.Windows.Forms.Label
+    Friend WithEvents btnReinicar As System.Windows.Forms.Button
 End Class

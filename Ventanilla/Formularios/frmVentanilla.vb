@@ -7,7 +7,30 @@ Public Class frmVentanilla
     Dim WithEvents socketCliente As New SocketCliente
     Private IDPeticion As Integer = 0
     Dim codigoSep As String = ""
-    Dim timer As System.Threading.Timer
+    'Dim timer As System.Threading.Timer
+    Dim hiloConexion As Thread
+
+    Private Sub frmVentanilla_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'Ubica la pantalla en la esquina inferior derecha
+        Dim src = Screen.FromPoint(Location)
+        Location = New Point(src.WorkingArea.Right - Me.Width, src.WorkingArea.Bottom - Me.Height)
+        MyBase.OnActivated(e)
+
+        'Permite que se cambien las propiedades de un control desde un hilo de ejecucion
+        Control.CheckForIllegalCrossThreadCalls = False
+
+        'Comienza un timer basado en un hilo de ejecucion
+        'timer = New System.Threading.Timer(New TimerCallback(AddressOf VerificarConexion), Nothing, 0, 2000)
+        hiloConexion = New Thread(AddressOf VerificarConexion)
+        hiloConexion.Start()
+
+        TicketsEnEspera()
+        TicketsAtencionEspecial()
+
+        Text = String.Format("[{0}] - {1} - {2}", SesionActiva.Usuario, SesionActiva.Sucursal, SesionActiva.Oficina)
+        lblNumVentanilla.Text = String.Format("Ventanilla #{0}", My.Settings.NumeroVentanilla)
+        Atencion(0, "Ventanilla fuera de servicio")
+    End Sub
 
     Private Sub TicketsEnEspera()
         eAPPCA.ticketEspera(dgvEnEspera)
@@ -32,29 +55,41 @@ Public Class frmVentanilla
     End Sub
 
     Private Sub VerificarConexion()
-        Try
-            socketCliente.IP = My.Settings.Host
-            socketCliente.Puerto = 11000
+        While True
+            Try
+                socketCliente.IP = My.Settings.Host
+                socketCliente.Puerto = 11000
 
-            socketCliente.Conectar()
-            timer.Change(Timeout.Infinite, Timeout.Infinite) 'Disabled timer
+                socketCliente.Conectar()
 
-            For Each ctrl In Me.Controls
-                Dim miCtrl As Control = DirectCast(ctrl, Control)
-                miCtrl.Enabled = True
-            Next
+                'Timer.Change(Timeout.Infinite, Timeout.Infinite) 'Disabled timer
 
-            PanelConexion.Visible = False
-        Catch ex As Exception
-            For Each ctrl In Me.Controls
-                Dim miCtrl As Control = DirectCast(ctrl, Control)
-                If miCtrl.Tag Is Nothing Then
-                    miCtrl.Enabled = False
-                End If
-            Next
+                For Each ctrl In Me.Controls
+                    Dim miCtrl As Control = DirectCast(ctrl, Control)
+                    miCtrl.Enabled = True
+                Next
 
-            PanelConexion.Visible = True
-        End Try
+                PanelConexion.Visible = False
+
+                'conectado = True
+                Exit While
+            Catch ex As Exception
+
+                For Each ctrl In Me.Controls
+                    Dim miCtrl As Control = DirectCast(ctrl, Control)
+                    If miCtrl.Tag Is Nothing Then
+                        miCtrl.Enabled = False
+                    End If
+                Next
+
+                PanelConexion.Visible = True
+
+                'conectado = False
+                'Exit While
+                'Thread.Sleep(1000)
+            End Try
+        End While
+
     End Sub
 
     Private Sub btnTerminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTerminar.Click
@@ -75,7 +110,7 @@ Public Class frmVentanilla
 
     Private Sub LlamadoEnPantalla(ByVal codigo As String, ByVal secuencia As Integer, ByVal flag As Integer)
         If IDPeticion > 0 Then
-            If flag = 1 Then
+            If flag = 1 Then 'El flag es para rellamar en la pantalla
                 socketCliente.EnviarDatos(String.Format("{0}@{1}@{2}", codigoSep, My.Settings.NumeroVentanilla, flag))
             Else
                 codigoSep = String.Format("{0} {1}", SepararCodigo(codigo), secuencia)
@@ -84,33 +119,20 @@ Public Class frmVentanilla
         End If
     End Sub
 
-    Private Sub frmVentanilla_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'Ubica la pantalla en la esquina inferior derecha
-        Dim src = Screen.FromPoint(Location)
-        Location = New Point(src.WorkingArea.Right - Me.Width, src.WorkingArea.Bottom - Me.Height)
-        MyBase.OnActivated(e)
-
-        'Permite que se cambien las propiedades de un control desde un hilo de ejecucion
-        Control.CheckForIllegalCrossThreadCalls = False
-
-        'Comienza un timer basado en un hilo de ejecucion
-        timer = New System.Threading.Timer(New TimerCallback(AddressOf VerificarConexion), Nothing, 0, 10000)
-
-        TicketsEnEspera()
-        TicketsAtencionEspecial()
-        Text = String.Format("[{0}] - {1} - {2}", SesionActiva.Usuario, SesionActiva.Sucursal, SesionActiva.Oficina)
-        lblNumVentanilla.Text = String.Format("Ventanilla #{0}", My.Settings.NumeroVentanilla)
-        Atencion(0, "Ventanilla fuera de servicio")
-    End Sub
-
     Private Sub frmVentanilla_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         If IDPeticion <> 0 Then
-            'FinAtencion(IDPeticion)
+            eAPPCA.FinAtencion(IDPeticion)
         End If
-        Try
-            socketCliente.Desconectar()
-        Catch ex As Exception
-        End Try
+        'Try
+        '    hiloConexion.Abort()
+        '    socketCliente.Desconectar()
+
+        '    'End
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+
+        End
     End Sub
 
     Private Sub btnPonerEspera_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPonerEspera.Click
@@ -223,7 +245,20 @@ Public Class frmVentanilla
     End Sub
 
     Private Sub socketCliente_ConexionTerminada() Handles socketCliente.ConexionTerminada
-        timer.Change(0, 10000) 'Habilita el timer
+        'timer.Change(0, 2000) 'Habilita el timer
+        hiloConexion.Abort()
+
+        For Each ctrl In Me.Controls
+            Dim miCtrl As Control = DirectCast(ctrl, Control)
+            If miCtrl.Tag Is Nothing Then
+                miCtrl.Enabled = False
+            End If
+        Next
+
+        PanelConexion.Visible = True
+
+        hiloConexion = New Thread(AddressOf VerificarConexion)
+        hiloConexion.Start()
     End Sub
 
     Private Sub btnReinicar_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReinicar.Click
