@@ -47,6 +47,23 @@
         grid.DataSource = ges
     End Sub
 
+    Public Shared Sub ticketEspecial(ByVal grid As DataGridView)
+        Dim lista As List(Of Decimal) = New List(Of Decimal)
+
+        Dim f = ctx.CreateQuery(Of Date)("CurrentDateTime()")
+        Dim dia As DateTime = f.AsEnumerable().First()
+
+        lista = (From g In ctx.DETALLE_OFICINA_GESTIONES.ToList()
+                 From v In g.VENTANILLAS.ToList()
+                 Where v.IDVENTANILLA = My.Settings.IdVentanilla
+                 Select g.IDGESTION).ToList()
+
+        Dim ges = (From p In ctx.PETICION_GESTIONES
+                   Where p.TERCERAEDAD = 1 AndAlso p.IDDETALLE_SUCURSAL_OFICINA = SesionActiva.IdSucursalOficina AndAlso lista.Contains(p.IDGESTION) AndAlso p.FECHAHORA_PETICION.Date = dia.Date
+                   Select p.IDPETICION, Ticket = p.GESTIONES.CODIGO + p.SECUENCIA, p.GESTIONES.CODIGO, p.SECUENCIA).ToList
+        grid.DataSource = ges
+    End Sub
+
 #End Region
 
 End Class
