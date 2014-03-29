@@ -1,5 +1,6 @@
 ﻿Imports System.Xml
 Public Class frmConfigVentanilla
+    Dim socketCliente As New SocketCliente
 
     Private Sub frmConfigVentanilla_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         NOMBRELabel1.Text = SesionActiva.Sucursal
