@@ -64,11 +64,11 @@
         grid.DataSource = ges
     End Sub
 
-    Public Shared Sub PonerEspera(ByVal idp As Integer)
+    Public Shared Sub PonerEspera(ByVal idp As Integer, Optional ByVal espera As Integer = 1)
         Dim t As PETICION_GESTIONES = (From p In ctx.PETICION_GESTIONES
                 Where p.IDPETICION = idp
                 Select p).SingleOrDefault
-        t.ENESPERA = 1
+        t.ENESPERA = espera
         ctx.SaveChanges()
     End Sub
 
