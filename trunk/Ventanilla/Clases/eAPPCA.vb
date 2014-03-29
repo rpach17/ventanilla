@@ -39,12 +39,14 @@
 
 #Region "Datos Ventanilla"
     Public Shared Sub ticketEspera(ByVal grid As DataGridView)
+        Dim f = ctx.CreateQuery(Of Date)("CurrentDateTime() ")
+        Dim dia As DateTime = f.AsEnumerable().First()
         Dim ges = (From p In ctx.PETICION_GESTIONES
-                  Where p.ENESPERA = 1 AndAlso p.IDDETALLE_SUCURSAL_OFICINA = SesionActiva.IdSucursalOficina
+                  Where p.ENESPERA = 1 AndAlso p.IDDETALLE_SUCURSAL_OFICINA = SesionActiva.IdSucursalOficina AndAlso p.FECHAHORA_PETICION.Date = dia.Date
                   Select p.IDPETICION, Ticket = p.GESTIONES.CODIGO + p.SECUENCIA, p.GESTIONES.CODIGO, p.SECUENCIA).ToList
         grid.DataSource = ges
-
     End Sub
+
 #End Region
 
 End Class
