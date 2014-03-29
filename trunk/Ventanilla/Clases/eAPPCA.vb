@@ -48,7 +48,7 @@
     End Sub
 
     Public Shared Sub ticketEspecial(ByVal grid As DataGridView)
-        Dim lista As List(Of Decimal) = New List(Of Decimal)
+        Dim lista As List(Of Decimal?) = New List(Of Decimal?)
 
         Dim f = ctx.CreateQuery(Of Date)("CurrentDateTime()")
         Dim dia As DateTime = f.AsEnumerable().First()
