@@ -72,6 +72,16 @@
         ctx.SaveChanges()
     End Sub
 
+    Public Shared Sub FinAtencion(ByVal idp As Integer)
+        Dim f = ctx.CreateQuery(Of Date)("CurrentDateTime()")
+        Dim dia As DateTime = f.AsEnumerable().First()
+        Dim t As PETICION_GESTIONES = (From p In ctx.PETICION_GESTIONES
+                Where p.IDPETICION = idp
+                Select p).SingleOrDefault
+        t.FECHAHORA_FINALIZAR = dia
+        ctx.SaveChanges()
+    End Sub
+
 #End Region
 
 End Class
