@@ -64,6 +64,14 @@
         grid.DataSource = ges
     End Sub
 
+    Public Shared Sub PonerEspera(ByVal idp As Integer)
+        Dim t As PETICION_GESTIONES = (From p In ctx.PETICION_GESTIONES
+                Where p.IDPETICION = idp
+                Select p).SingleOrDefault
+        t.ENESPERA = 1
+        ctx.SaveChanges()
+    End Sub
+
 #End Region
 
 End Class
