@@ -46,9 +46,9 @@ Partial Class frmVentanilla
         'btnRellamar
         '
         Me.btnRellamar.Image = Global.Ventanilla.My.Resources.Resources.bocina
-        Me.btnRellamar.Location = New System.Drawing.Point(0, 0)
+        Me.btnRellamar.Location = New System.Drawing.Point(-1, -1)
         Me.btnRellamar.Name = "btnRellamar"
-        Me.btnRellamar.Size = New System.Drawing.Size(50, 43)
+        Me.btnRellamar.Size = New System.Drawing.Size(50, 46)
         Me.btnRellamar.TabIndex = 19
         Me.btnRellamar.UseVisualStyleBackColor = True
         '
@@ -100,11 +100,10 @@ Partial Class frmVentanilla
         'lblTicketActual
         '
         Me.lblTicketActual.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.lblTicketActual.Dock = System.Windows.Forms.DockStyle.Top
-        Me.lblTicketActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTicketActual.Location = New System.Drawing.Point(0, 0)
+        Me.lblTicketActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!)
+        Me.lblTicketActual.Location = New System.Drawing.Point(47, 0)
         Me.lblTicketActual.Name = "lblTicketActual"
-        Me.lblTicketActual.Size = New System.Drawing.Size(446, 44)
+        Me.lblTicketActual.Size = New System.Drawing.Size(399, 44)
         Me.lblTicketActual.TabIndex = 16
         Me.lblTicketActual.Text = "sfsdfsdf"
         Me.lblTicketActual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
