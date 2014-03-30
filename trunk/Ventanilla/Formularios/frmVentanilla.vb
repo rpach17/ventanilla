@@ -29,7 +29,7 @@ Public Class frmVentanilla
 
         Text = String.Format("[{0}] - {1} - {2}", SesionActiva.Usuario, SesionActiva.Sucursal, SesionActiva.Oficina)
         lblNumVentanilla.Text = String.Format("Ventanilla #{0}", My.Settings.NumeroVentanilla)
-        Atencion(0, "Ventanilla fuera de servicio")
+        Atencion(0, "Ventanilla fuera de atención")
     End Sub
 
     Private Sub TicketsEnEspera()
@@ -94,10 +94,12 @@ Public Class frmVentanilla
 
     Private Sub btnTerminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTerminar.Click
         If IDPeticion = 0 Then
-            Atencion(IDPeticion, "Ventanilla fuera de servicio")
+            Atencion(IDPeticion, "Ventanilla fuera de atención")
             Exit Sub
         Else
             eAPPCA.FinAtencion(IDPeticion)
+            IDPeticion = 0
+            Atencion(IDPeticion, "Ventanilla fuera de atención")
         End If
     End Sub
 
@@ -132,7 +134,12 @@ Public Class frmVentanilla
         '    MsgBox(ex.Message)
         'End Try
 
-        End
+        Try
+            Application.ExitThread()
+            End
+        Catch ex As Exception
+        End Try
+
     End Sub
 
     Private Sub btnPonerEspera_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPonerEspera.Click
