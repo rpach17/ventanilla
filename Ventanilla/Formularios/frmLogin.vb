@@ -8,7 +8,7 @@ Public Class frmLogin
             Exit Sub
         End If
 
-        If My.Settings.IdVentanilla = "" Then
+        If My.Settings.IdVentanilla = 0 Then
             chkConfVentanilla.Visible = True
             chkConfVentanilla.Checked = True
             chkConfVentanilla.Enabled = False

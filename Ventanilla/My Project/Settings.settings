@@ -14,8 +14,8 @@
     <Setting Name="NumeroVentanilla" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="IdVentanilla" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="IdVentanilla" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ConexionEntity" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
