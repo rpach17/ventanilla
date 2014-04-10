@@ -57,7 +57,7 @@ Partial Class frmVentanilla
         Me.PanelConexion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PanelConexion.Controls.Add(Me.Label1)
         Me.PanelConexion.Controls.Add(Me.btnReinicar)
-        Me.PanelConexion.Location = New System.Drawing.Point(44, 92)
+        Me.PanelConexion.Location = New System.Drawing.Point(39, 91)
         Me.PanelConexion.Name = "PanelConexion"
         Me.PanelConexion.Size = New System.Drawing.Size(372, 193)
         Me.PanelConexion.TabIndex = 17
@@ -90,7 +90,7 @@ Partial Class frmVentanilla
         'btnLlamarEspecial
         '
         Me.btnLlamarEspecial.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnLlamarEspecial.Location = New System.Drawing.Point(137, 84)
+        Me.btnLlamarEspecial.Location = New System.Drawing.Point(137, 56)
         Me.btnLlamarEspecial.Name = "btnLlamarEspecial"
         Me.btnLlamarEspecial.Size = New System.Drawing.Size(143, 51)
         Me.btnLlamarEspecial.TabIndex = 11
@@ -112,9 +112,9 @@ Partial Class frmVentanilla
         '
         Me.GroupBox2.Controls.Add(Me.dgvEnEspera)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(292, 84)
+        Me.GroupBox2.Location = New System.Drawing.Point(292, 56)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(149, 259)
+        Me.GroupBox2.Size = New System.Drawing.Size(149, 287)
         Me.GroupBox2.TabIndex = 15
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Tickets en espera"
@@ -128,16 +128,16 @@ Partial Class frmVentanilla
         Me.dgvEnEspera.Name = "dgvEnEspera"
         Me.dgvEnEspera.ReadOnly = True
         Me.dgvEnEspera.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvEnEspera.Size = New System.Drawing.Size(143, 240)
+        Me.dgvEnEspera.Size = New System.Drawing.Size(143, 268)
         Me.dgvEnEspera.TabIndex = 2
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.dgvEspecial)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(134, 141)
+        Me.GroupBox1.Location = New System.Drawing.Point(134, 113)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(152, 202)
+        Me.GroupBox1.Size = New System.Drawing.Size(152, 230)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Asistencia especial"
@@ -153,13 +153,13 @@ Partial Class frmVentanilla
         Me.dgvEspecial.Name = "dgvEspecial"
         Me.dgvEspecial.ReadOnly = True
         Me.dgvEspecial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvEspecial.Size = New System.Drawing.Size(146, 183)
+        Me.dgvEspecial.Size = New System.Drawing.Size(146, 211)
         Me.dgvEspecial.TabIndex = 2
         '
         'btnPonerEspera
         '
         Me.btnPonerEspera.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnPonerEspera.Location = New System.Drawing.Point(5, 141)
+        Me.btnPonerEspera.Location = New System.Drawing.Point(5, 113)
         Me.btnPonerEspera.Name = "btnPonerEspera"
         Me.btnPonerEspera.Size = New System.Drawing.Size(128, 51)
         Me.btnPonerEspera.TabIndex = 12
@@ -169,7 +169,7 @@ Partial Class frmVentanilla
         'btnTerminar
         '
         Me.btnTerminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnTerminar.Location = New System.Drawing.Point(5, 198)
+        Me.btnTerminar.Location = New System.Drawing.Point(5, 170)
         Me.btnTerminar.Name = "btnTerminar"
         Me.btnTerminar.Size = New System.Drawing.Size(128, 51)
         Me.btnTerminar.TabIndex = 13
@@ -179,7 +179,7 @@ Partial Class frmVentanilla
         'btnLlamar
         '
         Me.btnLlamar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnLlamar.Location = New System.Drawing.Point(5, 84)
+        Me.btnLlamar.Location = New System.Drawing.Point(5, 56)
         Me.btnLlamar.Name = "btnLlamar"
         Me.btnLlamar.Size = New System.Drawing.Size(128, 51)
         Me.btnLlamar.TabIndex = 10
@@ -188,9 +188,10 @@ Partial Class frmVentanilla
         '
         'lblNumVentanilla
         '
+        Me.lblNumVentanilla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblNumVentanilla.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!)
         Me.lblNumVentanilla.ForeColor = System.Drawing.Color.ForestGreen
-        Me.lblNumVentanilla.Location = New System.Drawing.Point(3, 270)
+        Me.lblNumVentanilla.Location = New System.Drawing.Point(3, 287)
         Me.lblNumVentanilla.Name = "lblNumVentanilla"
         Me.lblNumVentanilla.Size = New System.Drawing.Size(130, 54)
         Me.lblNumVentanilla.TabIndex = 18

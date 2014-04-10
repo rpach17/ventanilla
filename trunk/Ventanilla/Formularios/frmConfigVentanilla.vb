@@ -3,11 +3,12 @@ Public Class frmConfigVentanilla
     Dim socketCliente As New SocketCliente
 
     Private Sub frmConfigVentanilla_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         NOMBRELabel1.Text = SesionActiva.Sucursal
         NOMBRE_OFICINALabel1.Text = SesionActiva.Oficina
         eAPPCA.CargarVentanillas(NUMERO_VENTANILLAComboBox)
 
-        If Not My.Settings.IdVentanilla Is Nothing Then
+        If My.Settings.IdVentanilla <> 0 Then
             NUMERO_VENTANILLAComboBox.SelectedValue = My.Settings.IdVentanilla
         End If
 
@@ -18,8 +19,15 @@ Public Class frmConfigVentanilla
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+        If NUMERO_VENTANILLAComboBox.Text = "" Then
+            MsgBox("Seleccione la ventanilla", MsgBoxStyle.Exclamation, "Configuración")
+            Exit Sub
+        End If
+
         My.Settings.IdVentanilla = NUMERO_VENTANILLAComboBox.SelectedValue
+        My.Settings.Save()
         My.Settings.NumeroVentanilla = NUMERO_VENTANILLAComboBox.Text
+        My.Settings.Save()
 
         If My.Settings.Host = "" Then
             TabControl1.SelectTab(1)
@@ -44,6 +52,7 @@ Public Class frmConfigVentanilla
 
             If MsgBox(String.Format("Conexión exitosa{0}¿Desea guardar la dirección IP?", vbCrLf), MsgBoxStyle.Question + vbYesNo, "Confirme") = MsgBoxResult.Yes Then
                 My.Settings.Host = txtIP.Text
+                My.Settings.Save()
                 MsgBox("La dirección IP ha sido configurada correctamente", MsgBoxStyle.Information, "Correcto")
             End If
 
@@ -61,6 +70,7 @@ Public Class frmConfigVentanilla
         End If
 
         My.Settings.Host = txtIP.Text
+        My.Settings.Save()
         MsgBox("La dirección IP ha sido configurada correctamente", MsgBoxStyle.Information, "Correcto")
         TabControl1.SelectTab(0)
     End Sub

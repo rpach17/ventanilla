@@ -19,6 +19,14 @@ Public Class frmVentanilla
         'Permite que se cambien las propiedades de un control desde un hilo de ejecucion
         Control.CheckForIllegalCrossThreadCalls = False
 
+        'Se deshabilitan los controles por defecto, para reactivarlos cuando la ventanilla se conecte a la pantalla
+        For Each ctrl In Me.Controls
+            Dim miCtrl As Control = DirectCast(ctrl, Control)
+            If miCtrl.Tag Is Nothing Then
+                miCtrl.Enabled = False
+            End If
+        Next
+
         'Comienza un timer basado en un hilo de ejecucion
         'timer = New System.Threading.Timer(New TimerCallback(AddressOf VerificarConexion), Nothing, 0, 2000)
         hiloConexion = New Thread(AddressOf VerificarConexion)
@@ -33,7 +41,11 @@ Public Class frmVentanilla
     End Sub
 
     Private Sub TicketsEnEspera()
+        dgvEnEspera.Enabled = False
+        dgvEnEspera.Cursor = Cursors.WaitCursor
         eAPPCA.ticketEspera(dgvEnEspera)
+        dgvEnEspera.Enabled = True
+        dgvEnEspera.Cursor = Cursors.Default
     End Sub
 
     Private Sub TicketsAtencionEspecial()
@@ -70,6 +82,9 @@ Public Class frmVentanilla
                 Next
 
                 PanelConexion.Visible = False
+                If IDPeticion = 0 Then
+                    btnPonerEspera.Enabled = False
+                End If
 
                 'conectado = True
                 Exit While
@@ -238,7 +253,7 @@ Public Class frmVentanilla
 
             LlamadoEnPantalla(myCMD.Parameters("CODIGO").Value.ToString, myCMD.Parameters("SECUENCIA").Value.ToString, 0)
 
-            Atencion(IDPeticion, "En este momento no hay Tickets en espera", CType(myCMD.Parameters("CODIGO").Value.ToString, String), CType(myCMD.Parameters("SECUENCIA").Value.ToString, String))
+            Atencion(IDPeticion, "En este momento no hay tickets en espera", CType(myCMD.Parameters("CODIGO").Value.ToString, String), CType(myCMD.Parameters("SECUENCIA").Value.ToString, String))
 
             'Refrescar los listados de tickets en cada llamado
             TicketsAtencionEspecial()
@@ -276,4 +291,12 @@ Public Class frmVentanilla
     Private Sub btnRellamar_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnRellamar.Click
         LlamadoEnPantalla(codigoSep, 0, 1)
     End Sub
+
+    Dim i As Integer = 0
+
+    Private Sub dgvEnEspera_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvEnEspera.MouseEnter
+        TicketsAtencionEspecial()
+        TicketsEnEspera()
+    End Sub
+
 End Class

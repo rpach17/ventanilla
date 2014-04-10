@@ -113,6 +113,7 @@ Partial Class frmConfigVentanilla
         'NUMERO_VENTANILLAComboBox
         '
         Me.NUMERO_VENTANILLAComboBox.DisplayMember = "NUMERO_VENTANILLA"
+        Me.NUMERO_VENTANILLAComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.NUMERO_VENTANILLAComboBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.NUMERO_VENTANILLAComboBox.FormattingEnabled = True
         Me.NUMERO_VENTANILLAComboBox.Location = New System.Drawing.Point(220, 96)
@@ -199,7 +200,9 @@ Partial Class frmConfigVentanilla
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(520, 247)
         Me.Controls.Add(Me.TabControl1)
+        Me.MaximizeBox = False
         Me.Name = "frmConfigVentanilla"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Configuración de Ventanilla"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
