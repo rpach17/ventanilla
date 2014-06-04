@@ -103,4 +103,80 @@
 
 #End Region
 
+#Region "Trámite"
+    Shared Function BuscarResponsable(ByVal identidad As String, _
+                                 ByVal txtPN As TextBox, _
+                                 ByVal txtSN As TextBox, _
+                                 ByVal txtPA As TextBox, _
+                                 ByVal txtSA As TextBox, _
+                                 ByVal txtT As TextBox, _
+                                 ByVal txtC As TextBox, _
+                                 ByVal txtEmail As TextBox, _
+                                 ByVal lbl As Label) As Integer
+
+        ' 1- Si existe localmente (Para hacer UPDATE)
+        ' 2- No existe y vienen los datos del RNP (INSERT)
+        ' 0- No existe en local ni en DB de RNP (Mostrar mensaje)
+
+
+        Dim conteo As Integer = (From r In ctx.RESPONSABLE.ToList
+                                Where r.NUMERO_IDENTIDAD = identidad
+                                Select r).Count
+
+        If conteo = 1 Then
+            Dim respon = (From r In ctx.RESPONSABLE.ToList
+                               Where r.NUMERO_IDENTIDAD = identidad
+                               Select r).SingleOrDefault
+
+            txtPN.Text = respon.PRIMER_NOMBRE
+            txtSN.Text = respon.SEGUNDO_NOMBRE
+            txtPA.Text = respon.PRIMER_APELLIDO
+            txtSA.Text = respon.SEGUNDO_APELLIDO
+            txtT.Text = respon.TELEFONO
+            txtC.Text = respon.CELULAR
+            txtEmail.Text = respon.CORREO
+
+            Return 1
+        Else
+            'Buscar en las BD del registro
+            lbl.Visible = True
+
+            Return 0
+        End If
+    End Function
+
+    Shared Function ObtenerRequisitos(ByVal idGestion As Integer) As List(Of REQUISITOS)
+        Return (From req In ctx.REQUISITOS Where req.IDGESTION = idGestion Order By req.IDREQUISITO Select req).ToList()
+    End Function
+
+    Shared Function ActualizarResponsable(ByVal identidad As String, ByVal tel As String, ByVal cel As String, ByVal correo As String) As Integer
+        Dim r As RESPONSABLE = (From re In ctx.RESPONSABLE
+                                   Where re.NUMERO_IDENTIDAD = identidad
+                                   Select re).SingleOrDefault
+        r.TELEFONO = tel
+        r.CELULAR = cel
+        r.CORREO = correo
+
+        ctx.SaveChanges()
+
+        Return r.IDRESPONSABLE
+    End Function
+
+    Shared Function obtenerIdGestion(ByVal idP As Integer) As Integer
+        Return (From pg In ctx.PETICION_GESTIONES Where pg.IDPETICION = idP Select pg.IDGESTION).FirstOrDefault
+    End Function
+
+    Shared Sub AgregarRequisito(ByVal req As RECEPCION_REQUISITOS)
+        Try
+            ctx.RECEPCION_REQUISITOS.AddObject(req)
+            ctx.SaveChanges()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+#End Region
+
+
+
 End Class
