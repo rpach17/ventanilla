@@ -190,6 +190,9 @@ Public Class frmVentanilla
 
                 IDPeticion = Val(myCMD.Parameters("VIDPETICION").Value.ToString)
 
+                'Obtener el IDGestion en base a la IDPeticion
+
+
                 LlamadoEnPantalla(myCMD.Parameters("CODIGO").Value.ToString, myCMD.Parameters("SECUENCIA").Value.ToString, 0)
                 Atencion(IDPeticion, "En este momento no hay Tickets en espera", CType(myCMD.Parameters("CODIGO").Value.ToString, String), CType(myCMD.Parameters("SECUENCIA").Value.ToString, String))
             End Using
@@ -284,8 +287,9 @@ Public Class frmVentanilla
     End Sub
 
     Private Sub btnReinicar_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReinicar.Click
-        frmLogin.Show()
-        Close()
+        'frmLogin.Show()
+        'Close()
+        'frmTramite.ShowDialog()
     End Sub
 
     Private Sub btnRellamar_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnRellamar.Click
@@ -297,6 +301,17 @@ Public Class frmVentanilla
     Private Sub dgvEnEspera_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvEnEspera.MouseEnter
         TicketsAtencionEspecial()
         TicketsEnEspera()
+    End Sub
+
+    Private Sub btnTramite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTramite.Click
+        If IDPeticion <> 0 Then
+            Dim idg As Integer = eAPPCA.obtenerIdGestion(IDPeticion)
+            With frmTramite
+                .IdGestion1 = idg
+                .ShowDialog()
+            End With
+        End If
+
     End Sub
 
 End Class

@@ -36,6 +36,7 @@ Partial Class frmVentanilla
         Me.btnTerminar = New System.Windows.Forms.Button()
         Me.btnLlamar = New System.Windows.Forms.Button()
         Me.lblNumVentanilla = New System.Windows.Forms.Label()
+        Me.btnTramite = New System.Windows.Forms.Button()
         Me.PanelConexion.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvEnEspera, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,7 +58,7 @@ Partial Class frmVentanilla
         Me.PanelConexion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PanelConexion.Controls.Add(Me.Label1)
         Me.PanelConexion.Controls.Add(Me.btnReinicar)
-        Me.PanelConexion.Location = New System.Drawing.Point(39, 91)
+        Me.PanelConexion.Location = New System.Drawing.Point(36, 75)
         Me.PanelConexion.Name = "PanelConexion"
         Me.PanelConexion.Size = New System.Drawing.Size(372, 193)
         Me.PanelConexion.TabIndex = 17
@@ -99,11 +100,13 @@ Partial Class frmVentanilla
         '
         'lblTicketActual
         '
+        Me.lblTicketActual.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTicketActual.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.lblTicketActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!)
         Me.lblTicketActual.Location = New System.Drawing.Point(47, 0)
         Me.lblTicketActual.Name = "lblTicketActual"
-        Me.lblTicketActual.Size = New System.Drawing.Size(399, 44)
+        Me.lblTicketActual.Size = New System.Drawing.Size(401, 44)
         Me.lblTicketActual.TabIndex = 16
         Me.lblTicketActual.Text = "sfsdfsdf"
         Me.lblTicketActual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -159,7 +162,7 @@ Partial Class frmVentanilla
         'btnPonerEspera
         '
         Me.btnPonerEspera.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnPonerEspera.Location = New System.Drawing.Point(5, 113)
+        Me.btnPonerEspera.Location = New System.Drawing.Point(5, 108)
         Me.btnPonerEspera.Name = "btnPonerEspera"
         Me.btnPonerEspera.Size = New System.Drawing.Size(128, 51)
         Me.btnPonerEspera.TabIndex = 12
@@ -169,7 +172,7 @@ Partial Class frmVentanilla
         'btnTerminar
         '
         Me.btnTerminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnTerminar.Location = New System.Drawing.Point(5, 170)
+        Me.btnTerminar.Location = New System.Drawing.Point(5, 160)
         Me.btnTerminar.Name = "btnTerminar"
         Me.btnTerminar.Size = New System.Drawing.Size(128, 51)
         Me.btnTerminar.TabIndex = 13
@@ -198,11 +201,21 @@ Partial Class frmVentanilla
         Me.lblNumVentanilla.Text = "Ventanilla #4"
         Me.lblNumVentanilla.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'btnTramite
+        '
+        Me.btnTramite.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.btnTramite.Location = New System.Drawing.Point(5, 212)
+        Me.btnTramite.Name = "btnTramite"
+        Me.btnTramite.Size = New System.Drawing.Size(128, 51)
+        Me.btnTramite.TabIndex = 20
+        Me.btnTramite.Text = "Crear trámite"
+        Me.btnTramite.UseVisualStyleBackColor = True
+        '
         'frmVentanilla
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(446, 350)
+        Me.ClientSize = New System.Drawing.Size(448, 354)
         Me.Controls.Add(Me.btnRellamar)
         Me.Controls.Add(Me.PanelConexion)
         Me.Controls.Add(Me.btnLlamarEspecial)
@@ -213,6 +226,7 @@ Partial Class frmVentanilla
         Me.Controls.Add(Me.btnTerminar)
         Me.Controls.Add(Me.btnLlamar)
         Me.Controls.Add(Me.lblNumVentanilla)
+        Me.Controls.Add(Me.btnTramite)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "frmVentanilla"
@@ -238,4 +252,5 @@ Partial Class frmVentanilla
     Friend WithEvents btnLlamar As System.Windows.Forms.Button
     Friend WithEvents lblNumVentanilla As System.Windows.Forms.Label
     Friend WithEvents btnReinicar As System.Windows.Forms.Button
+    Friend WithEvents btnTramite As System.Windows.Forms.Button
 End Class
