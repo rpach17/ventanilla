@@ -109,8 +109,8 @@
                                  ByVal txtSN As TextBox, _
                                  ByVal txtPA As TextBox, _
                                  ByVal txtSA As TextBox, _
-                                 ByVal txtT As TextBox, _
-                                 ByVal txtC As TextBox, _
+                                 ByVal txtT As MaskedTextBox, _
+                                 ByVal txtC As MaskedTextBox, _
                                  ByVal txtEmail As TextBox, _
                                  ByVal lbl As Label) As Integer
 
@@ -162,8 +162,16 @@
         Return r.IDRESPONSABLE
     End Function
 
-    Shared Function obtenerIdGestion(ByVal idP As Integer) As Integer
-        Return (From pg In ctx.PETICION_GESTIONES Where pg.IDPETICION = idP Select pg.IDGESTION).FirstOrDefault
+    Structure InfoGestion
+        Dim IdGestion As Integer
+        Dim NombreGestion As String
+    End Structure
+
+    Shared Function obtenerIdGestion(ByVal idP As Integer) As InfoGestion
+        Dim gestion As InfoGestion
+        gestion.IdGestion = (From pg In ctx.PETICION_GESTIONES Where pg.IDPETICION = idP Select pg.IDGESTION).FirstOrDefault
+        gestion.NombreGestion = (From ge In ctx.GESTIONES Where ge.IDGESTION = gestion.IdGestion Select ge.NOMBRE).FirstOrDefault
+        Return gestion
     End Function
 
     Shared Sub AgregarRequisito(ByVal req As RECEPCION_REQUISITOS)
@@ -175,6 +183,13 @@
         End Try
     End Sub
 
+#End Region
+
+#Region "Notificaciones"
+    Shared Sub TramitesSinEntregar(ByVal grid As DataGridView, ByVal idu As Integer)
+        Dim result = ctx.ExecuteStoreQuery(Of Object)("select * from tramites")
+        grid.DataSource = result.ToList()
+    End Sub
 #End Region
 
 

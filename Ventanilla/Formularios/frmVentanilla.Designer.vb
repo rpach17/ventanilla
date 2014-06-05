@@ -22,6 +22,7 @@ Partial Class frmVentanilla
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.btnRellamar = New System.Windows.Forms.Button()
         Me.PanelConexion = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -37,6 +38,9 @@ Partial Class frmVentanilla
         Me.btnLlamar = New System.Windows.Forms.Button()
         Me.lblNumVentanilla = New System.Windows.Forms.Label()
         Me.btnTramite = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.PanelConexion.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvEnEspera, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -211,6 +215,18 @@ Partial Class frmVentanilla
         Me.btnTramite.Text = "Crear trámite"
         Me.btnTramite.UseVisualStyleBackColor = True
         '
+        'Timer1
+        '
+        Me.Timer1.Interval = 1000
+        '
+        'Timer2
+        '
+        Me.Timer2.Interval = 1000
+        '
+        'Timer3
+        '
+        Me.Timer3.Interval = 5000
+        '
         'frmVentanilla
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -253,4 +269,7 @@ Partial Class frmVentanilla
     Friend WithEvents lblNumVentanilla As System.Windows.Forms.Label
     Friend WithEvents btnReinicar As System.Windows.Forms.Button
     Friend WithEvents btnTramite As System.Windows.Forms.Button
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents Timer2 As System.Windows.Forms.Timer
+    Friend WithEvents Timer3 As System.Windows.Forms.Timer
 End Class

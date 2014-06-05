@@ -5,6 +5,7 @@ Public Class frmTramite
     Dim ReqsObligatorios As Integer
     Dim result As Integer
     Dim IdGestion As Integer
+    Dim NombreGestion As String
     Dim cnn As New OracleConnection(My.Settings.Miconexion)
 
     Public Property IdGestion1() As Integer
@@ -16,7 +17,17 @@ Public Class frmTramite
         End Set
     End Property
 
+    Public Property NombreGestion1() As String
+        Get
+            Return NombreGestion
+        End Get
+        Set(ByVal value As String)
+            NombreGestion = Value
+        End Set
+    End Property
+
     Private Sub frmTramite_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Text = String.Format("TRAMITE PARA {0}", NombreGestion)
         BottomRightFormLocation(e)
         ReqsObligatorios = 0
         result = 0
@@ -44,7 +55,7 @@ Public Class frmTramite
     End Sub
 
     Public Sub EventoChecked(ByVal sender As Object, ByVal e As EventArgs)
-        Dim check As CheckBox = TryCast(sender, CheckBox)
+        'Dim check As CheckBox = TryCast(sender, CheckBox)
         Dim cheques As Integer = 0
 
         For Each chk As CheckBox In FlowLayoutPanel1.Controls
@@ -93,13 +104,13 @@ Public Class frmTramite
         End If
     End Sub
 
-    Private Sub txtTelefonoFijo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefonoFijo.KeyPress, txtTelefonoMovil.KeyPress
+    Private Sub txtTelefonoFijo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefonoFijo.KeyPress
         If e.KeyChar = ChrW(13) Then  ' The ENTER key.
             SendKeys.Send("{TAB}")
         End If
     End Sub
 
-    Private Sub txtTelefonoFijo_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtIdentidad.KeyDown, txtTelefonoFijo.KeyDown, txtTelefonoMovil.KeyDown, txtCorreo.KeyDown
+    Private Sub txtTelefonoFijo_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtIdentidad.KeyDown, txtCorreo.KeyDown
         If e.KeyCode = Keys.Down Then
             SendKeys.Send("{TAB}")
         ElseIf e.KeyCode = Keys.Up Then
@@ -113,6 +124,14 @@ Public Class frmTramite
             lblInfo.Text = "Corregir número de identidad del responsable"
             txtIdentidad.Focus()
         ElseIf result = 1 Then 'Existe en local (UPDATE)
+            If txtCorreo.Text.Trim <> "" Then
+                If Not ValidarCorreo(txtCorreo.Text) Then
+                    MsgBox("El correo electrónico no es correcto", MsgBoxStyle.Exclamation, "Verificar correo")
+                    txtCorreo.Focus()
+                    Exit Sub
+                End If
+            End If
+
             Dim idResponsable As Integer = eAPPCA.ActualizarResponsable(txtIdentidad.Text, txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text)
 
             Try
@@ -121,8 +140,11 @@ Public Class frmTramite
                     myCMD.Parameters.Add("VIDGESTION", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = IdGestion
                     myCMD.Parameters.Add("VNOTA", OracleDbType.NVarchar2, 200, Nothing, ParameterDirection.Input).Value = txtInfoAdicional.Text
                     myCMD.Parameters.Add("VIDDETALLE_SUCURSAL_OFICINA", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = SesionActiva.IdSucursalOficina
+                    myCMD.Parameters.Add("VIDUSUARIO", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = SesionActiva.IdUsuario
                     myCMD.Parameters.Add("VTRAMITE", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Output)
                     myCMD.Parameters.Add("VCODIGO", OracleDbType.NVarchar2, 13, Nothing, ParameterDirection.Output)
+                    myCMD.Parameters.Add("VFECHA", OracleDbType.NVarchar2, 22, Nothing, ParameterDirection.Output)
+                    myCMD.Parameters.Add("NGESTION", OracleDbType.NVarchar2, 60, Nothing, ParameterDirection.Output)
                     cnn.Open()
                     myCMD.ExecuteNonQuery()
 
@@ -139,13 +161,22 @@ Public Class frmTramite
                             eAPPCA.AgregarRequisito(requi)
                         End If
                     Next
+
+                    ' Imprimir el recibo del trámite
+                    Using rpt As New rptReciboTramite(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text)
+                        rpt.Print()
+                    End Using
                 End Using
 
                 MsgBox("El trámite ha sido registrado con éxito", MsgBoxStyle.Information, "Trámite")
+                frmVentanilla.RealizoTramite1 = True
                 Close()
             Catch ex As Exception
+            Finally
+                cnn.Close()
             End Try
         End If
     End Sub
+
 
 End Class

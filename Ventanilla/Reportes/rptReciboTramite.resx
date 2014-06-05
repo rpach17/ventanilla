@@ -117,13 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="Detail.Name" xml:space="preserve">
+    <value>Detail</value>
   </metadata>
-  <metadata name="Timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>106, 17</value>
+  <metadata name="XrTable3.Name" xml:space="preserve">
+    <value>XrTable3</value>
   </metadata>
-  <metadata name="Timer3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>195, 17</value>
+  <metadata name="XrTableRow10.Name" xml:space="preserve">
+    <value>XrTableRow10</value>
+  </metadata>
+  <metadata name="cellNota.Name" xml:space="preserve">
+    <value>cellNota</value>
+  </metadata>
+  <metadata name="XrTable2.Name" xml:space="preserve">
+    <value>XrTable2</value>
+  </metadata>
+  <metadata name="XrTableRow1.Name" xml:space="preserve">
+    <value>XrTableRow1</value>
+  </metadata>
+  <metadata name="XrTableCell4.Name" xml:space="preserve">
+    <value>XrTableCell4</value>
+  </metadata>
+  <metadata name="XrTableRow2.Name" xml:space="preserve">
+    <value>XrTableRow2</value>
+  </metadata>
+  <metadata name="XrTableCell2.Name" xml:space="preserve">
+    <value>XrTableCell2</value>
+  </metadata>
+  <metadata name="cellIdentidad.Name" xml:space="preserve">
+    <value>cellIdentidad</value>
+  </metadata>
+  <metadata name="XrTableRow7.Name" xml:space="preserve">
+    <value>XrTableRow7</value>
+  </metadata>
+  <metadata name="XrTableCell1.Name" xml:space="preserve">
+    <value>XrTableCell1</value>
+  </metadata>
+  <metadata name="cellNombre.Name" xml:space="preserve">
+    <value>cellNombre</value>
+  </metadata>
+  <metadata name="XrTableRow9.Name" xml:space="preserve">
+    <value>XrTableRow9</value>
+  </metadata>
+  <metadata name="XrTableCell8.Name" xml:space="preserve">
+    <value>XrTableCell8</value>
+  </metadata>
+  <metadata name="cellTelf.Name" xml:space="preserve">
+    <value>cellTelf</value>
+  </metadata>
+  <metadata name="XrTableRow3.Name" xml:space="preserve">
+    <value>XrTableRow3</value>
+  </metadata>
+  <metadata name="XrTableCell3.Name" xml:space="preserve">
+    <value>XrTableCell3</value>
+  </metadata>
+  <metadata name="cellCel.Name" xml:space="preserve">
+    <value>cellCel</value>
+  </metadata>
+  <metadata name="XrTableRow8.Name" xml:space="preserve">
+    <value>XrTableRow8</value>
+  </metadata>
+  <metadata name="XrTableCell6.Name" xml:space="preserve">
+    <value>XrTableCell6</value>
+  </metadata>
+  <metadata name="cellCorre.Name" xml:space="preserve">
+    <value>cellCorre</value>
+  </metadata>
+  <metadata name="XrTable1.Name" xml:space="preserve">
+    <value>XrTable1</value>
+  </metadata>
+  <metadata name="XrTableRow6.Name" xml:space="preserve">
+    <value>XrTableRow6</value>
+  </metadata>
+  <metadata name="cellCodeBar.Name" xml:space="preserve">
+    <value>cellCodeBar</value>
+  </metadata>
+  <metadata name="XrTableRow4.Name" xml:space="preserve">
+    <value>XrTableRow4</value>
+  </metadata>
+  <metadata name="cellTramite.Name" xml:space="preserve">
+    <value>cellTramite</value>
+  </metadata>
+  <metadata name="XrTableRow5.Name" xml:space="preserve">
+    <value>XrTableRow5</value>
+  </metadata>
+  <metadata name="cellFecha.Name" xml:space="preserve">
+    <value>cellFecha</value>
+  </metadata>
+  <metadata name="TopMargin.Name" xml:space="preserve">
+    <value>TopMargin</value>
+  </metadata>
+  <metadata name="BottomMargin.Name" xml:space="preserve">
+    <value>BottomMargin</value>
+  </metadata>
+  <metadata name="$this.Name" xml:space="preserve">
+    <value>rptReciboTramite</value>
   </metadata>
 </root>

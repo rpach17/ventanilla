@@ -41,4 +41,20 @@ Module ModuleFunciones
             Return False
         End Try
     End Function
+
+    Public Function ValidarCorreo(ByVal correo As String) As Boolean
+        If correo.IndexOf("@") > -1 Then
+            If correo.IndexOf(".", correo.IndexOf("@")) > correo.IndexOf("@") Then
+                Return True
+            End If
+        End If
+
+        Return False
+    End Function
+
+    Public Function MinutosAHoras(ByVal mins As Integer) As String
+        Dim minutos As Integer = 0
+        Dim horas As Integer = Math.DivRem(mins, 60, minutos)
+        Return String.Format("{0:00}:{1:00} {2}", horas, minutos, IIf(horas > 0, "horas", "minutos"))
+    End Function
 End Module
