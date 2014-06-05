@@ -183,6 +183,29 @@
         End Try
     End Sub
 
+    Shared Sub ListadoGestiones(ByVal grid As DataGridView, Optional ByVal buscar As String = "")
+
+        If buscar = "" Then
+            Dim gestiones = (From o In ctx.DETALLE_SUCURSAL_OFICINA
+                                    Join g In ctx.DETALLE_OFICINA_GESTIONES
+                                    On o.IDOFICINA Equals g.IDOFICINA
+                                    Where o.IDDETALLE_SUCURSAL_OFICINA = SesionActiva.IdSucursalOficina
+                                    Select g.GESTIONES.IDGESTION, g.GESTIONES.NOMBRE).ToList
+
+            grid.DataSource = gestiones
+            grid.Columns(0).Visible = False
+        Else
+            Dim gestiones = (From o In ctx.DETALLE_SUCURSAL_OFICINA
+                                    Join g In ctx.DETALLE_OFICINA_GESTIONES
+                                    On o.IDOFICINA Equals g.IDOFICINA
+                                    Where o.IDDETALLE_SUCURSAL_OFICINA = SesionActiva.IdSucursalOficina AndAlso g.GESTIONES.NOMBRE.StartsWith(buscar)
+                                    Select g.GESTIONES.IDGESTION, g.GESTIONES.NOMBRE).ToList
+
+            grid.DataSource = gestiones
+            grid.Columns(0).Visible = False
+        End If
+    End Sub
+
 #End Region
 
 #Region "Notificaciones"

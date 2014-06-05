@@ -32,6 +32,13 @@ Public Class frmTramite
         ReqsObligatorios = 0
         result = 0
 
+        CargarRequisitos()
+    End Sub
+
+    Sub CargarRequisitos()
+        'Para limpiar el control Flow
+        FlowLayoutPanel1.Controls.Clear()
+
         Dim lista As List(Of REQUISITOS) = eAPPCA.ObtenerRequisitos(IdGestion)
         For Each requisito In lista
             Dim chk As New CheckBox
@@ -164,12 +171,12 @@ Public Class frmTramite
 
                     ' Imprimir el recibo del trámite
                     Using rpt As New rptReciboTramite(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text)
-                        rpt.Print()
+                        'rpt.Print()
                     End Using
                 End Using
 
                 MsgBox("El trámite ha sido registrado con éxito", MsgBoxStyle.Information, "Trámite")
-                frmVentanilla.RealizoTramite1 = True
+                frmVentanilla.btnTramite.Enabled = False
                 Close()
             Catch ex As Exception
             Finally
@@ -179,4 +186,11 @@ Public Class frmTramite
     End Sub
 
 
+    Private Sub btnCambirTramite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCambirTramite.Click
+        frmListadoGestiones.ShowDialog()
+    End Sub
+
+    Private Sub frmTramite_Activated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Activated
+        Dim i As Integer = IdGestion
+    End Sub
 End Class
