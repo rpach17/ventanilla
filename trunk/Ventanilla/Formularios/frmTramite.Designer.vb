@@ -33,18 +33,19 @@ Partial Class frmTramite
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtSegundoApellido = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtTelefonoFijo = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtTelefonoMovil = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtCorreo = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtTelefonoMovil = New System.Windows.Forms.MaskedTextBox()
+        Me.txtTelefonoFijo = New System.Windows.Forms.MaskedTextBox()
         Me.lblInfo = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnCrearTramite = New System.Windows.Forms.Button()
         Me.txtInfoAdicional = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.btnCambirTramite = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -148,13 +149,6 @@ Partial Class frmTramite
         Me.Label6.TabIndex = 11
         Me.Label6.Text = "Teléfono fijo"
         '
-        'txtTelefonoFijo
-        '
-        Me.txtTelefonoFijo.Location = New System.Drawing.Point(109, 149)
-        Me.txtTelefonoFijo.Name = "txtTelefonoFijo"
-        Me.txtTelefonoFijo.Size = New System.Drawing.Size(100, 20)
-        Me.txtTelefonoFijo.TabIndex = 1
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -163,13 +157,6 @@ Partial Class frmTramite
         Me.Label7.Size = New System.Drawing.Size(76, 13)
         Me.Label7.TabIndex = 13
         Me.Label7.Text = "Teléfono móvil"
-        '
-        'txtTelefonoMovil
-        '
-        Me.txtTelefonoMovil.Location = New System.Drawing.Point(109, 175)
-        Me.txtTelefonoMovil.Name = "txtTelefonoMovil"
-        Me.txtTelefonoMovil.Size = New System.Drawing.Size(100, 20)
-        Me.txtTelefonoMovil.TabIndex = 2
         '
         'Label8
         '
@@ -189,6 +176,8 @@ Partial Class frmTramite
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtTelefonoMovil)
+        Me.GroupBox1.Controls.Add(Me.txtTelefonoFijo)
         Me.GroupBox1.Controls.Add(Me.txtIdentidad)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label1)
@@ -196,11 +185,9 @@ Partial Class frmTramite
         Me.GroupBox1.Controls.Add(Me.txtPrimerNombre)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.txtTelefonoMovil)
         Me.GroupBox1.Controls.Add(Me.txtSegundoNombre)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.txtTelefonoFijo)
         Me.GroupBox1.Controls.Add(Me.txtPrimerApellido)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -211,6 +198,22 @@ Partial Class frmTramite
         Me.GroupBox1.TabIndex = 16
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Responsable"
+        '
+        'txtTelefonoMovil
+        '
+        Me.txtTelefonoMovil.Location = New System.Drawing.Point(109, 175)
+        Me.txtTelefonoMovil.Mask = "0000-0000"
+        Me.txtTelefonoMovil.Name = "txtTelefonoMovil"
+        Me.txtTelefonoMovil.Size = New System.Drawing.Size(100, 20)
+        Me.txtTelefonoMovil.TabIndex = 17
+        '
+        'txtTelefonoFijo
+        '
+        Me.txtTelefonoFijo.Location = New System.Drawing.Point(109, 149)
+        Me.txtTelefonoFijo.Mask = "0000-0000"
+        Me.txtTelefonoFijo.Name = "txtTelefonoFijo"
+        Me.txtTelefonoFijo.Size = New System.Drawing.Size(100, 20)
+        Me.txtTelefonoFijo.TabIndex = 16
         '
         'lblInfo
         '
@@ -233,7 +236,7 @@ Partial Class frmTramite
         Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 16)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(395, 218)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(395, 250)
         Me.FlowLayoutPanel1.TabIndex = 18
         Me.FlowLayoutPanel1.WrapContents = False
         '
@@ -242,7 +245,7 @@ Partial Class frmTramite
         Me.GroupBox2.Controls.Add(Me.FlowLayoutPanel1)
         Me.GroupBox2.Location = New System.Drawing.Point(341, 33)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(401, 237)
+        Me.GroupBox2.Size = New System.Drawing.Size(401, 269)
         Me.GroupBox2.TabIndex = 20
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Requisitos"
@@ -250,7 +253,7 @@ Partial Class frmTramite
         'btnCrearTramite
         '
         Me.btnCrearTramite.Enabled = False
-        Me.btnCrearTramite.Location = New System.Drawing.Point(344, 292)
+        Me.btnCrearTramite.Location = New System.Drawing.Point(344, 308)
         Me.btnCrearTramite.Name = "btnCrearTramite"
         Me.btnCrearTramite.Size = New System.Drawing.Size(145, 34)
         Me.btnCrearTramite.TabIndex = 21
@@ -274,12 +277,22 @@ Partial Class frmTramite
         Me.Label9.TabIndex = 16
         Me.Label9.Text = "Información adicional"
         '
+        'btnCambirTramite
+        '
+        Me.btnCambirTramite.Location = New System.Drawing.Point(495, 308)
+        Me.btnCambirTramite.Name = "btnCambirTramite"
+        Me.btnCambirTramite.Size = New System.Drawing.Size(145, 34)
+        Me.btnCambirTramite.TabIndex = 23
+        Me.btnCambirTramite.Text = "Cambiar trámite"
+        Me.btnCambirTramite.UseVisualStyleBackColor = True
+        '
         'frmTramite
         '
         Me.AccessibleDescription = ""
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(754, 354)
+        Me.Controls.Add(Me.btnCambirTramite)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txtInfoAdicional)
         Me.Controls.Add(Me.btnCrearTramite)
@@ -308,9 +321,7 @@ Partial Class frmTramite
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtSegundoApellido As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents txtTelefonoFijo As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents txtTelefonoMovil As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents txtCorreo As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -320,4 +331,7 @@ Partial Class frmTramite
     Friend WithEvents btnCrearTramite As System.Windows.Forms.Button
     Friend WithEvents txtInfoAdicional As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents txtTelefonoFijo As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents txtTelefonoMovil As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents btnCambirTramite As System.Windows.Forms.Button
 End Class
