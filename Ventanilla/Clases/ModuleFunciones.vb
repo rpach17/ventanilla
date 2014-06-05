@@ -23,7 +23,7 @@ Module ModuleFunciones
         End Using
     End Function
 
-    Public Function DameID(ByVal miGrid As DataGridView, ByVal colID As Integer)
+    Public Function DameID(ByVal miGrid As DataGridView, Optional ByVal colID As Integer = 0)
         Try
             Return miGrid.CurrentRow().Cells(colID).Value
         Catch ex As Exception

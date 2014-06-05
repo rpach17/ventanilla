@@ -197,7 +197,7 @@
           <Key>
             <PropertyRef Name="ID_REC_REQUISITO" />
           </Key>
-          <Property Name="ID_REC_REQUISITO" Type="number" Nullable="false" />
+          <Property Name="ID_REC_REQUISITO" Type="number" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IDTRAMITE" Type="number" />
           <Property Name="IDREQUISITO" Type="number" />
           <Property Name="RECIBIDO" Type="number" />

@@ -7,23 +7,15 @@ Public Class frmVentanilla
     Dim WithEvents socketCliente As New SocketCliente
     Private IDPeticion As Integer = 0
     Dim codigoSep As String = ""
-    Dim realizoTramite As Boolean
 
     'Dim timer As System.Threading.Timer
     Dim hiloConexion As Thread
 
-    Public Property RealizoTramite1() As Boolean
-        Get
-            Return realizoTramite
-        End Get
-        Set(ByVal value As Boolean)
-            realizoTramite = Value
-        End Set
-    End Property
-
     Private Sub frmVentanilla_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Timer3.Enabled = True
+        CargarTramitesAtrasados()
+
+        tmNotificacion.Enabled = True
         'Ubica la pantalla en la esquina inferior derecha
         Dim src = Screen.FromPoint(Location)
         Location = New Point(src.WorkingArea.Right - Me.Width, src.WorkingArea.Bottom - Me.Height)
@@ -332,17 +324,11 @@ Public Class frmVentanilla
         If IDPeticion <> 0 Then
             Dim infGestion As eAPPCA.InfoGestion = eAPPCA.obtenerIdGestion(IDPeticion)
 
-            Using frm As New frmTramite() With {.IdGestion1 = infGestion.IdGestion, .NombreGestion1 = infGestion.NombreGestion}
-                frm.ShowDialog()
-            End Using
-
-            If realizoTramite Then
-                btnTramite.Enabled = False
-            Else
-                btnTramite.Enabled = True
-            End If
-
-            realizoTramite = False
+            With frmTramite
+                .IdGestion1 = infGestion.IdGestion
+                .NombreGestion1 = infGestion.NombreGestion
+                .Show()
+            End With
         End If
     End Sub
 
@@ -372,8 +358,48 @@ Public Class frmVentanilla
         End If
     End Sub
 
-    Private Sub Timer3_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer3.Tick
-        frmNotificacion.Show()
-        'Timer3.Enabled = False
+    Sub CargarTramitesAtrasados()
+        Try
+            Using myCMD As New OracleCommand() With {.Connection = cnn, .CommandText = "SP_TRAMITES_SIN_ENTREGAR", .CommandType = CommandType.StoredProcedure}
+                myCMD.Parameters.Add("VIDUSER", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = SesionActiva.IdUsuario
+                Dim refCursor As OracleParameter = New OracleParameter With
+                {
+                    .OracleDbType = OracleDbType.RefCursor,
+                    .Direction = ParameterDirection.Output
+                }
+                myCMD.Parameters.Add(refCursor)
+                cnn.Open()
+                myCMD.ExecuteNonQuery()
+
+                Dim cursor As OracleRefCursor = DirectCast(refCursor.Value, OracleRefCursor)
+                Dim reader As OracleDataReader = cursor.GetDataReader
+                'Dim fi As FieldInfo = reader.GetType().GetField("m_rowSize", BindingFlags.Instance & BindingFlags.NonPublic)
+                'Dim rowSize As Integer = Convert.ToInt32(fi.GetValue(reader))
+                'reader.FetchSize = rowSize * 100
+
+                If reader.HasRows Then
+                    frmNotificacion.dgvTramites.Rows.Clear()
+
+                    While reader.Read
+                        frmNotificacion.dgvTramites.Rows.Add(reader("CODIGOTRAMITE").ToString, MinutosAHoras(CInt(reader("MINUTOS_PASADOS"))), reader("NUMERO_SALTO").ToString, String.Format("{0} minutos", reader("MINUTOS").ToString))
+                    End While
+
+                    frmNotificacion.lblInfo.Text = String.Format("Usted tiene {0} trámites pendientes de entrega", frmNotificacion.dgvTramites.Rows.Count)
+
+                    reader.Close()
+                    refCursor.Dispose()
+
+                    frmNotificacion.Show()
+                End If
+
+            End Using
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Private Sub tmNotificacion_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmNotificacion.Tick
+        CargarTramitesAtrasados()
     End Sub
 End Class

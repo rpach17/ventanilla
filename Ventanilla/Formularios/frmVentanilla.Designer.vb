@@ -23,7 +23,6 @@ Partial Class frmVentanilla
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.btnRellamar = New System.Windows.Forms.Button()
         Me.PanelConexion = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnReinicar = New System.Windows.Forms.Button()
@@ -40,22 +39,14 @@ Partial Class frmVentanilla
         Me.btnTramite = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
+        Me.tmNotificacion = New System.Windows.Forms.Timer(Me.components)
+        Me.btnRellamar = New System.Windows.Forms.Button()
         Me.PanelConexion.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvEnEspera, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvEspecial, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'btnRellamar
-        '
-        Me.btnRellamar.Image = Global.Ventanilla.My.Resources.Resources.bocina
-        Me.btnRellamar.Location = New System.Drawing.Point(-1, -1)
-        Me.btnRellamar.Name = "btnRellamar"
-        Me.btnRellamar.Size = New System.Drawing.Size(50, 46)
-        Me.btnRellamar.TabIndex = 19
-        Me.btnRellamar.UseVisualStyleBackColor = True
         '
         'PanelConexion
         '
@@ -223,9 +214,19 @@ Partial Class frmVentanilla
         '
         Me.Timer2.Interval = 1000
         '
-        'Timer3
+        'tmNotificacion
         '
-        Me.Timer3.Interval = 5000
+        Me.tmNotificacion.Interval = 1800000
+        Me.tmNotificacion.Tag = "Interval = 30 minutos"
+        '
+        'btnRellamar
+        '
+        Me.btnRellamar.Image = Global.Ventanilla.My.Resources.Resources.bocina
+        Me.btnRellamar.Location = New System.Drawing.Point(-1, -1)
+        Me.btnRellamar.Name = "btnRellamar"
+        Me.btnRellamar.Size = New System.Drawing.Size(50, 46)
+        Me.btnRellamar.TabIndex = 19
+        Me.btnRellamar.UseVisualStyleBackColor = True
         '
         'frmVentanilla
         '
@@ -271,5 +272,5 @@ Partial Class frmVentanilla
     Friend WithEvents btnTramite As System.Windows.Forms.Button
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents Timer2 As System.Windows.Forms.Timer
-    Friend WithEvents Timer3 As System.Windows.Forms.Timer
+    Friend WithEvents tmNotificacion As System.Windows.Forms.Timer
 End Class
