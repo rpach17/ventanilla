@@ -45,7 +45,7 @@ Partial Class frmNotificacion
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(399, 5)
+        Me.Button1.Location = New System.Drawing.Point(399, 6)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(25, 25)
         Me.Button1.TabIndex = 0
@@ -66,7 +66,7 @@ Partial Class frmNotificacion
         '
         'Label2
         '
-        Me.Label2.BackColor = System.Drawing.Color.Black
+        Me.Label2.BackColor = System.Drawing.Color.Red
         Me.Label2.Location = New System.Drawing.Point(395, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(37, 38)
