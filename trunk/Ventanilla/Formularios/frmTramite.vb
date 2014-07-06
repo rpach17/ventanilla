@@ -1,5 +1,6 @@
 ﻿Imports Oracle.DataAccess.Client
 Imports Oracle.DataAccess.Types
+Imports DevExpress.XtraReports.UI
 
 Public Class frmTramite
     Dim ReqsObligatorios As Integer
@@ -170,11 +171,16 @@ Public Class frmTramite
                     Next
 
                     ' Imprimir el recibo del trámite
-                    Using rpt As New rptReciboTramite(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text)
-                        'rpt.Print()
+                    'Using rpt As New rptReciboTramite()
+                    '    'rpt.Print()
+                    'End Using
+                    Dim url As String = String.Format("http://tramite.rnp.hn/{0}", myCMD.Parameters("VCODIGO").Value.ToString)
+                    Using rpt As New rptReciboTramite(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text, url)
+                        Using preview As New ReportPrintTool(rpt)
+                            preview.Print()
+                        End Using
                     End Using
                 End Using
-
                 MsgBox("El trámite ha sido registrado con éxito", MsgBoxStyle.Information, "Trámite")
                 frmVentanilla.btnTramite.Enabled = False
                 Close()
