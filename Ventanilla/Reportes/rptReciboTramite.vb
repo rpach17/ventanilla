@@ -1,30 +1,42 @@
-Public Class rptReciboTramite
-    Public Sub New(ByVal barcode As String, _
-                   ByVal nombreGestion As String, _
-                   ByVal fecha As String, _
-                   ByVal identidad As String, _
-                   ByVal nombre As String, _
-                   ByVal telf As String, _
-                   ByVal cel As String, _
-                   ByVal correo As String, _
-                   ByVal nota As String)
+﻿Imports DevExpress.XtraPrinting.BarCode
+Imports System.Text
 
-        ' This call is required by the designer.
+Public Class rptReciboTramite
+    Public Sub New(barcode As String, _
+                   nombreGestion As String, _
+                   fecha As String, _
+                   identidad As String, _
+                   nombre As String, _
+                   telf As String, _
+                   cel As String, _
+                   correo As String, _
+                   nota As String, _
+                   url As String)
+
+        ' Llamada necesaria para el diseñador.
         InitializeComponent()
 
-        ' Add any initialization after the InitializeComponent() call.
-        cellCodeBar.Font = New Font("barcode font", 65.75!)
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        XrBarCode1.Symbology = New QRCodeGenerator()
+
+        XrBarCode1.AutoModule = True
+        XrBarCode1.BinaryData = Encoding.ASCII.GetBytes(url)
+        XrBarCode1.AutoModule = True
+        XrBarCode1.ShowText = False
+
+        DirectCast(XrBarCode1.Symbology, QRCodeGenerator).CompactionMode = QRCodeCompactionMode.Byte
+        DirectCast(XrBarCode1.Symbology, QRCodeGenerator).ErrorCorrectionLevel = QRCodeErrorCorrectionLevel.H
+        DirectCast(XrBarCode1.Symbology, QRCodeGenerator).Version = QRCodeVersion.AutoVersion
+
         cellCodeBar.Text = barcode
         cellTramite.Text = nombreGestion
         cellFecha.Text = fecha
 
         cellIdentidad.Text = identidad
         cellNombre.Text = nombre
-        cellTelf.Text = telf
-        cellCel.Text = cel
-        cellCorre.Text = correo
+        cellTelefono.Text = telf
+        cellCelular.Text = cel
+        cellCorreo.Text = correo
         cellNota.Text = nota
     End Sub
-
-
 End Class
