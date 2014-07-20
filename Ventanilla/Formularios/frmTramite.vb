@@ -180,6 +180,14 @@ Public Class frmTramite
                             preview.Print()
                         End Using
                     End Using
+
+                    ' Imprimir el recibo del trámite
+                    Using rpt As New rptReciboTramite2(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text)
+                        Using preview As New ReportPrintTool(rpt)
+                            preview.Print()
+                            'preview.ShowPreviewDialog()
+                        End Using
+                    End Using
                 End Using
                 MsgBox("El trámite ha sido registrado con éxito", MsgBoxStyle.Information, "Trámite")
                 frmVentanilla.btnTramite.Enabled = False
