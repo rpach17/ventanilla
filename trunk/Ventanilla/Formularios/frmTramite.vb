@@ -1,6 +1,7 @@
 ﻿Imports Oracle.DataAccess.Client
 Imports Oracle.DataAccess.Types
 Imports DevExpress.XtraReports.UI
+Imports System.Xml
 
 Public Class frmTramite
     Dim ReqsObligatorios As Integer
@@ -138,67 +139,87 @@ Public Class frmTramite
                     txtCorreo.Focus()
                     Exit Sub
                 End If
+            
             End If
 
-            Dim idResponsable As Integer = eAPPCA.ActualizarResponsable(txtIdentidad.Text, txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text)
+            crearTramite(eAPPCA.ActualizarResponsable(txtIdentidad.Text, txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text))
 
-            Try
-                Using myCMD As New OracleCommand() With {.Connection = cnn, .CommandText = "SP_TRAMITES", .CommandType = CommandType.StoredProcedure}
-                    myCMD.Parameters.Add("VIDRESPONSABLE", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = idResponsable
-                    myCMD.Parameters.Add("VIDGESTION", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = IdGestion
-                    myCMD.Parameters.Add("VNOTA", OracleDbType.NVarchar2, 200, Nothing, ParameterDirection.Input).Value = txtInfoAdicional.Text
-                    myCMD.Parameters.Add("VIDDETALLE_SUCURSAL_OFICINA", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = SesionActiva.IdSucursalOficina
-                    myCMD.Parameters.Add("VIDUSUARIO", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = SesionActiva.IdUsuario
-                    myCMD.Parameters.Add("VTRAMITE", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Output)
-                    myCMD.Parameters.Add("VCODIGO", OracleDbType.NVarchar2, 13, Nothing, ParameterDirection.Output)
-                    myCMD.Parameters.Add("VFECHA", OracleDbType.NVarchar2, 22, Nothing, ParameterDirection.Output)
-                    myCMD.Parameters.Add("NGESTION", OracleDbType.NVarchar2, 60, Nothing, ParameterDirection.Output)
-                    cnn.Open()
-                    myCMD.ExecuteNonQuery()
+        ElseIf result = 2 Then  'Nuevo codigo para insert
+            If txtCorreo.Text.Trim <> "" Then
+                If Not ValidarCorreo(txtCorreo.Text) Then
+                    MsgBox("El correo electrónico no es correcto", MsgBoxStyle.Exclamation, "Verificar correo")
+                    txtCorreo.Focus()
+                    Exit Sub
+                End If
+            End If
 
+            crearTramite(eAPPCA.NuevoResponsable(New RESPONSABLE With _
+                                                 {
+                                                     .NUMERO_IDENTIDAD = txtIdentidad.Text,
+                                                     .TELEFONO = txtTelefonoFijo.Text,
+                                                     .CELULAR = txtTelefonoMovil.Text,
+                                                     .CORREO = txtCorreo.Text
+                                                 }))
 
-                    For Each chk As CheckBox In FlowLayoutPanel1.Controls
-                        If chk.Checked Then
-                            Dim requi As New RECEPCION_REQUISITOS With
-                            {
-                                .IDTRAMITE = myCMD.Parameters("VTRAMITE").Value.ToString, _
-                                .IDREQUISITO = chk.Tag, _
-                                .RECIBIDO = 1
-                            }
-
-                            eAPPCA.AgregarRequisito(requi)
-                        End If
-                    Next
-
-                    ' Imprimir el recibo del trámite
-                    'Using rpt As New rptReciboTramite()
-                    '    'rpt.Print()
-                    'End Using
-                    Dim url As String = String.Format("http://tramite.rnp.hn/{0}", myCMD.Parameters("VCODIGO").Value.ToString)
-                    Using rpt As New rptReciboTramite(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text, url)
-                        Using preview As New ReportPrintTool(rpt)
-                            preview.Print()
-                        End Using
-                    End Using
-
-                    ' Imprimir el recibo del trámite
-                    Using rpt As New rptReciboTramite2(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text)
-                        Using preview As New ReportPrintTool(rpt)
-                            preview.Print()
-                            'preview.ShowPreviewDialog()
-                        End Using
-                    End Using
-                End Using
-                MsgBox("El trámite ha sido registrado con éxito", MsgBoxStyle.Information, "Trámite")
-                frmVentanilla.btnTramite.Enabled = False
-                Close()
-            Catch ex As Exception
-            Finally
-                cnn.Close()
-            End Try
         End If
     End Sub
+    Private Sub crearTramite(ByVal idResponsable As Integer)
+        Try
+            Using myCMD As New OracleCommand() With {.Connection = cnn, .CommandText = "SP_TRAMITES", .CommandType = CommandType.StoredProcedure}
+                myCMD.Parameters.Add("VIDRESPONSABLE", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = idResponsable
+                myCMD.Parameters.Add("VIDGESTION", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = IdGestion
+                myCMD.Parameters.Add("VNOTA", OracleDbType.NVarchar2, 200, Nothing, ParameterDirection.Input).Value = txtInfoAdicional.Text
+                myCMD.Parameters.Add("VIDDETALLE_SUCURSAL_OFICINA", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = SesionActiva.IdSucursalOficina
+                myCMD.Parameters.Add("VIDUSUARIO", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = SesionActiva.IdUsuario
+                myCMD.Parameters.Add("VTRAMITE", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Output)
+                myCMD.Parameters.Add("VCODIGO", OracleDbType.NVarchar2, 13, Nothing, ParameterDirection.Output)
+                myCMD.Parameters.Add("VFECHA", OracleDbType.NVarchar2, 22, Nothing, ParameterDirection.Output)
+                myCMD.Parameters.Add("NGESTION", OracleDbType.NVarchar2, 60, Nothing, ParameterDirection.Output)
+                cnn.Open()
+                myCMD.ExecuteNonQuery()
 
+
+                For Each chk As CheckBox In FlowLayoutPanel1.Controls
+                    If chk.Checked Then
+                        Dim requi As New RECEPCION_REQUISITOS With
+                        {
+                            .IDTRAMITE = myCMD.Parameters("VTRAMITE").Value.ToString, _
+                            .IDREQUISITO = chk.Tag, _
+                            .RECIBIDO = 1
+                        }
+
+                        eAPPCA.AgregarRequisito(requi)
+                    End If
+                Next
+
+                ' Imprimir el recibo del trámite
+                'Using rpt As New rptReciboTramite()
+                '    'rpt.Print()
+                'End Using
+                Dim url As String = String.Format("http://tramite.rnp.hn/{0}", myCMD.Parameters("VCODIGO").Value.ToString)
+                Using rpt As New rptReciboTramite(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text, url)
+                    Using preview As New ReportPrintTool(rpt)
+                        preview.Print()
+                    End Using
+                End Using
+
+                ' Imprimir el recibo del trámite
+                Using rpt As New rptReciboTramite2(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text)
+                    Using preview As New ReportPrintTool(rpt)
+                        preview.Print()
+                        'preview.ShowPreviewDialog()
+                    End Using
+                End Using
+            End Using
+            MsgBox("El trámite ha sido registrado con éxito", MsgBoxStyle.Information, "Trámite")
+            frmTrm.btnCrear.Enabled = False
+            'frmVentanilla.btnTramite.Enabled = False
+            Close()
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
 
     Private Sub btnCambirTramite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCambirTramite.Click
         frmListadoGestiones.ShowDialog()

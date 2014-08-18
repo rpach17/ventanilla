@@ -7,6 +7,7 @@ Module ModuleFunciones
         Public IdSucursalOficina As Integer
         Public Sucursal As String
         Public Oficina As String
+        Public IdPuesto As Integer
     End Structure
 
     Public SesionActiva As Sesion

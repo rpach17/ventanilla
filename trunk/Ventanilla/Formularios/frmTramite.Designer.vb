@@ -303,6 +303,7 @@ Partial Class frmTramite
         Me.MaximizeBox = False
         Me.Name = "frmTramite"
         Me.Text = "Trámite"
+        Me.TopMost = True
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)

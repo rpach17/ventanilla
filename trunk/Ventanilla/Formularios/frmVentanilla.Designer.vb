@@ -41,6 +41,7 @@ Partial Class frmVentanilla
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.tmNotificacion = New System.Windows.Forms.Timer(Me.components)
         Me.btnRellamar = New System.Windows.Forms.Button()
+        Me.tmBuscaPG = New System.Windows.Forms.Timer(Me.components)
         Me.PanelConexion.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvEnEspera, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,7 +63,7 @@ Partial Class frmVentanilla
         'Label1
         '
         Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(-1, 68)
         Me.Label1.Name = "Label1"
@@ -96,12 +97,12 @@ Partial Class frmVentanilla
         'lblTicketActual
         '
         Me.lblTicketActual.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTicketActual.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.lblTicketActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!)
         Me.lblTicketActual.Location = New System.Drawing.Point(47, 0)
         Me.lblTicketActual.Name = "lblTicketActual"
-        Me.lblTicketActual.Size = New System.Drawing.Size(401, 44)
+        Me.lblTicketActual.Size = New System.Drawing.Size(404, 44)
         Me.lblTicketActual.TabIndex = 16
         Me.lblTicketActual.Text = "sfsdfsdf"
         Me.lblTicketActual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -203,7 +204,7 @@ Partial Class frmVentanilla
         Me.btnTramite.Name = "btnTramite"
         Me.btnTramite.Size = New System.Drawing.Size(128, 51)
         Me.btnTramite.TabIndex = 20
-        Me.btnTramite.Text = "Crear trámite"
+        Me.btnTramite.Text = "Trámites"
         Me.btnTramite.UseVisualStyleBackColor = True
         '
         'Timer1
@@ -228,11 +229,14 @@ Partial Class frmVentanilla
         Me.btnRellamar.TabIndex = 19
         Me.btnRellamar.UseVisualStyleBackColor = True
         '
+        'tmBuscaPG
+        '
+        '
         'frmVentanilla
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(448, 354)
+        Me.ClientSize = New System.Drawing.Size(451, 354)
         Me.Controls.Add(Me.btnRellamar)
         Me.Controls.Add(Me.PanelConexion)
         Me.Controls.Add(Me.btnLlamarEspecial)
@@ -273,4 +277,5 @@ Partial Class frmVentanilla
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents Timer2 As System.Windows.Forms.Timer
     Friend WithEvents tmNotificacion As System.Windows.Forms.Timer
+    Friend WithEvents tmBuscaPG As System.Windows.Forms.Timer
 End Class

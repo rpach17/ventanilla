@@ -5,7 +5,7 @@ Imports System.Threading
 Public Class frmVentanilla
     Dim cnn As New OracleConnection(My.Settings.Miconexion)
     Dim WithEvents socketCliente As New SocketCliente
-    Private IDPeticion As Integer = 0
+    Public IDPeticion As Integer = 0
     Dim codigoSep As String = ""
 
     'Dim timer As System.Threading.Timer
@@ -63,11 +63,13 @@ Public Class frmVentanilla
             lblTicketActual.ForeColor = Color.White
             lblTicketActual.Text = msj
             btnPonerEspera.Enabled = False
+            tmBuscaPG.Enabled = True
         Else
             lblTicketActual.BackColor = Color.Green
             lblTicketActual.ForeColor = Color.White
             lblTicketActual.Text = String.Format("Atendiendo el ticket {0}{1}", codigo, secuencia)
             btnPonerEspera.Enabled = True
+            tmBuscaPG.Enabled = False
         End If
     End Sub
 
@@ -145,6 +147,7 @@ Public Class frmVentanilla
         If IDPeticion <> 0 Then
             eAPPCA.FinAtencion(IDPeticion)
         End If
+        frmTrm.Close()
         'Try
         '    hiloConexion.Abort()
         '    socketCliente.Desconectar()
@@ -171,7 +174,7 @@ Public Class frmVentanilla
 
     Private Sub btnLlamar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLlamar.Click
         Try
-            btnTramite.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
+            frmTrm.btnCrear.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
             Using myCMD As New OracleCommand() With _
             {
                 .Connection = cnn, _
@@ -217,7 +220,7 @@ Public Class frmVentanilla
 
     Private Sub dgvEnEspera_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles dgvEnEspera.DoubleClick
         If IDPeticion = 0 Then
-            btnTramite.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
+            frmTrm.btnCrear.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
             IDPeticion = DameID(dgvEnEspera, 0)
             Atencion(IDPeticion, , DameID(dgvEnEspera, 2), DameID(dgvEnEspera, 3))
             eAPPCA.PonerEspera(IDPeticion, 0)
@@ -231,7 +234,7 @@ Public Class frmVentanilla
             Dim ticket As String = DameID(dgvEnEspera, 1)
             If MsgBox(String.Format("¿Desea finalizar la gestión actual y atender el ticket {0}?", ticket), MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Confirme") = MsgBoxResult.Yes Then
 
-                btnTramite.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
+                frmTrm.btnCrear.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
 
                 eAPPCA.FinAtencion(IDPeticion)
                 IDPeticion = DameID(dgvEnEspera, 0)
@@ -249,7 +252,7 @@ Public Class frmVentanilla
 
     Private Sub btnLlamarEspecial_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLlamarEspecial.Click
         Try
-            btnTramite.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
+            frmTrm.btnCrear.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
 
             Dim myCMD As New OracleCommand()
             myCMD.Connection = cnn
@@ -321,15 +324,19 @@ Public Class frmVentanilla
     End Sub
 
     Private Sub btnTramite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTramite.Click
-        If IDPeticion <> 0 Then
-            Dim infGestion As eAPPCA.InfoGestion = eAPPCA.obtenerIdGestion(IDPeticion)
+        With frmTrm
+            .ShowDialog()
+        End With
+        'If IDPeticion <> 0 Then
+        '    Dim infGestion As eAPPCA.InfoGestion = eAPPCA.obtenerIdGestion(IDPeticion)
 
-            With frmTramite
-                .IdGestion1 = infGestion.IdGestion
-                .NombreGestion1 = infGestion.NombreGestion
-                .Show()
-            End With
-        End If
+
+        '    With frmTramite
+        '        .IdGestion1 = infGestion.IdGestion
+        '        .NombreGestion1 = infGestion.NombreGestion
+        '        .Show()
+        '    End With
+        'End If
     End Sub
 
     Dim contador As Integer = 0
@@ -356,6 +363,10 @@ Public Class frmVentanilla
             btnLlamarEspecial.Text = 10 - contador
             contador += 1
         End If
+    End Sub
+
+    Private Sub tmBuscaPG_Tick(sender As Object, e As EventArgs) Handles tmBuscaPG.Tick
+
     End Sub
 
     Sub CargarTramitesAtrasados()
@@ -390,6 +401,7 @@ Public Class frmVentanilla
                     refCursor.Dispose()
 
                     frmNotificacion.Show()
+                    frmNotificacion.TopMost = True
                 End If
 
             End Using
@@ -402,4 +414,5 @@ Public Class frmVentanilla
     Private Sub tmNotificacion_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmNotificacion.Tick
         CargarTramitesAtrasados()
     End Sub
+
 End Class

@@ -150,6 +150,12 @@
     <Compile Include="Formularios\frmConfigVentanilla.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\frmEntregaDocs.Designer.vb">
+      <DependentUpon>frmEntregaDocs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEntregaDocs.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\frmListadoGestiones.Designer.vb">
       <DependentUpon>frmListadoGestiones.vb</DependentUpon>
     </Compile>
@@ -168,10 +174,22 @@
     <Compile Include="Formularios\frmNotificacion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\frmRecepcionDocs.designer.vb">
+      <DependentUpon>frmRecepcionDocs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRecepcionDocs.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\frmTramite.Designer.vb">
       <DependentUpon>frmTramite.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmTramite.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTrm.Designer.vb">
+      <DependentUpon>frmTrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTrm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmVentanilla.Designer.vb">
@@ -218,6 +236,9 @@
     <EmbeddedResource Include="Formularios\frmConfigVentanilla.resx">
       <DependentUpon>frmConfigVentanilla.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEntregaDocs.resx">
+      <DependentUpon>frmEntregaDocs.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmListadoGestiones.resx">
       <DependentUpon>frmListadoGestiones.vb</DependentUpon>
     </EmbeddedResource>
@@ -227,8 +248,14 @@
     <EmbeddedResource Include="Formularios\frmNotificacion.resx">
       <DependentUpon>frmNotificacion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRecepcionDocs.resx">
+      <DependentUpon>frmRecepcionDocs.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmTramite.resx">
       <DependentUpon>frmTramite.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTrm.resx">
+      <DependentUpon>frmTrm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmVentanilla.resx">
       <DependentUpon>frmVentanilla.vb</DependentUpon>
