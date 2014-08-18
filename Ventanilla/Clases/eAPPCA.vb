@@ -17,6 +17,7 @@
                     .Sucursal = u.DETALLE_SUCURSAL_OFICINA.SUCURSALES.NOMBRE
                     .Oficina = u.DETALLE_SUCURSAL_OFICINA.OFICINAS.NOMBRE_OFICINA
                     .IdSucursalOficina = u.IDDETALLE_SUCURSAL_OFICINA
+                    .IdPuesto = u.IDPUESTO
                 End With
             Next
             Return True
@@ -118,15 +119,16 @@
         ' 2- No existe y vienen los datos del RNP (INSERT)
         ' 0- No existe en local ni en DB de RNP (Mostrar mensaje)
 
-
         Dim conteo As Integer = (From r In ctx.RESPONSABLE.ToList
                                 Where r.NUMERO_IDENTIDAD = identidad
                                 Select r).Count
 
         If conteo = 1 Then
-            Dim respon = (From r In ctx.RESPONSABLE.ToList
+            Dim respon = (From r In ctx.RESPONSABLE
+                          Join i In ctx.IDENTIFICACION On r.NUMERO_IDENTIDAD Equals i.IDENTIDAD
                                Where r.NUMERO_IDENTIDAD = identidad
-                               Select r).SingleOrDefault
+                               Select i.PRIMER_NOMBRE, i.SEGUNDO_NOMBRE, i.PRIMER_APELLIDO, _
+                               i.SEGUNDO_APELLIDO, r.TELEFONO, r.CELULAR, r.CORREO).SingleOrDefault
 
             txtPN.Text = respon.PRIMER_NOMBRE
             txtSN.Text = respon.SEGUNDO_NOMBRE
@@ -138,6 +140,21 @@
 
             Return 1
         Else
+            Dim CuentaID As Integer = (From i In ctx.IDENTIFICACION
+                                      Where i.IDENTIDAD = identidad
+                                      Select i).Count
+            If CuentaID = 1 Then
+                Dim respon = (From i In ctx.IDENTIFICACION
+                               Where i.IDENTIDAD = identidad
+                               Select i.PRIMER_NOMBRE, i.SEGUNDO_NOMBRE, i.PRIMER_APELLIDO, i.SEGUNDO_APELLIDO).SingleOrDefault
+
+                txtPN.Text = respon.PRIMER_NOMBRE
+                txtSN.Text = respon.SEGUNDO_NOMBRE
+                txtPA.Text = respon.PRIMER_APELLIDO
+                txtSA.Text = respon.SEGUNDO_APELLIDO
+                Return 2
+                Exit Function
+            End If
             'Buscar en las BD del registro
             lbl.Visible = True
 
@@ -160,6 +177,16 @@
         ctx.SaveChanges()
 
         Return r.IDRESPONSABLE
+    End Function
+
+    Public Shared Function NuevoResponsable(ByVal res As RESPONSABLE)
+        Try
+            ctx.RESPONSABLE.AddObject(res)
+            ctx.SaveChanges()
+            Return res.IDRESPONSABLE 'Después de SaveChanges(), EntityFramework carga el objeto 'res' con los datos y así retornamos el ID recien agregado
+        Catch ex As UpdateException
+            Return ex.Message
+        End Try
     End Function
 
     Structure InfoGestion
@@ -205,6 +232,69 @@
             grid.Columns(0).Visible = False
         End If
     End Sub
+
+    Public Shared Sub TramitesRecibir(ByVal grid As DataGridView)
+
+        ' Lista de los saltos que puede atender
+        Dim saltosAtender = (From s In ctx.SALTOS
+                             Where s.IDPUESTO = SesionActiva.IdPuesto And s.NUMERO_SALTO > 1
+                             Select s.IDSALTO).ToList
+
+
+
+        'Se buscan los tramites que se pueden recibir
+        Dim tramites = (From dt In ctx.DETALLE_TRAMITE
+                       Join u In ctx.USUARIOS On dt.IDUSUARIO Equals u.IDUSUARIO
+                       Join s In ctx.SALTOS On dt.IDSALTO Equals s.IDSALTO
+                       Where dt.TRAMITES.ACTIVO = 1 And dt.FECHA_ENTREGA Is Nothing AndAlso saltosAtender.Contains(dt.DESTINO)
+                       Order By dt.TRAMITES.CODIGOTRAMITE
+                       Select dt.TRAMITES.CODIGOTRAMITE, Gestion = dt.TRAMITES.GESTIONES.NOMBRE, u.NOMBRE, u.APELLIDOS, s.NUMERO_SALTO).ToList()
+
+        's.DECISION = 0 OrElse (s.DECISION = 1 And Not dt.DESTINO Is Nothing AndAlso saltosAtender.Contains(dt.DESTINO)))
+
+
+        grid.Rows.Clear()
+        For Each tramite In tramites
+            grid.Rows.Add(tramite.CODIGOTRAMITE, tramite.Gestion, String.Format("{0} {1}", tramite.NOMBRE, tramite.APELLIDOS), tramite.NUMERO_SALTO)
+        Next
+        'grid.DataSource = tramites
+    End Sub
+
+    Public Shared Sub TramitesEntregar(ByVal grid As DataGridView)
+        'Lista de los saltos recibidos y son ultimo salto
+        Dim saltoEntregar = (From t In ctx.DETALLE_TRAMITE
+                           Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
+                           Join i In ctx.IDENTIFICACION On t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD Equals i.IDENTIDAD
+                           Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1
+                           Order By t.TRAMITES.CODIGOTRAMITE
+                           Select t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, i.PRIMER_NOMBRE, i.SEGUNDO_NOMBRE,
+                           i.PRIMER_APELLIDO, i.SEGUNDO_APELLIDO).ToList()
+
+        ' Lista de los saltos que puede atender
+        'Dim saltosAtender = (From s In ctx.SALTOS
+        '                     Where s.IDPUESTO = SesionActiva.IdPuesto And s.ULTIMOSALTO = 1
+        '                     Select s.IDSALTO).ToList
+
+
+
+        'Se buscan los tramites que se pueden recibir
+        'Dim tramites = (From dt In ctx.DETALLE_TRAMITE
+        '               Join u In ctx.USUARIOS On dt.IDUSUARIO Equals u.IDUSUARIO
+        '               Join s In ctx.SALTOS On dt.IDSALTO Equals s.IDSALTO
+        '               Where dt.TRAMITES.ACTIVO = 1 And dt.FECHA_ENTREGA Is Nothing AndAlso saltosAtender.Contains(dt.DESTINO)
+        '               Order By dt.TRAMITES.CODIGOTRAMITE
+        '               Select dt.TRAMITES.CODIGOTRAMITE, Gestion = dt.TRAMITES.GESTIONES.NOMBRE, u.NOMBRE, u.APELLIDOS, s.NUMERO_SALTO).ToList()
+
+        's.DECISION = 0 OrElse (s.DECISION = 1 And Not dt.DESTINO Is Nothing AndAlso saltosAtender.Contains(dt.DESTINO)))
+
+
+        grid.Rows.Clear()
+        'For Each tramite In tramites
+        '    grid.Rows.Add(tramite.CODIGOTRAMITE, tramite.Gestion, String.Format("{0} {1}", tramite.NOMBRE, tramite.APELLIDOS), tramite.NUMERO_SALTO)
+        'Next
+        grid.DataSource = saltoEntregar
+    End Sub
+
 
 #End Region
 
