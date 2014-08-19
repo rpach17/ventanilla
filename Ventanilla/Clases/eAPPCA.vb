@@ -260,39 +260,27 @@
         'grid.DataSource = tramites
     End Sub
 
-    Public Shared Sub TramitesEntregar(ByVal grid As DataGridView)
+    Public Shared Sub TramitesEntregar(ByVal grid As DataGridView, Optional ByVal busqueda As String = "")
         'Lista de los saltos recibidos y son ultimo salto
-        Dim saltoEntregar = (From t In ctx.DETALLE_TRAMITE
-                           Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
-                           Join i In ctx.IDENTIFICACION On t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD Equals i.IDENTIDAD
-                           Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1
-                           Order By t.TRAMITES.CODIGOTRAMITE
-                           Select t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, i.PRIMER_NOMBRE, i.SEGUNDO_NOMBRE,
-                           i.PRIMER_APELLIDO, i.SEGUNDO_APELLIDO).ToList()
-
-        ' Lista de los saltos que puede atender
-        'Dim saltosAtender = (From s In ctx.SALTOS
-        '                     Where s.IDPUESTO = SesionActiva.IdPuesto And s.ULTIMOSALTO = 1
-        '                     Select s.IDSALTO).ToList
-
-
-
-        'Se buscan los tramites que se pueden recibir
-        'Dim tramites = (From dt In ctx.DETALLE_TRAMITE
-        '               Join u In ctx.USUARIOS On dt.IDUSUARIO Equals u.IDUSUARIO
-        '               Join s In ctx.SALTOS On dt.IDSALTO Equals s.IDSALTO
-        '               Where dt.TRAMITES.ACTIVO = 1 And dt.FECHA_ENTREGA Is Nothing AndAlso saltosAtender.Contains(dt.DESTINO)
-        '               Order By dt.TRAMITES.CODIGOTRAMITE
-        '               Select dt.TRAMITES.CODIGOTRAMITE, Gestion = dt.TRAMITES.GESTIONES.NOMBRE, u.NOMBRE, u.APELLIDOS, s.NUMERO_SALTO).ToList()
-
-        's.DECISION = 0 OrElse (s.DECISION = 1 And Not dt.DESTINO Is Nothing AndAlso saltosAtender.Contains(dt.DESTINO)))
-
-
+        Dim tramiteEntregar
+        If busqueda = "" Then
+            tramiteEntregar = (From t In ctx.DETALLE_TRAMITE
+                               Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
+                               Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1
+                               Order By t.TRAMITES.CODIGOTRAMITE
+                               Select t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
+        Else
+            tramiteEntregar = (From t In ctx.DETALLE_TRAMITE
+                               Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
+                               Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1 AndAlso (t.TRAMITES.CODIGOTRAMITE.StartsWith(busqueda) OrElse t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD.StartsWith(busqueda))
+                               Order By t.TRAMITES.CODIGOTRAMITE
+                               Select t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
+        End If
         grid.Rows.Clear()
-        'For Each tramite In tramites
-        '    grid.Rows.Add(tramite.CODIGOTRAMITE, tramite.Gestion, String.Format("{0} {1}", tramite.NOMBRE, tramite.APELLIDOS), tramite.NUMERO_SALTO)
-        'Next
-        grid.DataSource = saltoEntregar
+        For Each tramite In tramiteEntregar
+            grid.Rows.Add(tramite.CODIGOTRAMITE, tramite.NOMBRE, tramite.NUMERO_IDENTIDAD, String.Format("{0} {1}", "Nombre", "Apellido"), "Entregar Trámite")
+        Next
+        'grid.DataSource = saltoEntregar
     End Sub
 
 

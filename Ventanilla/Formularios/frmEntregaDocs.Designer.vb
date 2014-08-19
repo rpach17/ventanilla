@@ -28,12 +28,13 @@ Partial Class frmEntregaDocs
         Me.lblInfo = New System.Windows.Forms.Label()
         Me.txtCodigoTramite = New System.Windows.Forms.TextBox()
         Me.dgvTramites = New System.Windows.Forms.DataGridView()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnFiltrar = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Column4 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvTramites, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,6 +64,7 @@ Partial Class frmEntregaDocs
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnFiltrar)
         Me.GroupBox1.Controls.Add(Me.lblInfo)
         Me.GroupBox1.Controls.Add(Me.txtCodigoTramite)
         Me.GroupBox1.Location = New System.Drawing.Point(30, 32)
@@ -70,7 +72,7 @@ Partial Class frmEntregaDocs
         Me.GroupBox1.Size = New System.Drawing.Size(597, 60)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Código de trámite"
+        Me.GroupBox1.Text = "Ingrese Código de trámite o Número de Identidad"
         '
         'lblInfo
         '
@@ -102,6 +104,25 @@ Partial Class frmEntregaDocs
         Me.dgvTramites.Size = New System.Drawing.Size(597, 390)
         Me.dgvTramites.TabIndex = 2
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.Label2.Location = New System.Drawing.Point(27, 100)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(149, 17)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Recepción de trámites"
+        '
+        'btnFiltrar
+        '
+        Me.btnFiltrar.Location = New System.Drawing.Point(249, 25)
+        Me.btnFiltrar.Name = "btnFiltrar"
+        Me.btnFiltrar.Size = New System.Drawing.Size(75, 23)
+        Me.btnFiltrar.TabIndex = 2
+        Me.btnFiltrar.Text = "Filtrar"
+        Me.btnFiltrar.UseVisualStyleBackColor = True
+        '
         'Column1
         '
         Me.Column1.HeaderText = "Código trámite"
@@ -118,34 +139,25 @@ Partial Class frmEntregaDocs
         '
         'Column3
         '
-        Me.Column3.HeaderText = "Enviado por"
+        Me.Column3.HeaderText = "ID Ciudadano"
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
-        Me.Column3.Width = 89
+        Me.Column3.Width = 97
         '
         'Column5
         '
-        Me.Column5.HeaderText = "Número salto"
+        Me.Column5.HeaderText = "Nombre"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Visible = False
-        Me.Column5.Width = 94
+        Me.Column5.Width = 69
         '
         'Column4
         '
-        Me.Column4.HeaderText = "Recepcionar"
+        Me.Column4.HeaderText = "Entregar"
         Me.Column4.Name = "Column4"
-        Me.Column4.Width = 74
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.Label2.Location = New System.Drawing.Point(27, 100)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(149, 17)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Recepción de trámites"
+        Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column4.Text = "Entregar"
+        Me.Column4.Width = 53
         '
         'frmEntregaDocs
         '
@@ -169,10 +181,11 @@ Partial Class frmEntregaDocs
     Friend WithEvents lblInfo As System.Windows.Forms.Label
     Friend WithEvents txtCodigoTramite As System.Windows.Forms.TextBox
     Friend WithEvents dgvTramites As System.Windows.Forms.DataGridView
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents btnFiltrar As System.Windows.Forms.Button
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewButtonColumn
 End Class
