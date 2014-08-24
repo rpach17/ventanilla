@@ -268,21 +268,33 @@
                                Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
                                Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1
                                Order By t.TRAMITES.CODIGOTRAMITE
-                               Select t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
+                               Select t.TRAMITES.IDTRAMITE, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
         Else
             tramiteEntregar = (From t In ctx.DETALLE_TRAMITE
                                Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
                                Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1 AndAlso (t.TRAMITES.CODIGOTRAMITE.StartsWith(busqueda) OrElse t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD.StartsWith(busqueda))
                                Order By t.TRAMITES.CODIGOTRAMITE
-                               Select t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
+                               Select t.TRAMITES.IDTRAMITE, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
         End If
+
         grid.Rows.Clear()
         For Each tramite In tramiteEntregar
-            grid.Rows.Add(tramite.CODIGOTRAMITE, tramite.NOMBRE, tramite.NUMERO_IDENTIDAD, String.Format("{0} {1}", "Nombre", "Apellido"), "Entregar Trámite")
+            grid.Rows.Add(tramite.IDTRAMITE, tramite.CODIGOTRAMITE, tramite.NOMBRE, tramite.NUMERO_IDENTIDAD,
+                          "Entregar Trámite")
         Next
         'grid.DataSource = saltoEntregar
     End Sub
 
+    Public Shared Sub entregaTramite(ByVal idTramite As Integer)
+        Dim eT As DETALLE_TRAMITE = (From dt In ctx.DETALLE_TRAMITE
+                             Where dt.TRAMITES.IDTRAMITE = idTramite And dt.DESTINO = 0
+                             Select dt).FirstOrDefault
+        With eT
+            .TRAMITES.ACTIVO = 0
+            .FECHA_ENTREGA = DateAndTime.Today
+        End With
+        ctx.SaveChanges()
+    End Sub
 
 #End Region
 

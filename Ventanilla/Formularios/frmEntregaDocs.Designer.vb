@@ -23,18 +23,17 @@ Partial Class frmEntregaDocs
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnRecibirTramites = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnFiltrar = New System.Windows.Forms.Button()
         Me.lblInfo = New System.Windows.Forms.Label()
         Me.txtCodigoTramite = New System.Windows.Forms.TextBox()
         Me.dgvTramites = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnFiltrar = New System.Windows.Forms.Button()
+        Me.IdTramite = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Entregar = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvTramites, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -43,24 +42,13 @@ Partial Class frmEntregaDocs
         'Panel1
         '
         Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Panel1.Controls.Add(Me.btnRecibirTramites)
         Me.Panel1.Controls.Add(Me.GroupBox1)
         Me.Panel1.Controls.Add(Me.dgvTramites)
         Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Location = New System.Drawing.Point(7, 6)
+        Me.Panel1.Location = New System.Drawing.Point(4, 6)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(654, 611)
+        Me.Panel1.Size = New System.Drawing.Size(654, 491)
         Me.Panel1.TabIndex = 4
-        '
-        'btnRecibirTramites
-        '
-        Me.btnRecibirTramites.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.btnRecibirTramites.Location = New System.Drawing.Point(30, 517)
-        Me.btnRecibirTramites.Name = "btnRecibirTramites"
-        Me.btnRecibirTramites.Size = New System.Drawing.Size(207, 51)
-        Me.btnRecibirTramites.TabIndex = 3
-        Me.btnRecibirTramites.Text = "&Entregar trámite seleccionado"
-        Me.btnRecibirTramites.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -73,6 +61,16 @@ Partial Class frmEntregaDocs
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Ingrese Código de trámite o Número de Identidad"
+        '
+        'btnFiltrar
+        '
+        Me.btnFiltrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFiltrar.Location = New System.Drawing.Point(243, 19)
+        Me.btnFiltrar.Name = "btnFiltrar"
+        Me.btnFiltrar.Size = New System.Drawing.Size(112, 32)
+        Me.btnFiltrar.TabIndex = 2
+        Me.btnFiltrar.Text = "Buscar"
+        Me.btnFiltrar.UseVisualStyleBackColor = True
         '
         'lblInfo
         '
@@ -98,10 +96,10 @@ Partial Class frmEntregaDocs
         Me.dgvTramites.AllowUserToDeleteRows = False
         Me.dgvTramites.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dgvTramites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvTramites.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column5, Me.Column4})
+        Me.dgvTramites.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdTramite, Me.Column1, Me.Column2, Me.Column3, Me.Entregar})
         Me.dgvTramites.Location = New System.Drawing.Point(30, 121)
         Me.dgvTramites.Name = "dgvTramites"
-        Me.dgvTramites.Size = New System.Drawing.Size(597, 390)
+        Me.dgvTramites.Size = New System.Drawing.Size(597, 342)
         Me.dgvTramites.TabIndex = 2
         '
         'Label2
@@ -114,14 +112,12 @@ Partial Class frmEntregaDocs
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Recepción de trámites"
         '
-        'btnFiltrar
+        'IdTramite
         '
-        Me.btnFiltrar.Location = New System.Drawing.Point(249, 25)
-        Me.btnFiltrar.Name = "btnFiltrar"
-        Me.btnFiltrar.Size = New System.Drawing.Size(75, 23)
-        Me.btnFiltrar.TabIndex = 2
-        Me.btnFiltrar.Text = "Filtrar"
-        Me.btnFiltrar.UseVisualStyleBackColor = True
+        Me.IdTramite.HeaderText = "IdTramite"
+        Me.IdTramite.Name = "IdTramite"
+        Me.IdTramite.Visible = False
+        Me.IdTramite.Width = 76
         '
         'Column1
         '
@@ -144,26 +140,19 @@ Partial Class frmEntregaDocs
         Me.Column3.ReadOnly = True
         Me.Column3.Width = 97
         '
-        'Column5
+        'Entregar
         '
-        Me.Column5.HeaderText = "Nombre"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.Width = 69
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Entregar"
-        Me.Column4.Name = "Column4"
-        Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column4.Text = "Entregar"
-        Me.Column4.Width = 53
+        Me.Entregar.HeaderText = "Entregar"
+        Me.Entregar.Name = "Entregar"
+        Me.Entregar.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Entregar.Text = "Entregar"
+        Me.Entregar.Width = 53
         '
         'frmEntregaDocs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(668, 622)
+        Me.ClientSize = New System.Drawing.Size(668, 503)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "frmEntregaDocs"
         Me.Text = "Entrega de Trámites"
@@ -176,16 +165,15 @@ Partial Class frmEntregaDocs
 
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents btnRecibirTramites As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents lblInfo As System.Windows.Forms.Label
     Friend WithEvents txtCodigoTramite As System.Windows.Forms.TextBox
     Friend WithEvents dgvTramites As System.Windows.Forms.DataGridView
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnFiltrar As System.Windows.Forms.Button
+    Friend WithEvents IdTramite As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewButtonColumn
+    Friend WithEvents Entregar As System.Windows.Forms.DataGridViewButtonColumn
 End Class
