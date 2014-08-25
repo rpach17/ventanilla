@@ -13,7 +13,7 @@
     Private Sub dgvTramites_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTramites.CellClick
         If e.RowIndex < 0 OrElse Not e.ColumnIndex = dgvTramites.Columns("Entregar").Index Then Return
 
-        eAPPCA.entregaTramite(DameID(dgvTramites))
+        'eAPPCA.entregaTramite(DameID(dgvTramites))
         MsgBox(String.Format("Tramite {0} Entregado", DameID(dgvTramites, 1)))
         eAPPCA.TramitesEntregar(dgvTramites)
 
