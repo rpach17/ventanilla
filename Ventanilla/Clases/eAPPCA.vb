@@ -268,13 +268,13 @@
                                Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
                                Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1
                                Order By t.TRAMITES.CODIGOTRAMITE
-                               Select t.TRAMITES.IDTRAMITE, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
+                               Select t.ID_DETALLE_TRAMITE, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
         Else
             tramiteEntregar = (From t In ctx.DETALLE_TRAMITE
                                Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
                                Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1 AndAlso (t.TRAMITES.CODIGOTRAMITE.StartsWith(busqueda) OrElse t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD.StartsWith(busqueda))
                                Order By t.TRAMITES.CODIGOTRAMITE
-                               Select t.TRAMITES.IDTRAMITE, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
+                               Select t.ID_DETALLE_TRAMITE, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
         End If
 
         grid.Rows.Clear()
@@ -285,16 +285,7 @@
         'grid.DataSource = saltoEntregar
     End Sub
 
-    Public Shared Sub entregaTramite(ByVal idTramite As Integer)
-        Dim eT As DETALLE_TRAMITE = (From dt In ctx.DETALLE_TRAMITE
-                             Where dt.TRAMITES.IDTRAMITE = idTramite And dt.DESTINO = 0
-                             Select dt).FirstOrDefault
-        With eT
-            .TRAMITES.ACTIVO = 0
-            .FECHA_ENTREGA = DateAndTime.Today
-        End With
-        ctx.SaveChanges()
-    End Sub
+
 
 #End Region
 
