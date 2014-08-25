@@ -85,10 +85,12 @@
     <Reference Include="DevExpress.Office.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Docs.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v13.1.UI, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v13.1.Wizard, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -131,6 +133,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>appca.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Form1.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmAnimacion.Designer.vb">
       <DependentUpon>frmAnimacion.vb</DependentUpon>
@@ -213,6 +221,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Reportes\rptRecibo.Designer.vb">
+      <DependentUpon>rptRecibo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptRecibo.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\rptReciboTramite.Designer.vb">
       <DependentUpon>rptReciboTramite.vb</DependentUpon>
     </Compile>
@@ -227,6 +241,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAnimacion.resx">
       <DependentUpon>frmAnimacion.vb</DependentUpon>
     </EmbeddedResource>
@@ -267,6 +284,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptRecibo.resx">
+      <DependentUpon>rptRecibo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptReciboTramite.resx">
       <DependentUpon>rptReciboTramite.vb</DependentUpon>
     </EmbeddedResource>
@@ -303,7 +323,7 @@
     <None Include="Resources\715.GIF" />
   </ItemGroup>
   <ItemGroup>
-    <PublishFile Include="DevExpress.Charts.v10.1.Core">
+    <PublishFile Include="DevExpress.Charts.v13.1.Core">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -313,7 +333,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.Data.v10.1">
+    <PublishFile Include="DevExpress.Data.v13.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -323,7 +343,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.RichEdit.v10.1.Core">
+    <PublishFile Include="DevExpress.RichEdit.v13.1.Core">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -333,7 +353,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.Utils.v10.1">
+    <PublishFile Include="DevExpress.Utils.v13.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -343,7 +363,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraCharts.v10.1">
+    <PublishFile Include="DevExpress.XtraCharts.v13.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -353,7 +373,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraEditors.v10.1">
+    <PublishFile Include="DevExpress.XtraEditors.v13.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -363,7 +383,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraNavBar.v10.1">
+    <PublishFile Include="DevExpress.XtraNavBar.v13.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -373,7 +393,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraPivotGrid.v10.1">
+    <PublishFile Include="DevExpress.XtraPivotGrid.v13.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -383,7 +403,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraPivotGrid.v10.1.Core">
+    <PublishFile Include="DevExpress.XtraPivotGrid.v13.1.Core">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -393,7 +413,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraReports.v10.1">
+    <PublishFile Include="DevExpress.XtraReports.v13.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -403,7 +423,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraRichEdit.v10.1">
+    <PublishFile Include="DevExpress.XtraRichEdit.v13.1">
       <Visible>False</Visible>
       <Group>
       </Group>

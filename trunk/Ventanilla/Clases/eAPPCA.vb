@@ -279,7 +279,7 @@
 
         grid.Rows.Clear()
         For Each tramite In tramiteEntregar
-            grid.Rows.Add(tramite.IDTRAMITE, tramite.CODIGOTRAMITE, tramite.NOMBRE, tramite.NUMERO_IDENTIDAD,
+            grid.Rows.Add(tramite.ID_DETALLE_TRAMITE, tramite.CODIGOTRAMITE, tramite.NOMBRE, tramite.NUMERO_IDENTIDAD,
                           "Entregar Trámite")
         Next
         'grid.DataSource = saltoEntregar
