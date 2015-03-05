@@ -18,28 +18,34 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("e43b5d20-3d8c-40a3-8dd2-725738dd94d0")>
+<Assembly: EdmSchemaAttribute("12a22273-463f-451f-a34b-1866d7cb5e76")>
 #Region "Metadatos de relaciones en EDM"
 <Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_SUCURSAL_OFICINA_FK1", "SUCURSALES", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(SUCURSALES), "DETALLE_SUCURSAL_OFICINA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_SUCURSAL_OFICINA), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_SUCURSAL_OFICINA_FK2", "OFICINAS", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(OFICINAS), "DETALLE_SUCURSAL_OFICINA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_SUCURSAL_OFICINA), True)>
-<Assembly: EdmRelationshipAttribute("Modelo", "USUARIOS_FK1", "DETALLE_SUCURSAL_OFICINA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(DETALLE_SUCURSAL_OFICINA), "USUARIOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(USUARIOS), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "VENTANILLAS_FK1", "DETALLE_SUCURSAL_OFICINA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(DETALLE_SUCURSAL_OFICINA), "VENTANILLAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(VENTANILLAS), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "PETICION_GESTIONES_FK1", "GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(GESTIONES), "PETICION_GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(PETICION_GESTIONES), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "SUCURSALES_FK1", "MUNICIPIOS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(MUNICIPIOS), "SUCURSALES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SUCURSALES), True)>
-<Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_USUARIOS_PERFILES", "USUARIOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(USUARIOS), "PERFILES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(PERFILES))>
 <Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_OFICINA_GESTIONES_FK1", "OFICINAS", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(OFICINAS), "DETALLE_OFICINA_GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_OFICINA_GESTIONES), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_OFICINA_GESTIONES_FK2", "GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(GESTIONES), "DETALLE_OFICINA_GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_OFICINA_GESTIONES), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "GESTIONES_VENTANILLAS1", "DETALLE_OFICINA_GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_OFICINA_GESTIONES), "VENTANILLAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(VENTANILLAS))>
 <Assembly: EdmRelationshipAttribute("Modelo", "REQUISITOS_FK1", "GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(GESTIONES), "REQUISITOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(REQUISITOS), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "RECEPCION_REQUISITOS_FK1", "REQUISITOS", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(REQUISITOS), "RECEPCION_REQUISITOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(RECEPCION_REQUISITOS), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "PUESTO_FK1", "OFICINAS", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(OFICINAS), "PUESTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(PUESTO), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "TRAMITES_FK2", "GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(GESTIONES), "TRAMITES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(TRAMITES), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "RECEPCION_REQUISITOS_FK2", "TRAMITES", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(TRAMITES), "RECEPCION_REQUISITOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(RECEPCION_REQUISITOS), True)>
-<Assembly: EdmRelationshipAttribute("Modelo", "SALTOS_FK1", "GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(GESTIONES), "SALTOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SALTOS), True)>
-<Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_TRAMITE_FK1", "TRAMITES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(TRAMITES), "DETALLE_TRAMITE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_TRAMITE), True)>
-<Assembly: EdmRelationshipAttribute("Modelo", "PUESTO_FK1", "OFICINAS", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(OFICINAS), "PUESTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(PUESTO), True)>
-<Assembly: EdmRelationshipAttribute("Modelo", "SALTOS_FK2", "PUESTO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(PUESTO), "SALTOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SALTOS), True)>
-<Assembly: EdmRelationshipAttribute("Modelo", "USUARIOS_FK2", "PUESTO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(PUESTO), "USUARIOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(USUARIOS), True)>
 <Assembly: EdmRelationshipAttribute("Modelo", "TRAMITES_FK1", "RESPONSABLE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(RESPONSABLE), "TRAMITES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(TRAMITES), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "GRUPO_SALTOS_FK1", "GESTIONES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(GESTIONES), "GRUPO_SALTOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(GRUPO_SALTOS), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "SALTOS_FK1", "GRUPO_SALTOS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(GRUPO_SALTOS), "SALTOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SALTOS), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "SALTOS_FK2", "PUESTO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(PUESTO), "SALTOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SALTOS), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_USUARIO_SALTOS_FK2", "SALTOS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SALTOS), "DETALLE_USUARIO_SALTOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_USUARIO_SALTOS), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_TRAMITE_FK1", "TRAMITES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(TRAMITES), "DETALLE_SEGUIMIENTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_SEGUIMIENTO), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_TRAMITES_FK2", "TRAMITES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(TRAMITES), "DETALLE_TRAMITES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_TRAMITES), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "USUARIOS_FK1", "DETALLE_SUCURSAL_OFICINA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(DETALLE_SUCURSAL_OFICINA), "USUARIOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(USUARIOS), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_USUARIO_SALTOS_FK1", "USUARIOS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(USUARIOS), "DETALLE_USUARIO_SALTOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(DETALLE_USUARIO_SALTOS), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "USUARIOS_FK2", "PUESTO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(PUESTO), "USUARIOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(USUARIOS), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "USUARIOS_FK3", "USUARIOS", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(USUARIOS), "USUARIOS1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(USUARIOS), True)>
+<Assembly: EdmRelationshipAttribute("Modelo", "DETALLE_USUARIOS_PERFILES", "USUARIOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(USUARIOS), "PERFILES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(PERFILES))>
+<Assembly: EdmRelationshipAttribute("Modelo", "TRAMITES_FK3", "TIPO_REPRESENTANTE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(TIPO_REPRESENTANTE), "TRAMITES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(TRAMITES), True)>
 
 #End Region
 
@@ -192,20 +198,6 @@ Public Partial Class Entidades
     ''' <summary>
     ''' No hay documentación de metadatos disponible.
     ''' </summary>
-    Public ReadOnly Property USUARIOS() As ObjectSet(Of USUARIOS)
-        Get
-            If (_USUARIOS Is Nothing) Then
-                _USUARIOS = MyBase.CreateObjectSet(Of USUARIOS)("USUARIOS")
-            End If
-            Return _USUARIOS
-        End Get
-    End Property
-
-    Private _USUARIOS As ObjectSet(Of USUARIOS)
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
     Public ReadOnly Property VENTANILLAS() As ObjectSet(Of VENTANILLAS)
         Get
             If (_VENTANILLAS Is Nothing) Then
@@ -262,34 +254,6 @@ Public Partial Class Entidades
     ''' <summary>
     ''' No hay documentación de metadatos disponible.
     ''' </summary>
-    Public ReadOnly Property TRAMITES() As ObjectSet(Of TRAMITES)
-        Get
-            If (_TRAMITES Is Nothing) Then
-                _TRAMITES = MyBase.CreateObjectSet(Of TRAMITES)("TRAMITES")
-            End If
-            Return _TRAMITES
-        End Get
-    End Property
-
-    Private _TRAMITES As ObjectSet(Of TRAMITES)
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
-    Public ReadOnly Property SALTOS() As ObjectSet(Of SALTOS)
-        Get
-            If (_SALTOS Is Nothing) Then
-                _SALTOS = MyBase.CreateObjectSet(Of SALTOS)("SALTOS")
-            End If
-            Return _SALTOS
-        End Get
-    End Property
-
-    Private _SALTOS As ObjectSet(Of SALTOS)
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
     Public ReadOnly Property IDENTIFICACION() As ObjectSet(Of IDENTIFICACION)
         Get
             If (_IDENTIFICACION Is Nothing) Then
@@ -300,20 +264,6 @@ Public Partial Class Entidades
     End Property
 
     Private _IDENTIFICACION As ObjectSet(Of IDENTIFICACION)
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
-    Public ReadOnly Property DETALLE_TRAMITE() As ObjectSet(Of DETALLE_TRAMITE)
-        Get
-            If (_DETALLE_TRAMITE Is Nothing) Then
-                _DETALLE_TRAMITE = MyBase.CreateObjectSet(Of DETALLE_TRAMITE)("DETALLE_TRAMITE")
-            End If
-            Return _DETALLE_TRAMITE
-        End Get
-    End Property
-
-    Private _DETALLE_TRAMITE As ObjectSet(Of DETALLE_TRAMITE)
 
     ''' <summary>
     ''' No hay documentación de metadatos disponible.
@@ -342,6 +292,118 @@ Public Partial Class Entidades
     End Property
 
     Private _RESPONSABLE As ObjectSet(Of RESPONSABLE)
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    Public ReadOnly Property TRAMITES() As ObjectSet(Of TRAMITES)
+        Get
+            If (_TRAMITES Is Nothing) Then
+                _TRAMITES = MyBase.CreateObjectSet(Of TRAMITES)("TRAMITES")
+            End If
+            Return _TRAMITES
+        End Get
+    End Property
+
+    Private _TRAMITES As ObjectSet(Of TRAMITES)
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    Public ReadOnly Property GRUPO_SALTOS() As ObjectSet(Of GRUPO_SALTOS)
+        Get
+            If (_GRUPO_SALTOS Is Nothing) Then
+                _GRUPO_SALTOS = MyBase.CreateObjectSet(Of GRUPO_SALTOS)("GRUPO_SALTOS")
+            End If
+            Return _GRUPO_SALTOS
+        End Get
+    End Property
+
+    Private _GRUPO_SALTOS As ObjectSet(Of GRUPO_SALTOS)
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    Public ReadOnly Property SALTOS() As ObjectSet(Of SALTOS)
+        Get
+            If (_SALTOS Is Nothing) Then
+                _SALTOS = MyBase.CreateObjectSet(Of SALTOS)("SALTOS")
+            End If
+            Return _SALTOS
+        End Get
+    End Property
+
+    Private _SALTOS As ObjectSet(Of SALTOS)
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    Public ReadOnly Property DETALLE_USUARIO_SALTOS() As ObjectSet(Of DETALLE_USUARIO_SALTOS)
+        Get
+            If (_DETALLE_USUARIO_SALTOS Is Nothing) Then
+                _DETALLE_USUARIO_SALTOS = MyBase.CreateObjectSet(Of DETALLE_USUARIO_SALTOS)("DETALLE_USUARIO_SALTOS")
+            End If
+            Return _DETALLE_USUARIO_SALTOS
+        End Get
+    End Property
+
+    Private _DETALLE_USUARIO_SALTOS As ObjectSet(Of DETALLE_USUARIO_SALTOS)
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    Public ReadOnly Property DETALLE_SEGUIMIENTO() As ObjectSet(Of DETALLE_SEGUIMIENTO)
+        Get
+            If (_DETALLE_SEGUIMIENTO Is Nothing) Then
+                _DETALLE_SEGUIMIENTO = MyBase.CreateObjectSet(Of DETALLE_SEGUIMIENTO)("DETALLE_SEGUIMIENTO")
+            End If
+            Return _DETALLE_SEGUIMIENTO
+        End Get
+    End Property
+
+    Private _DETALLE_SEGUIMIENTO As ObjectSet(Of DETALLE_SEGUIMIENTO)
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    Public ReadOnly Property DETALLE_TRAMITES() As ObjectSet(Of DETALLE_TRAMITES)
+        Get
+            If (_DETALLE_TRAMITES Is Nothing) Then
+                _DETALLE_TRAMITES = MyBase.CreateObjectSet(Of DETALLE_TRAMITES)("DETALLE_TRAMITES")
+            End If
+            Return _DETALLE_TRAMITES
+        End Get
+    End Property
+
+    Private _DETALLE_TRAMITES As ObjectSet(Of DETALLE_TRAMITES)
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    Public ReadOnly Property USUARIOS() As ObjectSet(Of USUARIOS)
+        Get
+            If (_USUARIOS Is Nothing) Then
+                _USUARIOS = MyBase.CreateObjectSet(Of USUARIOS)("USUARIOS")
+            End If
+            Return _USUARIOS
+        End Get
+    End Property
+
+    Private _USUARIOS As ObjectSet(Of USUARIOS)
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    Public ReadOnly Property TIPO_REPRESENTANTE() As ObjectSet(Of TIPO_REPRESENTANTE)
+        Get
+            If (_TIPO_REPRESENTANTE Is Nothing) Then
+                _TIPO_REPRESENTANTE = MyBase.CreateObjectSet(Of TIPO_REPRESENTANTE)("TIPO_REPRESENTANTE")
+            End If
+            Return _TIPO_REPRESENTANTE
+        End Get
+    End Property
+
+    Private _TIPO_REPRESENTANTE As ObjectSet(Of TIPO_REPRESENTANTE)
 
     #End Region
 
@@ -397,13 +459,6 @@ Public Partial Class Entidades
     End Sub
 
     ''' <summary>
-    ''' Método desusado para agregar un nuevo objeto al EntitySet USUARIOS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
-    ''' </summary>
-    Public Sub AddToUSUARIOS(ByVal uSUARIOS As USUARIOS)
-        MyBase.AddObject("USUARIOS", uSUARIOS)
-    End Sub
-
-    ''' <summary>
     ''' Método desusado para agregar un nuevo objeto al EntitySet VENTANILLAS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
     ''' </summary>
     Public Sub AddToVENTANILLAS(ByVal vENTANILLAS As VENTANILLAS)
@@ -432,31 +487,10 @@ Public Partial Class Entidades
     End Sub
 
     ''' <summary>
-    ''' Método desusado para agregar un nuevo objeto al EntitySet TRAMITES. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
-    ''' </summary>
-    Public Sub AddToTRAMITES(ByVal tRAMITES As TRAMITES)
-        MyBase.AddObject("TRAMITES", tRAMITES)
-    End Sub
-
-    ''' <summary>
-    ''' Método desusado para agregar un nuevo objeto al EntitySet SALTOS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
-    ''' </summary>
-    Public Sub AddToSALTOS(ByVal sALTOS As SALTOS)
-        MyBase.AddObject("SALTOS", sALTOS)
-    End Sub
-
-    ''' <summary>
     ''' Método desusado para agregar un nuevo objeto al EntitySet IDENTIFICACION. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
     ''' </summary>
     Public Sub AddToIDENTIFICACION(ByVal iDENTIFICACION As IDENTIFICACION)
         MyBase.AddObject("IDENTIFICACION", iDENTIFICACION)
-    End Sub
-
-    ''' <summary>
-    ''' Método desusado para agregar un nuevo objeto al EntitySet DETALLE_TRAMITE. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
-    ''' </summary>
-    Public Sub AddToDETALLE_TRAMITE(ByVal dETALLE_TRAMITE As DETALLE_TRAMITE)
-        MyBase.AddObject("DETALLE_TRAMITE", dETALLE_TRAMITE)
     End Sub
 
     ''' <summary>
@@ -471,6 +505,62 @@ Public Partial Class Entidades
     ''' </summary>
     Public Sub AddToRESPONSABLE(ByVal rESPONSABLE As RESPONSABLE)
         MyBase.AddObject("RESPONSABLE", rESPONSABLE)
+    End Sub
+
+    ''' <summary>
+    ''' Método desusado para agregar un nuevo objeto al EntitySet TRAMITES. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
+    ''' </summary>
+    Public Sub AddToTRAMITES(ByVal tRAMITES As TRAMITES)
+        MyBase.AddObject("TRAMITES", tRAMITES)
+    End Sub
+
+    ''' <summary>
+    ''' Método desusado para agregar un nuevo objeto al EntitySet GRUPO_SALTOS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
+    ''' </summary>
+    Public Sub AddToGRUPO_SALTOS(ByVal gRUPO_SALTOS As GRUPO_SALTOS)
+        MyBase.AddObject("GRUPO_SALTOS", gRUPO_SALTOS)
+    End Sub
+
+    ''' <summary>
+    ''' Método desusado para agregar un nuevo objeto al EntitySet SALTOS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
+    ''' </summary>
+    Public Sub AddToSALTOS(ByVal sALTOS As SALTOS)
+        MyBase.AddObject("SALTOS", sALTOS)
+    End Sub
+
+    ''' <summary>
+    ''' Método desusado para agregar un nuevo objeto al EntitySet DETALLE_USUARIO_SALTOS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
+    ''' </summary>
+    Public Sub AddToDETALLE_USUARIO_SALTOS(ByVal dETALLE_USUARIO_SALTOS As DETALLE_USUARIO_SALTOS)
+        MyBase.AddObject("DETALLE_USUARIO_SALTOS", dETALLE_USUARIO_SALTOS)
+    End Sub
+
+    ''' <summary>
+    ''' Método desusado para agregar un nuevo objeto al EntitySet DETALLE_SEGUIMIENTO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
+    ''' </summary>
+    Public Sub AddToDETALLE_SEGUIMIENTO(ByVal dETALLE_SEGUIMIENTO As DETALLE_SEGUIMIENTO)
+        MyBase.AddObject("DETALLE_SEGUIMIENTO", dETALLE_SEGUIMIENTO)
+    End Sub
+
+    ''' <summary>
+    ''' Método desusado para agregar un nuevo objeto al EntitySet DETALLE_TRAMITES. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
+    ''' </summary>
+    Public Sub AddToDETALLE_TRAMITES(ByVal dETALLE_TRAMITES As DETALLE_TRAMITES)
+        MyBase.AddObject("DETALLE_TRAMITES", dETALLE_TRAMITES)
+    End Sub
+
+    ''' <summary>
+    ''' Método desusado para agregar un nuevo objeto al EntitySet USUARIOS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
+    ''' </summary>
+    Public Sub AddToUSUARIOS(ByVal uSUARIOS As USUARIOS)
+        MyBase.AddObject("USUARIOS", uSUARIOS)
+    End Sub
+
+    ''' <summary>
+    ''' Método desusado para agregar un nuevo objeto al EntitySet TIPO_REPRESENTANTE. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
+    ''' </summary>
+    Public Sub AddToTIPO_REPRESENTANTE(ByVal tIPO_REPRESENTANTE As TIPO_REPRESENTANTE)
+        MyBase.AddObject("TIPO_REPRESENTANTE", tIPO_REPRESENTANTE)
     End Sub
 
     #End Region
@@ -673,6 +763,304 @@ End Class
 ''' <summary>
 ''' No hay documentación de metadatos disponible.
 ''' </summary>
+<EdmEntityTypeAttribute(NamespaceName:="Modelo", Name:="DETALLE_SEGUIMIENTO")>
+<Serializable()>
+<DataContractAttribute(IsReference:=True)>
+Public Partial Class DETALLE_SEGUIMIENTO
+    Inherits EntityObject
+    #Region "Método de generador"
+
+    ''' <summary>
+    ''' Crear un nuevo objeto DETALLE_SEGUIMIENTO.
+    ''' </summary>
+    ''' <param name="iDDETALLE_SEGUIMIENTO">Valor inicial de la propiedad IDDETALLE_SEGUIMIENTO.</param>
+    ''' <param name="iDTRAMITE">Valor inicial de la propiedad IDTRAMITE.</param>
+    ''' <param name="iDSALTO">Valor inicial de la propiedad IDSALTO.</param>
+    ''' <param name="iDUSUARIO">Valor inicial de la propiedad IDUSUARIO.</param>
+    ''' <param name="fECHA_RECEPCION">Valor inicial de la propiedad FECHA_RECEPCION.</param>
+    Public Shared Function CreateDETALLE_SEGUIMIENTO(iDDETALLE_SEGUIMIENTO As Global.System.Decimal, iDTRAMITE As Global.System.Decimal, iDSALTO As Global.System.Decimal, iDUSUARIO As Global.System.Decimal, fECHA_RECEPCION As Global.System.DateTime) As DETALLE_SEGUIMIENTO
+        Dim dETALLE_SEGUIMIENTO as DETALLE_SEGUIMIENTO = New DETALLE_SEGUIMIENTO
+        dETALLE_SEGUIMIENTO.IDDETALLE_SEGUIMIENTO = iDDETALLE_SEGUIMIENTO
+        dETALLE_SEGUIMIENTO.IDTRAMITE = iDTRAMITE
+        dETALLE_SEGUIMIENTO.IDSALTO = iDSALTO
+        dETALLE_SEGUIMIENTO.IDUSUARIO = iDUSUARIO
+        dETALLE_SEGUIMIENTO.FECHA_RECEPCION = fECHA_RECEPCION
+        Return dETALLE_SEGUIMIENTO
+    End Function
+
+    #End Region
+
+    #Region "Propiedades primitivas"
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDDETALLE_SEGUIMIENTO() As Global.System.Decimal
+        Get
+            Return _IDDETALLE_SEGUIMIENTO
+        End Get
+        Set
+            If (_IDDETALLE_SEGUIMIENTO <> Value) Then
+                OnIDDETALLE_SEGUIMIENTOChanging(value)
+                ReportPropertyChanging("IDDETALLE_SEGUIMIENTO")
+                _IDDETALLE_SEGUIMIENTO = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("IDDETALLE_SEGUIMIENTO")
+                OnIDDETALLE_SEGUIMIENTOChanged()
+            End If
+        End Set
+    End Property
+
+    Private _IDDETALLE_SEGUIMIENTO As Global.System.Decimal
+    Private Partial Sub OnIDDETALLE_SEGUIMIENTOChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDDETALLE_SEGUIMIENTOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDTRAMITE() As Global.System.Decimal
+        Get
+            Return _IDTRAMITE
+        End Get
+        Set
+            OnIDTRAMITEChanging(value)
+            ReportPropertyChanging("IDTRAMITE")
+            _IDTRAMITE = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("IDTRAMITE")
+            OnIDTRAMITEChanged()
+        End Set
+    End Property
+
+    Private _IDTRAMITE As Global.System.Decimal
+    Private Partial Sub OnIDTRAMITEChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDTRAMITEChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDSALTO() As Global.System.Decimal
+        Get
+            Return _IDSALTO
+        End Get
+        Set
+            OnIDSALTOChanging(value)
+            ReportPropertyChanging("IDSALTO")
+            _IDSALTO = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("IDSALTO")
+            OnIDSALTOChanged()
+        End Set
+    End Property
+
+    Private _IDSALTO As Global.System.Decimal
+    Private Partial Sub OnIDSALTOChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDSALTOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDUSUARIO() As Global.System.Decimal
+        Get
+            Return _IDUSUARIO
+        End Get
+        Set
+            OnIDUSUARIOChanging(value)
+            ReportPropertyChanging("IDUSUARIO")
+            _IDUSUARIO = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("IDUSUARIO")
+            OnIDUSUARIOChanged()
+        End Set
+    End Property
+
+    Private _IDUSUARIO As Global.System.Decimal
+    Private Partial Sub OnIDUSUARIOChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDUSUARIOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property FECHA_RECEPCION() As Global.System.DateTime
+        Get
+            Return _FECHA_RECEPCION
+        End Get
+        Set
+            OnFECHA_RECEPCIONChanging(value)
+            ReportPropertyChanging("FECHA_RECEPCION")
+            _FECHA_RECEPCION = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("FECHA_RECEPCION")
+            OnFECHA_RECEPCIONChanged()
+        End Set
+    End Property
+
+    Private _FECHA_RECEPCION As Global.System.DateTime
+    Private Partial Sub OnFECHA_RECEPCIONChanging(value As Global.System.DateTime)
+    End Sub
+
+    Private Partial Sub OnFECHA_RECEPCIONChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property FECHA_ENTREGA() As Nullable(Of Global.System.DateTime)
+        Get
+            Return _FECHA_ENTREGA
+        End Get
+        Set
+            OnFECHA_ENTREGAChanging(value)
+            ReportPropertyChanging("FECHA_ENTREGA")
+            _FECHA_ENTREGA = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("FECHA_ENTREGA")
+            OnFECHA_ENTREGAChanged()
+        End Set
+    End Property
+
+    Private _FECHA_ENTREGA As Nullable(Of Global.System.DateTime)
+    Private Partial Sub OnFECHA_ENTREGAChanging(value As Nullable(Of Global.System.DateTime))
+    End Sub
+
+    Private Partial Sub OnFECHA_ENTREGAChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property DESTINO() As Nullable(Of Global.System.Decimal)
+        Get
+            Return _DESTINO
+        End Get
+        Set
+            OnDESTINOChanging(value)
+            ReportPropertyChanging("DESTINO")
+            _DESTINO = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("DESTINO")
+            OnDESTINOChanged()
+        End Set
+    End Property
+
+    Private _DESTINO As Nullable(Of Global.System.Decimal)
+    Private Partial Sub OnDESTINOChanging(value As Nullable(Of Global.System.Decimal))
+    End Sub
+
+    Private Partial Sub OnDESTINOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property IDUSUARIO_DESTINO() As Nullable(Of Global.System.Decimal)
+        Get
+            Return _IDUSUARIO_DESTINO
+        End Get
+        Set
+            OnIDUSUARIO_DESTINOChanging(value)
+            ReportPropertyChanging("IDUSUARIO_DESTINO")
+            _IDUSUARIO_DESTINO = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("IDUSUARIO_DESTINO")
+            OnIDUSUARIO_DESTINOChanged()
+        End Set
+    End Property
+
+    Private _IDUSUARIO_DESTINO As Nullable(Of Global.System.Decimal)
+    Private Partial Sub OnIDUSUARIO_DESTINOChanging(value As Nullable(Of Global.System.Decimal))
+    End Sub
+
+    Private Partial Sub OnIDUSUARIO_DESTINOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property FECHA_PROCESO() As Nullable(Of Global.System.DateTime)
+        Get
+            Return _FECHA_PROCESO
+        End Get
+        Set
+            OnFECHA_PROCESOChanging(value)
+            ReportPropertyChanging("FECHA_PROCESO")
+            _FECHA_PROCESO = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("FECHA_PROCESO")
+            OnFECHA_PROCESOChanged()
+        End Set
+    End Property
+
+    Private _FECHA_PROCESO As Nullable(Of Global.System.DateTime)
+    Private Partial Sub OnFECHA_PROCESOChanging(value As Nullable(Of Global.System.DateTime))
+    End Sub
+
+    Private Partial Sub OnFECHA_PROCESOChanged()
+    End Sub
+
+    #End Region
+
+    #Region "Propiedades de navegación"
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_TRAMITE_FK1", "TRAMITES")>
+    Public Property TRAMITES() As TRAMITES
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITE_FK1", "TRAMITES").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITE_FK1", "TRAMITES").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property TRAMITESReference() As EntityReference(Of TRAMITES)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITE_FK1", "TRAMITES")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITE_FK1", "TRAMITES", value)
+            End If
+        End Set
+    End Property
+
+    #End Region
+
+End Class
+
+''' <summary>
+''' No hay documentación de metadatos disponible.
+''' </summary>
 <EdmEntityTypeAttribute(NamespaceName:="Modelo", Name:="DETALLE_SUCURSAL_OFICINA")>
 <Serializable()>
 <DataContractAttribute(IsReference:=True)>
@@ -843,24 +1231,6 @@ Public Partial Class DETALLE_SUCURSAL_OFICINA
     <XmlIgnoreAttribute()>
     <SoapIgnoreAttribute()>
     <DataMemberAttribute()>
-    <EdmRelationshipNavigationPropertyAttribute("Modelo", "USUARIOS_FK1", "USUARIOS")>
-     Public Property USUARIOS() As EntityCollection(Of USUARIOS)
-        Get
-            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of USUARIOS)("Modelo.USUARIOS_FK1", "USUARIOS")
-        End Get
-        Set
-            If (Not value Is Nothing)
-                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of USUARIOS)("Modelo.USUARIOS_FK1", "USUARIOS", value)
-            End If
-        End Set
-    End Property
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
-    <XmlIgnoreAttribute()>
-    <SoapIgnoreAttribute()>
-    <DataMemberAttribute()>
     <EdmRelationshipNavigationPropertyAttribute("Modelo", "VENTANILLAS_FK1", "VENTANILLAS")>
      Public Property VENTANILLAS() As EntityCollection(Of VENTANILLAS)
         Get
@@ -873,6 +1243,24 @@ Public Partial Class DETALLE_SUCURSAL_OFICINA
         End Set
     End Property
 
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "USUARIOS_FK1", "USUARIOS")>
+     Public Property USUARIOS() As EntityCollection(Of USUARIOS)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of USUARIOS)("Modelo.USUARIOS_FK1", "USUARIOS")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of USUARIOS)("Modelo.USUARIOS_FK1", "USUARIOS", value)
+            End If
+        End Set
+    End Property
+
     #End Region
 
 End Class
@@ -880,29 +1268,23 @@ End Class
 ''' <summary>
 ''' No hay documentación de metadatos disponible.
 ''' </summary>
-<EdmEntityTypeAttribute(NamespaceName:="Modelo", Name:="DETALLE_TRAMITE")>
+<EdmEntityTypeAttribute(NamespaceName:="Modelo", Name:="DETALLE_TRAMITES")>
 <Serializable()>
 <DataContractAttribute(IsReference:=True)>
-Public Partial Class DETALLE_TRAMITE
+Public Partial Class DETALLE_TRAMITES
     Inherits EntityObject
     #Region "Método de generador"
 
     ''' <summary>
-    ''' Crear un nuevo objeto DETALLE_TRAMITE.
+    ''' Crear un nuevo objeto DETALLE_TRAMITES.
     ''' </summary>
-    ''' <param name="iD_DETALLE_TRAMITE">Valor inicial de la propiedad ID_DETALLE_TRAMITE.</param>
     ''' <param name="iDTRAMITE">Valor inicial de la propiedad IDTRAMITE.</param>
-    ''' <param name="iDSALTO">Valor inicial de la propiedad IDSALTO.</param>
-    ''' <param name="iDUSUARIO">Valor inicial de la propiedad IDUSUARIO.</param>
-    ''' <param name="fECHA_RECEPCION">Valor inicial de la propiedad FECHA_RECEPCION.</param>
-    Public Shared Function CreateDETALLE_TRAMITE(iD_DETALLE_TRAMITE As Global.System.Decimal, iDTRAMITE As Global.System.Decimal, iDSALTO As Global.System.Decimal, iDUSUARIO As Global.System.Decimal, fECHA_RECEPCION As Global.System.DateTime) As DETALLE_TRAMITE
-        Dim dETALLE_TRAMITE as DETALLE_TRAMITE = New DETALLE_TRAMITE
-        dETALLE_TRAMITE.ID_DETALLE_TRAMITE = iD_DETALLE_TRAMITE
-        dETALLE_TRAMITE.IDTRAMITE = iDTRAMITE
-        dETALLE_TRAMITE.IDSALTO = iDSALTO
-        dETALLE_TRAMITE.IDUSUARIO = iDUSUARIO
-        dETALLE_TRAMITE.FECHA_RECEPCION = fECHA_RECEPCION
-        Return dETALLE_TRAMITE
+    ''' <param name="iDDOC_RECIBIDO">Valor inicial de la propiedad IDDOC_RECIBIDO.</param>
+    Public Shared Function CreateDETALLE_TRAMITES(iDTRAMITE As Global.System.Decimal, iDDOC_RECIBIDO As Global.System.Decimal) As DETALLE_TRAMITES
+        Dim dETALLE_TRAMITES as DETALLE_TRAMITES = New DETALLE_TRAMITES
+        dETALLE_TRAMITES.IDTRAMITE = iDTRAMITE
+        dETALLE_TRAMITES.IDDOC_RECIBIDO = iDDOC_RECIBIDO
+        Return dETALLE_TRAMITES
     End Function
 
     #End Region
@@ -914,43 +1296,18 @@ Public Partial Class DETALLE_TRAMITE
     ''' </summary>
     <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property ID_DETALLE_TRAMITE() As Global.System.Decimal
-        Get
-            Return _ID_DETALLE_TRAMITE
-        End Get
-        Set
-            If (_ID_DETALLE_TRAMITE <> Value) Then
-                OnID_DETALLE_TRAMITEChanging(value)
-                ReportPropertyChanging("ID_DETALLE_TRAMITE")
-                _ID_DETALLE_TRAMITE = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("ID_DETALLE_TRAMITE")
-                OnID_DETALLE_TRAMITEChanged()
-            End If
-        End Set
-    End Property
-
-    Private _ID_DETALLE_TRAMITE As Global.System.Decimal
-    Private Partial Sub OnID_DETALLE_TRAMITEChanging(value As Global.System.Decimal)
-    End Sub
-
-    Private Partial Sub OnID_DETALLE_TRAMITEChanged()
-    End Sub
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-    <DataMemberAttribute()>
     Public Property IDTRAMITE() As Global.System.Decimal
         Get
             Return _IDTRAMITE
         End Get
         Set
-            OnIDTRAMITEChanging(value)
-            ReportPropertyChanging("IDTRAMITE")
-            _IDTRAMITE = StructuralObject.SetValidValue(value)
-            ReportPropertyChanged("IDTRAMITE")
-            OnIDTRAMITEChanged()
+            If (_IDTRAMITE <> Value) Then
+                OnIDTRAMITEChanging(value)
+                ReportPropertyChanging("IDTRAMITE")
+                _IDTRAMITE = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("IDTRAMITE")
+                OnIDTRAMITEChanged()
+            End If
         End Set
     End Property
 
@@ -964,18 +1321,141 @@ Public Partial Class DETALLE_TRAMITE
     ''' <summary>
     ''' No hay documentación de metadatos disponible.
     ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDDOC_RECIBIDO() As Global.System.Decimal
+        Get
+            Return _IDDOC_RECIBIDO
+        End Get
+        Set
+            If (_IDDOC_RECIBIDO <> Value) Then
+                OnIDDOC_RECIBIDOChanging(value)
+                ReportPropertyChanging("IDDOC_RECIBIDO")
+                _IDDOC_RECIBIDO = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("IDDOC_RECIBIDO")
+                OnIDDOC_RECIBIDOChanged()
+            End If
+        End Set
+    End Property
+
+    Private _IDDOC_RECIBIDO As Global.System.Decimal
+    Private Partial Sub OnIDDOC_RECIBIDOChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDDOC_RECIBIDOChanged()
+    End Sub
+
+    #End Region
+
+    #Region "Propiedades de navegación"
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_TRAMITES_FK2", "TRAMITES")>
+    Public Property TRAMITES() As TRAMITES
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITES_FK2", "TRAMITES").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITES_FK2", "TRAMITES").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property TRAMITESReference() As EntityReference(Of TRAMITES)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITES_FK2", "TRAMITES")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITES_FK2", "TRAMITES", value)
+            End If
+        End Set
+    End Property
+
+    #End Region
+
+End Class
+
+''' <summary>
+''' No hay documentación de metadatos disponible.
+''' </summary>
+<EdmEntityTypeAttribute(NamespaceName:="Modelo", Name:="DETALLE_USUARIO_SALTOS")>
+<Serializable()>
+<DataContractAttribute(IsReference:=True)>
+Public Partial Class DETALLE_USUARIO_SALTOS
+    Inherits EntityObject
+    #Region "Método de generador"
+
+    ''' <summary>
+    ''' Crear un nuevo objeto DETALLE_USUARIO_SALTOS.
+    ''' </summary>
+    ''' <param name="iDUSUARIO">Valor inicial de la propiedad IDUSUARIO.</param>
+    ''' <param name="iDSALTO">Valor inicial de la propiedad IDSALTO.</param>
+    ''' <param name="pRIORIDAD">Valor inicial de la propiedad PRIORIDAD.</param>
+    Public Shared Function CreateDETALLE_USUARIO_SALTOS(iDUSUARIO As Global.System.Decimal, iDSALTO As Global.System.Decimal, pRIORIDAD As Global.System.Decimal) As DETALLE_USUARIO_SALTOS
+        Dim dETALLE_USUARIO_SALTOS as DETALLE_USUARIO_SALTOS = New DETALLE_USUARIO_SALTOS
+        dETALLE_USUARIO_SALTOS.IDUSUARIO = iDUSUARIO
+        dETALLE_USUARIO_SALTOS.IDSALTO = iDSALTO
+        dETALLE_USUARIO_SALTOS.PRIORIDAD = pRIORIDAD
+        Return dETALLE_USUARIO_SALTOS
+    End Function
+
+    #End Region
+
+    #Region "Propiedades primitivas"
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDUSUARIO() As Global.System.Decimal
+        Get
+            Return _IDUSUARIO
+        End Get
+        Set
+            If (_IDUSUARIO <> Value) Then
+                OnIDUSUARIOChanging(value)
+                ReportPropertyChanging("IDUSUARIO")
+                _IDUSUARIO = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("IDUSUARIO")
+                OnIDUSUARIOChanged()
+            End If
+        End Set
+    End Property
+
+    Private _IDUSUARIO As Global.System.Decimal
+    Private Partial Sub OnIDUSUARIOChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDUSUARIOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
     <DataMemberAttribute()>
     Public Property IDSALTO() As Global.System.Decimal
         Get
             Return _IDSALTO
         End Get
         Set
-            OnIDSALTOChanging(value)
-            ReportPropertyChanging("IDSALTO")
-            _IDSALTO = StructuralObject.SetValidValue(value)
-            ReportPropertyChanged("IDSALTO")
-            OnIDSALTOChanged()
+            If (_IDSALTO <> Value) Then
+                OnIDSALTOChanging(value)
+                ReportPropertyChanging("IDSALTO")
+                _IDSALTO = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("IDSALTO")
+                OnIDSALTOChanged()
+            End If
         End Set
     End Property
 
@@ -991,99 +1471,24 @@ Public Partial Class DETALLE_TRAMITE
     ''' </summary>
     <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property IDUSUARIO() As Global.System.Decimal
+    Public Property PRIORIDAD() As Global.System.Decimal
         Get
-            Return _IDUSUARIO
+            Return _PRIORIDAD
         End Get
         Set
-            OnIDUSUARIOChanging(value)
-            ReportPropertyChanging("IDUSUARIO")
-            _IDUSUARIO = StructuralObject.SetValidValue(value)
-            ReportPropertyChanged("IDUSUARIO")
-            OnIDUSUARIOChanged()
+            OnPRIORIDADChanging(value)
+            ReportPropertyChanging("PRIORIDAD")
+            _PRIORIDAD = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("PRIORIDAD")
+            OnPRIORIDADChanged()
         End Set
     End Property
 
-    Private _IDUSUARIO As Global.System.Decimal
-    Private Partial Sub OnIDUSUARIOChanging(value As Global.System.Decimal)
+    Private _PRIORIDAD As Global.System.Decimal
+    Private Partial Sub OnPRIORIDADChanging(value As Global.System.Decimal)
     End Sub
 
-    Private Partial Sub OnIDUSUARIOChanged()
-    End Sub
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-    <DataMemberAttribute()>
-    Public Property FECHA_RECEPCION() As Global.System.DateTime
-        Get
-            Return _FECHA_RECEPCION
-        End Get
-        Set
-            OnFECHA_RECEPCIONChanging(value)
-            ReportPropertyChanging("FECHA_RECEPCION")
-            _FECHA_RECEPCION = StructuralObject.SetValidValue(value)
-            ReportPropertyChanged("FECHA_RECEPCION")
-            OnFECHA_RECEPCIONChanged()
-        End Set
-    End Property
-
-    Private _FECHA_RECEPCION As Global.System.DateTime
-    Private Partial Sub OnFECHA_RECEPCIONChanging(value As Global.System.DateTime)
-    End Sub
-
-    Private Partial Sub OnFECHA_RECEPCIONChanged()
-    End Sub
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
-    <DataMemberAttribute()>
-    Public Property FECHA_ENTREGA() As Nullable(Of Global.System.DateTime)
-        Get
-            Return _FECHA_ENTREGA
-        End Get
-        Set
-            OnFECHA_ENTREGAChanging(value)
-            ReportPropertyChanging("FECHA_ENTREGA")
-            _FECHA_ENTREGA = StructuralObject.SetValidValue(value)
-            ReportPropertyChanged("FECHA_ENTREGA")
-            OnFECHA_ENTREGAChanged()
-        End Set
-    End Property
-
-    Private _FECHA_ENTREGA As Nullable(Of Global.System.DateTime)
-    Private Partial Sub OnFECHA_ENTREGAChanging(value As Nullable(Of Global.System.DateTime))
-    End Sub
-
-    Private Partial Sub OnFECHA_ENTREGAChanged()
-    End Sub
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
-    <DataMemberAttribute()>
-    Public Property DESTINO() As Nullable(Of Global.System.Decimal)
-        Get
-            Return _DESTINO
-        End Get
-        Set
-            OnDESTINOChanging(value)
-            ReportPropertyChanging("DESTINO")
-            _DESTINO = StructuralObject.SetValidValue(value)
-            ReportPropertyChanged("DESTINO")
-            OnDESTINOChanged()
-        End Set
-    End Property
-
-    Private _DESTINO As Nullable(Of Global.System.Decimal)
-    Private Partial Sub OnDESTINOChanging(value As Nullable(Of Global.System.Decimal))
-    End Sub
-
-    Private Partial Sub OnDESTINOChanged()
+    Private Partial Sub OnPRIORIDADChanged()
     End Sub
 
     #End Region
@@ -1096,13 +1501,13 @@ Public Partial Class DETALLE_TRAMITE
     <XmlIgnoreAttribute()>
     <SoapIgnoreAttribute()>
     <DataMemberAttribute()>
-    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_TRAMITE_FK1", "TRAMITES")>
-    Public Property TRAMITES() As TRAMITES
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_USUARIO_SALTOS_FK2", "SALTOS")>
+    Public Property SALTOS() As SALTOS
         Get
-            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITE_FK1", "TRAMITES").Value
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of SALTOS)("Modelo.DETALLE_USUARIO_SALTOS_FK2", "SALTOS").Value
         End Get
         Set
-            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITE_FK1", "TRAMITES").Value = value
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of SALTOS)("Modelo.DETALLE_USUARIO_SALTOS_FK2", "SALTOS").Value = value
         End Set
     End Property
     ''' <summary>
@@ -1110,13 +1515,44 @@ Public Partial Class DETALLE_TRAMITE
     ''' </summary>
     <BrowsableAttribute(False)>
     <DataMemberAttribute()>
-    Public Property TRAMITESReference() As EntityReference(Of TRAMITES)
+    Public Property SALTOSReference() As EntityReference(Of SALTOS)
         Get
-            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITE_FK1", "TRAMITES")
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of SALTOS)("Modelo.DETALLE_USUARIO_SALTOS_FK2", "SALTOS")
         End Get
         Set
             If (Not value Is Nothing)
-                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of TRAMITES)("Modelo.DETALLE_TRAMITE_FK1", "TRAMITES", value)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of SALTOS)("Modelo.DETALLE_USUARIO_SALTOS_FK2", "SALTOS", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_USUARIO_SALTOS_FK1", "USUARIOS")>
+    Public Property USUARIOS() As USUARIOS
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of USUARIOS)("Modelo.DETALLE_USUARIO_SALTOS_FK1", "USUARIOS").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of USUARIOS)("Modelo.DETALLE_USUARIO_SALTOS_FK1", "USUARIOS").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property USUARIOSReference() As EntityReference(Of USUARIOS)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of USUARIOS)("Modelo.DETALLE_USUARIO_SALTOS_FK1", "USUARIOS")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of USUARIOS)("Modelo.DETALLE_USUARIO_SALTOS_FK1", "USUARIOS", value)
             End If
         End Set
     End Property
@@ -1323,6 +1759,220 @@ Public Partial Class GESTIONES
         Set
             If (Not value Is Nothing)
                 CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of TRAMITES)("Modelo.TRAMITES_FK2", "TRAMITES", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "GRUPO_SALTOS_FK1", "GRUPO_SALTOS")>
+     Public Property GRUPO_SALTOS() As EntityCollection(Of GRUPO_SALTOS)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of GRUPO_SALTOS)("Modelo.GRUPO_SALTOS_FK1", "GRUPO_SALTOS")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of GRUPO_SALTOS)("Modelo.GRUPO_SALTOS_FK1", "GRUPO_SALTOS", value)
+            End If
+        End Set
+    End Property
+
+    #End Region
+
+End Class
+
+''' <summary>
+''' No hay documentación de metadatos disponible.
+''' </summary>
+<EdmEntityTypeAttribute(NamespaceName:="Modelo", Name:="GRUPO_SALTOS")>
+<Serializable()>
+<DataContractAttribute(IsReference:=True)>
+Public Partial Class GRUPO_SALTOS
+    Inherits EntityObject
+    #Region "Método de generador"
+
+    ''' <summary>
+    ''' Crear un nuevo objeto GRUPO_SALTOS.
+    ''' </summary>
+    ''' <param name="iDGRUPO_SALTOS">Valor inicial de la propiedad IDGRUPO_SALTOS.</param>
+    ''' <param name="aCTIVO">Valor inicial de la propiedad ACTIVO.</param>
+    ''' <param name="iDDETALLE_SUCURSAL_OFICINA">Valor inicial de la propiedad IDDETALLE_SUCURSAL_OFICINA.</param>
+    ''' <param name="iDGESTION">Valor inicial de la propiedad IDGESTION.</param>
+    Public Shared Function CreateGRUPO_SALTOS(iDGRUPO_SALTOS As Global.System.Decimal, aCTIVO As Global.System.Decimal, iDDETALLE_SUCURSAL_OFICINA As Global.System.Decimal, iDGESTION As Global.System.Decimal) As GRUPO_SALTOS
+        Dim gRUPO_SALTOS as GRUPO_SALTOS = New GRUPO_SALTOS
+        gRUPO_SALTOS.IDGRUPO_SALTOS = iDGRUPO_SALTOS
+        gRUPO_SALTOS.ACTIVO = aCTIVO
+        gRUPO_SALTOS.IDDETALLE_SUCURSAL_OFICINA = iDDETALLE_SUCURSAL_OFICINA
+        gRUPO_SALTOS.IDGESTION = iDGESTION
+        Return gRUPO_SALTOS
+    End Function
+
+    #End Region
+
+    #Region "Propiedades primitivas"
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDGRUPO_SALTOS() As Global.System.Decimal
+        Get
+            Return _IDGRUPO_SALTOS
+        End Get
+        Set
+            If (_IDGRUPO_SALTOS <> Value) Then
+                OnIDGRUPO_SALTOSChanging(value)
+                ReportPropertyChanging("IDGRUPO_SALTOS")
+                _IDGRUPO_SALTOS = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("IDGRUPO_SALTOS")
+                OnIDGRUPO_SALTOSChanged()
+            End If
+        End Set
+    End Property
+
+    Private _IDGRUPO_SALTOS As Global.System.Decimal
+    Private Partial Sub OnIDGRUPO_SALTOSChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDGRUPO_SALTOSChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property DESCRIPCION() As Global.System.String
+        Get
+            Return _DESCRIPCION
+        End Get
+        Set
+            OnDESCRIPCIONChanging(value)
+            ReportPropertyChanging("DESCRIPCION")
+            _DESCRIPCION = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("DESCRIPCION")
+            OnDESCRIPCIONChanged()
+        End Set
+    End Property
+
+    Private _DESCRIPCION As Global.System.String
+    Private Partial Sub OnDESCRIPCIONChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnDESCRIPCIONChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property ACTIVO() As Global.System.Decimal
+        Get
+            Return _ACTIVO
+        End Get
+        Set
+            OnACTIVOChanging(value)
+            ReportPropertyChanging("ACTIVO")
+            _ACTIVO = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("ACTIVO")
+            OnACTIVOChanged()
+        End Set
+    End Property
+
+    Private _ACTIVO As Global.System.Decimal
+    Private Partial Sub OnACTIVOChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnACTIVOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDDETALLE_SUCURSAL_OFICINA() As Global.System.Decimal
+        Get
+            Return _IDDETALLE_SUCURSAL_OFICINA
+        End Get
+        Set
+            OnIDDETALLE_SUCURSAL_OFICINAChanging(value)
+            ReportPropertyChanging("IDDETALLE_SUCURSAL_OFICINA")
+            _IDDETALLE_SUCURSAL_OFICINA = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("IDDETALLE_SUCURSAL_OFICINA")
+            OnIDDETALLE_SUCURSAL_OFICINAChanged()
+        End Set
+    End Property
+
+    Private _IDDETALLE_SUCURSAL_OFICINA As Global.System.Decimal
+    Private Partial Sub OnIDDETALLE_SUCURSAL_OFICINAChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDDETALLE_SUCURSAL_OFICINAChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDGESTION() As Global.System.Decimal
+        Get
+            Return _IDGESTION
+        End Get
+        Set
+            OnIDGESTIONChanging(value)
+            ReportPropertyChanging("IDGESTION")
+            _IDGESTION = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("IDGESTION")
+            OnIDGESTIONChanged()
+        End Set
+    End Property
+
+    Private _IDGESTION As Global.System.Decimal
+    Private Partial Sub OnIDGESTIONChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDGESTIONChanged()
+    End Sub
+
+    #End Region
+
+    #Region "Propiedades de navegación"
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "GRUPO_SALTOS_FK1", "GESTIONES")>
+    Public Property GESTIONES() As GESTIONES
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GESTIONES)("Modelo.GRUPO_SALTOS_FK1", "GESTIONES").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GESTIONES)("Modelo.GRUPO_SALTOS_FK1", "GESTIONES").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property GESTIONESReference() As EntityReference(Of GESTIONES)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GESTIONES)("Modelo.GRUPO_SALTOS_FK1", "GESTIONES")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of GESTIONES)("Modelo.GRUPO_SALTOS_FK1", "GESTIONES", value)
             End If
         End Set
     End Property
@@ -3039,6 +3689,106 @@ Public Partial Class RESPONSABLE
     Private Partial Sub OnACTIVOChanged()
     End Sub
 
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property NOMBRE() As Global.System.String
+        Get
+            Return _NOMBRE
+        End Get
+        Set
+            OnNOMBREChanging(value)
+            ReportPropertyChanging("NOMBRE")
+            _NOMBRE = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("NOMBRE")
+            OnNOMBREChanged()
+        End Set
+    End Property
+
+    Private _NOMBRE As Global.System.String
+    Private Partial Sub OnNOMBREChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnNOMBREChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property PRIMER_APELLIDO() As Global.System.String
+        Get
+            Return _PRIMER_APELLIDO
+        End Get
+        Set
+            OnPRIMER_APELLIDOChanging(value)
+            ReportPropertyChanging("PRIMER_APELLIDO")
+            _PRIMER_APELLIDO = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("PRIMER_APELLIDO")
+            OnPRIMER_APELLIDOChanged()
+        End Set
+    End Property
+
+    Private _PRIMER_APELLIDO As Global.System.String
+    Private Partial Sub OnPRIMER_APELLIDOChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnPRIMER_APELLIDOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property SEGUNDO_APELLIDO() As Global.System.String
+        Get
+            Return _SEGUNDO_APELLIDO
+        End Get
+        Set
+            OnSEGUNDO_APELLIDOChanging(value)
+            ReportPropertyChanging("SEGUNDO_APELLIDO")
+            _SEGUNDO_APELLIDO = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("SEGUNDO_APELLIDO")
+            OnSEGUNDO_APELLIDOChanged()
+        End Set
+    End Property
+
+    Private _SEGUNDO_APELLIDO As Global.System.String
+    Private Partial Sub OnSEGUNDO_APELLIDOChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnSEGUNDO_APELLIDOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property FORM_ID() As Global.System.String
+        Get
+            Return _FORM_ID
+        End Get
+        Set
+            OnFORM_IDChanging(value)
+            ReportPropertyChanging("FORM_ID")
+            _FORM_ID = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("FORM_ID")
+            OnFORM_IDChanged()
+        End Set
+    End Property
+
+    Private _FORM_ID As Global.System.String
+    Private Partial Sub OnFORM_IDChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnFORM_IDChanged()
+    End Sub
+
     #End Region
 
     #Region "Propiedades de navegación"
@@ -3079,9 +3829,17 @@ Public Partial Class SALTOS
     ''' Crear un nuevo objeto SALTOS.
     ''' </summary>
     ''' <param name="iDSALTO">Valor inicial de la propiedad IDSALTO.</param>
-    Public Shared Function CreateSALTOS(iDSALTO As Global.System.Decimal) As SALTOS
+    ''' <param name="nUMERO_SALTO">Valor inicial de la propiedad NUMERO_SALTO.</param>
+    ''' <param name="iDGRUPO_SALTOS">Valor inicial de la propiedad IDGRUPO_SALTOS.</param>
+    ''' <param name="dECISION">Valor inicial de la propiedad DECISION.</param>
+    ''' <param name="uLTIMOSALTO">Valor inicial de la propiedad ULTIMOSALTO.</param>
+    Public Shared Function CreateSALTOS(iDSALTO As Global.System.Decimal, nUMERO_SALTO As Global.System.Decimal, iDGRUPO_SALTOS As Global.System.Decimal, dECISION As Global.System.Decimal, uLTIMOSALTO As Global.System.Decimal) As SALTOS
         Dim sALTOS as SALTOS = New SALTOS
         sALTOS.IDSALTO = iDSALTO
+        sALTOS.NUMERO_SALTO = nUMERO_SALTO
+        sALTOS.IDGRUPO_SALTOS = iDGRUPO_SALTOS
+        sALTOS.DECISION = dECISION
+        sALTOS.ULTIMOSALTO = uLTIMOSALTO
         Return sALTOS
     End Function
 
@@ -3119,9 +3877,9 @@ Public Partial Class SALTOS
     ''' <summary>
     ''' No hay documentación de metadatos disponible.
     ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property NUMERO_SALTO() As Nullable(Of Global.System.Decimal)
+    Public Property NUMERO_SALTO() As Global.System.Decimal
         Get
             Return _NUMERO_SALTO
         End Get
@@ -3134,8 +3892,8 @@ Public Partial Class SALTOS
         End Set
     End Property
 
-    Private _NUMERO_SALTO As Nullable(Of Global.System.Decimal)
-    Private Partial Sub OnNUMERO_SALTOChanging(value As Nullable(Of Global.System.Decimal))
+    Private _NUMERO_SALTO As Global.System.Decimal
+    Private Partial Sub OnNUMERO_SALTOChanging(value As Global.System.Decimal)
     End Sub
 
     Private Partial Sub OnNUMERO_SALTOChanged()
@@ -3144,26 +3902,26 @@ Public Partial Class SALTOS
     ''' <summary>
     ''' No hay documentación de metadatos disponible.
     ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property IDGESTION() As Nullable(Of Global.System.Decimal)
+    Public Property IDGRUPO_SALTOS() As Global.System.Decimal
         Get
-            Return _IDGESTION
+            Return _IDGRUPO_SALTOS
         End Get
         Set
-            OnIDGESTIONChanging(value)
-            ReportPropertyChanging("IDGESTION")
-            _IDGESTION = StructuralObject.SetValidValue(value)
-            ReportPropertyChanged("IDGESTION")
-            OnIDGESTIONChanged()
+            OnIDGRUPO_SALTOSChanging(value)
+            ReportPropertyChanging("IDGRUPO_SALTOS")
+            _IDGRUPO_SALTOS = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("IDGRUPO_SALTOS")
+            OnIDGRUPO_SALTOSChanged()
         End Set
     End Property
 
-    Private _IDGESTION As Nullable(Of Global.System.Decimal)
-    Private Partial Sub OnIDGESTIONChanging(value As Nullable(Of Global.System.Decimal))
+    Private _IDGRUPO_SALTOS As Global.System.Decimal
+    Private Partial Sub OnIDGRUPO_SALTOSChanging(value As Global.System.Decimal)
     End Sub
 
-    Private Partial Sub OnIDGESTIONChanged()
+    Private Partial Sub OnIDGRUPO_SALTOSChanged()
     End Sub
 
     ''' <summary>
@@ -3194,9 +3952,9 @@ Public Partial Class SALTOS
     ''' <summary>
     ''' No hay documentación de metadatos disponible.
     ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property DECISION() As Nullable(Of Global.System.Decimal)
+    Public Property DECISION() As Global.System.Decimal
         Get
             Return _DECISION
         End Get
@@ -3209,8 +3967,8 @@ Public Partial Class SALTOS
         End Set
     End Property
 
-    Private _DECISION As Nullable(Of Global.System.Decimal)
-    Private Partial Sub OnDECISIONChanging(value As Nullable(Of Global.System.Decimal))
+    Private _DECISION As Global.System.Decimal
+    Private Partial Sub OnDECISIONChanging(value As Global.System.Decimal)
     End Sub
 
     Private Partial Sub OnDECISIONChanged()
@@ -3269,9 +4027,9 @@ Public Partial Class SALTOS
     ''' <summary>
     ''' No hay documentación de metadatos disponible.
     ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property ULTIMOSALTO() As Nullable(Of Global.System.Decimal)
+    Public Property ULTIMOSALTO() As Global.System.Decimal
         Get
             Return _ULTIMOSALTO
         End Get
@@ -3284,8 +4042,8 @@ Public Partial Class SALTOS
         End Set
     End Property
 
-    Private _ULTIMOSALTO As Nullable(Of Global.System.Decimal)
-    Private Partial Sub OnULTIMOSALTOChanging(value As Nullable(Of Global.System.Decimal))
+    Private _ULTIMOSALTO As Global.System.Decimal
+    Private Partial Sub OnULTIMOSALTOChanging(value As Global.System.Decimal)
     End Sub
 
     Private Partial Sub OnULTIMOSALTOChanged()
@@ -3341,6 +4099,31 @@ Public Partial Class SALTOS
     Private Partial Sub OnDESCRIPCION_DECISIONChanged()
     End Sub
 
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property DESCRIPCION_SALTO() As Global.System.String
+        Get
+            Return _DESCRIPCION_SALTO
+        End Get
+        Set
+            OnDESCRIPCION_SALTOChanging(value)
+            ReportPropertyChanging("DESCRIPCION_SALTO")
+            _DESCRIPCION_SALTO = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("DESCRIPCION_SALTO")
+            OnDESCRIPCION_SALTOChanged()
+        End Set
+    End Property
+
+    Private _DESCRIPCION_SALTO As Global.System.String
+    Private Partial Sub OnDESCRIPCION_SALTOChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnDESCRIPCION_SALTOChanged()
+    End Sub
+
     #End Region
 
     #Region "Propiedades de navegación"
@@ -3351,13 +4134,13 @@ Public Partial Class SALTOS
     <XmlIgnoreAttribute()>
     <SoapIgnoreAttribute()>
     <DataMemberAttribute()>
-    <EdmRelationshipNavigationPropertyAttribute("Modelo", "SALTOS_FK1", "GESTIONES")>
-    Public Property GESTIONES() As GESTIONES
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "SALTOS_FK1", "GRUPO_SALTOS")>
+    Public Property GRUPO_SALTOS() As GRUPO_SALTOS
         Get
-            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GESTIONES)("Modelo.SALTOS_FK1", "GESTIONES").Value
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GRUPO_SALTOS)("Modelo.SALTOS_FK1", "GRUPO_SALTOS").Value
         End Get
         Set
-            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GESTIONES)("Modelo.SALTOS_FK1", "GESTIONES").Value = value
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GRUPO_SALTOS)("Modelo.SALTOS_FK1", "GRUPO_SALTOS").Value = value
         End Set
     End Property
     ''' <summary>
@@ -3365,13 +4148,13 @@ Public Partial Class SALTOS
     ''' </summary>
     <BrowsableAttribute(False)>
     <DataMemberAttribute()>
-    Public Property GESTIONESReference() As EntityReference(Of GESTIONES)
+    Public Property GRUPO_SALTOSReference() As EntityReference(Of GRUPO_SALTOS)
         Get
-            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GESTIONES)("Modelo.SALTOS_FK1", "GESTIONES")
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GRUPO_SALTOS)("Modelo.SALTOS_FK1", "GRUPO_SALTOS")
         End Get
         Set
             If (Not value Is Nothing)
-                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of GESTIONES)("Modelo.SALTOS_FK1", "GESTIONES", value)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of GRUPO_SALTOS)("Modelo.SALTOS_FK1", "GRUPO_SALTOS", value)
             End If
         End Set
     End Property
@@ -3403,6 +4186,24 @@ Public Partial Class SALTOS
         Set
             If (Not value Is Nothing)
                 CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of PUESTO)("Modelo.SALTOS_FK2", "PUESTO", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_USUARIO_SALTOS_FK2", "DETALLE_USUARIO_SALTOS")>
+     Public Property DETALLE_USUARIO_SALTOS() As EntityCollection(Of DETALLE_USUARIO_SALTOS)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of DETALLE_USUARIO_SALTOS)("Modelo.DETALLE_USUARIO_SALTOS_FK2", "DETALLE_USUARIO_SALTOS")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of DETALLE_USUARIO_SALTOS)("Modelo.DETALLE_USUARIO_SALTOS_FK2", "DETALLE_USUARIO_SALTOS", value)
             End If
         End Set
     End Property
@@ -3680,6 +4481,108 @@ End Class
 ''' <summary>
 ''' No hay documentación de metadatos disponible.
 ''' </summary>
+<EdmEntityTypeAttribute(NamespaceName:="Modelo", Name:="TIPO_REPRESENTANTE")>
+<Serializable()>
+<DataContractAttribute(IsReference:=True)>
+Public Partial Class TIPO_REPRESENTANTE
+    Inherits EntityObject
+    #Region "Método de generador"
+
+    ''' <summary>
+    ''' Crear un nuevo objeto TIPO_REPRESENTANTE.
+    ''' </summary>
+    ''' <param name="iDTIPO_REPRESENTANTE">Valor inicial de la propiedad IDTIPO_REPRESENTANTE.</param>
+    Public Shared Function CreateTIPO_REPRESENTANTE(iDTIPO_REPRESENTANTE As Global.System.Decimal) As TIPO_REPRESENTANTE
+        Dim tIPO_REPRESENTANTE as TIPO_REPRESENTANTE = New TIPO_REPRESENTANTE
+        tIPO_REPRESENTANTE.IDTIPO_REPRESENTANTE = iDTIPO_REPRESENTANTE
+        Return tIPO_REPRESENTANTE
+    End Function
+
+    #End Region
+
+    #Region "Propiedades primitivas"
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property IDTIPO_REPRESENTANTE() As Global.System.Decimal
+        Get
+            Return _IDTIPO_REPRESENTANTE
+        End Get
+        Set
+            If (_IDTIPO_REPRESENTANTE <> Value) Then
+                OnIDTIPO_REPRESENTANTEChanging(value)
+                ReportPropertyChanging("IDTIPO_REPRESENTANTE")
+                _IDTIPO_REPRESENTANTE = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("IDTIPO_REPRESENTANTE")
+                OnIDTIPO_REPRESENTANTEChanged()
+            End If
+        End Set
+    End Property
+
+    Private _IDTIPO_REPRESENTANTE As Global.System.Decimal
+    Private Partial Sub OnIDTIPO_REPRESENTANTEChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnIDTIPO_REPRESENTANTEChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property DESCRIPCION() As Global.System.String
+        Get
+            Return _DESCRIPCION
+        End Get
+        Set
+            OnDESCRIPCIONChanging(value)
+            ReportPropertyChanging("DESCRIPCION")
+            _DESCRIPCION = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("DESCRIPCION")
+            OnDESCRIPCIONChanged()
+        End Set
+    End Property
+
+    Private _DESCRIPCION As Global.System.String
+    Private Partial Sub OnDESCRIPCIONChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnDESCRIPCIONChanged()
+    End Sub
+
+    #End Region
+
+    #Region "Propiedades de navegación"
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "TRAMITES_FK3", "TRAMITES")>
+     Public Property TRAMITES() As EntityCollection(Of TRAMITES)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of TRAMITES)("Modelo.TRAMITES_FK3", "TRAMITES")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of TRAMITES)("Modelo.TRAMITES_FK3", "TRAMITES", value)
+            End If
+        End Set
+    End Property
+
+    #End Region
+
+End Class
+
+''' <summary>
+''' No hay documentación de metadatos disponible.
+''' </summary>
 <EdmEntityTypeAttribute(NamespaceName:="Modelo", Name:="TRAMITES")>
 <Serializable()>
 <DataContractAttribute(IsReference:=True)>
@@ -3691,15 +4594,15 @@ Public Partial Class TRAMITES
     ''' Crear un nuevo objeto TRAMITES.
     ''' </summary>
     ''' <param name="iDTRAMITE">Valor inicial de la propiedad IDTRAMITE.</param>
-    ''' <param name="iDRSPONSABLE">Valor inicial de la propiedad IDRSPONSABLE.</param>
+    ''' <param name="iDRESPONSABLE">Valor inicial de la propiedad IDRESPONSABLE.</param>
     ''' <param name="iDGESTION">Valor inicial de la propiedad IDGESTION.</param>
     ''' <param name="aCTIVO">Valor inicial de la propiedad ACTIVO.</param>
     ''' <param name="fECHA">Valor inicial de la propiedad FECHA.</param>
     ''' <param name="iDDETALLE_SUCURSAL_OFICINA">Valor inicial de la propiedad IDDETALLE_SUCURSAL_OFICINA.</param>
-    Public Shared Function CreateTRAMITES(iDTRAMITE As Global.System.Decimal, iDRSPONSABLE As Global.System.Decimal, iDGESTION As Global.System.Decimal, aCTIVO As Global.System.Decimal, fECHA As Global.System.DateTime, iDDETALLE_SUCURSAL_OFICINA As Global.System.Decimal) As TRAMITES
+    Public Shared Function CreateTRAMITES(iDTRAMITE As Global.System.Decimal, iDRESPONSABLE As Global.System.Decimal, iDGESTION As Global.System.Decimal, aCTIVO As Global.System.Decimal, fECHA As Global.System.DateTime, iDDETALLE_SUCURSAL_OFICINA As Global.System.Decimal) As TRAMITES
         Dim tRAMITES as TRAMITES = New TRAMITES
         tRAMITES.IDTRAMITE = iDTRAMITE
-        tRAMITES.IDRSPONSABLE = iDRSPONSABLE
+        tRAMITES.IDRESPONSABLE = iDRESPONSABLE
         tRAMITES.IDGESTION = iDGESTION
         tRAMITES.ACTIVO = aCTIVO
         tRAMITES.FECHA = fECHA
@@ -3743,24 +4646,24 @@ Public Partial Class TRAMITES
     ''' </summary>
     <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property IDRSPONSABLE() As Global.System.Decimal
+    Public Property IDRESPONSABLE() As Global.System.Decimal
         Get
-            Return _IDRSPONSABLE
+            Return _IDRESPONSABLE
         End Get
         Set
-            OnIDRSPONSABLEChanging(value)
-            ReportPropertyChanging("IDRSPONSABLE")
-            _IDRSPONSABLE = StructuralObject.SetValidValue(value)
-            ReportPropertyChanged("IDRSPONSABLE")
-            OnIDRSPONSABLEChanged()
+            OnIDRESPONSABLEChanging(value)
+            ReportPropertyChanging("IDRESPONSABLE")
+            _IDRESPONSABLE = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("IDRESPONSABLE")
+            OnIDRESPONSABLEChanged()
         End Set
     End Property
 
-    Private _IDRSPONSABLE As Global.System.Decimal
-    Private Partial Sub OnIDRSPONSABLEChanging(value As Global.System.Decimal)
+    Private _IDRESPONSABLE As Global.System.Decimal
+    Private Partial Sub OnIDRESPONSABLEChanging(value As Global.System.Decimal)
     End Sub
 
-    Private Partial Sub OnIDRSPONSABLEChanged()
+    Private Partial Sub OnIDRESPONSABLEChanged()
     End Sub
 
     ''' <summary>
@@ -3913,6 +4816,131 @@ Public Partial Class TRAMITES
     Private Partial Sub OnIDDETALLE_SUCURSAL_OFICINAChanged()
     End Sub
 
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property NUM_RECIBO() As Global.System.String
+        Get
+            Return _NUM_RECIBO
+        End Get
+        Set
+            OnNUM_RECIBOChanging(value)
+            ReportPropertyChanging("NUM_RECIBO")
+            _NUM_RECIBO = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("NUM_RECIBO")
+            OnNUM_RECIBOChanged()
+        End Set
+    End Property
+
+    Private _NUM_RECIBO As Global.System.String
+    Private Partial Sub OnNUM_RECIBOChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnNUM_RECIBOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property MONTO_RECIBO() As Nullable(Of Global.System.Decimal)
+        Get
+            Return _MONTO_RECIBO
+        End Get
+        Set
+            OnMONTO_RECIBOChanging(value)
+            ReportPropertyChanging("MONTO_RECIBO")
+            _MONTO_RECIBO = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("MONTO_RECIBO")
+            OnMONTO_RECIBOChanged()
+        End Set
+    End Property
+
+    Private _MONTO_RECIBO As Nullable(Of Global.System.Decimal)
+    Private Partial Sub OnMONTO_RECIBOChanging(value As Nullable(Of Global.System.Decimal))
+    End Sub
+
+    Private Partial Sub OnMONTO_RECIBOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property CANTIDAD_DOCS() As Nullable(Of Global.System.Decimal)
+        Get
+            Return _CANTIDAD_DOCS
+        End Get
+        Set
+            OnCANTIDAD_DOCSChanging(value)
+            ReportPropertyChanging("CANTIDAD_DOCS")
+            _CANTIDAD_DOCS = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("CANTIDAD_DOCS")
+            OnCANTIDAD_DOCSChanged()
+        End Set
+    End Property
+
+    Private _CANTIDAD_DOCS As Nullable(Of Global.System.Decimal)
+    Private Partial Sub OnCANTIDAD_DOCSChanging(value As Nullable(Of Global.System.Decimal))
+    End Sub
+
+    Private Partial Sub OnCANTIDAD_DOCSChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property IDTIPO_REPRESENTANTE() As Nullable(Of Global.System.Decimal)
+        Get
+            Return _IDTIPO_REPRESENTANTE
+        End Get
+        Set
+            OnIDTIPO_REPRESENTANTEChanging(value)
+            ReportPropertyChanging("IDTIPO_REPRESENTANTE")
+            _IDTIPO_REPRESENTANTE = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("IDTIPO_REPRESENTANTE")
+            OnIDTIPO_REPRESENTANTEChanged()
+        End Set
+    End Property
+
+    Private _IDTIPO_REPRESENTANTE As Nullable(Of Global.System.Decimal)
+    Private Partial Sub OnIDTIPO_REPRESENTANTEChanging(value As Nullable(Of Global.System.Decimal))
+    End Sub
+
+    Private Partial Sub OnIDTIPO_REPRESENTANTEChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property CODIGOTRAMITES() As Global.System.String
+        Get
+            Return _CODIGOTRAMITES
+        End Get
+        Set
+            OnCODIGOTRAMITESChanging(value)
+            ReportPropertyChanging("CODIGOTRAMITES")
+            _CODIGOTRAMITES = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("CODIGOTRAMITES")
+            OnCODIGOTRAMITESChanged()
+        End Set
+    End Property
+
+    Private _CODIGOTRAMITES As Global.System.String
+    Private Partial Sub OnCODIGOTRAMITESChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnCODIGOTRAMITESChanged()
+    End Sub
+
     #End Region
 
     #Region "Propiedades de navegación"
@@ -3972,24 +5000,6 @@ Public Partial Class TRAMITES
     <XmlIgnoreAttribute()>
     <SoapIgnoreAttribute()>
     <DataMemberAttribute()>
-    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_TRAMITE_FK1", "DETALLE_TRAMITE")>
-     Public Property DETALLE_TRAMITE() As EntityCollection(Of DETALLE_TRAMITE)
-        Get
-            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of DETALLE_TRAMITE)("Modelo.DETALLE_TRAMITE_FK1", "DETALLE_TRAMITE")
-        End Get
-        Set
-            If (Not value Is Nothing)
-                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of DETALLE_TRAMITE)("Modelo.DETALLE_TRAMITE_FK1", "DETALLE_TRAMITE", value)
-            End If
-        End Set
-    End Property
-
-    ''' <summary>
-    ''' No hay documentación de metadatos disponible.
-    ''' </summary>
-    <XmlIgnoreAttribute()>
-    <SoapIgnoreAttribute()>
-    <DataMemberAttribute()>
     <EdmRelationshipNavigationPropertyAttribute("Modelo", "TRAMITES_FK1", "RESPONSABLE")>
     Public Property RESPONSABLE() As RESPONSABLE
         Get
@@ -4015,6 +5025,73 @@ Public Partial Class TRAMITES
         End Set
     End Property
 
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_TRAMITE_FK1", "DETALLE_SEGUIMIENTO")>
+     Public Property DETALLE_SEGUIMIENTO() As EntityCollection(Of DETALLE_SEGUIMIENTO)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of DETALLE_SEGUIMIENTO)("Modelo.DETALLE_TRAMITE_FK1", "DETALLE_SEGUIMIENTO")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of DETALLE_SEGUIMIENTO)("Modelo.DETALLE_TRAMITE_FK1", "DETALLE_SEGUIMIENTO", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_TRAMITES_FK2", "DETALLE_TRAMITES")>
+     Public Property DETALLE_TRAMITES() As EntityCollection(Of DETALLE_TRAMITES)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of DETALLE_TRAMITES)("Modelo.DETALLE_TRAMITES_FK2", "DETALLE_TRAMITES")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of DETALLE_TRAMITES)("Modelo.DETALLE_TRAMITES_FK2", "DETALLE_TRAMITES", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "TRAMITES_FK3", "TIPO_REPRESENTANTE")>
+    Public Property TIPO_REPRESENTANTE() As TIPO_REPRESENTANTE
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TIPO_REPRESENTANTE)("Modelo.TRAMITES_FK3", "TIPO_REPRESENTANTE").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TIPO_REPRESENTANTE)("Modelo.TRAMITES_FK3", "TIPO_REPRESENTANTE").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property TIPO_REPRESENTANTEReference() As EntityReference(Of TIPO_REPRESENTANTE)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of TIPO_REPRESENTANTE)("Modelo.TRAMITES_FK3", "TIPO_REPRESENTANTE")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of TIPO_REPRESENTANTE)("Modelo.TRAMITES_FK3", "TIPO_REPRESENTANTE", value)
+            End If
+        End Set
+    End Property
+
     #End Region
 
 End Class
@@ -4034,10 +5111,12 @@ Public Partial Class USUARIOS
     ''' </summary>
     ''' <param name="iDUSUARIO">Valor inicial de la propiedad IDUSUARIO.</param>
     ''' <param name="uSUARIO">Valor inicial de la propiedad USUARIO.</param>
-    Public Shared Function CreateUSUARIOS(iDUSUARIO As Global.System.Decimal, uSUARIO As Global.System.String) As USUARIOS
+    ''' <param name="cONTRASENA">Valor inicial de la propiedad CONTRASENA.</param>
+    Public Shared Function CreateUSUARIOS(iDUSUARIO As Global.System.Decimal, uSUARIO As Global.System.String, cONTRASENA As Global.System.String) As USUARIOS
         Dim uSUARIOS as USUARIOS = New USUARIOS
         uSUARIOS.IDUSUARIO = iDUSUARIO
         uSUARIOS.USUARIO = uSUARIO
+        uSUARIOS.CONTRASENA = cONTRASENA
         Return uSUARIOS
     End Function
 
@@ -4100,7 +5179,7 @@ Public Partial Class USUARIOS
     ''' <summary>
     ''' No hay documentación de metadatos disponible.
     ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
     <DataMemberAttribute()>
     Public Property CONTRASENA() As Global.System.String
         Get
@@ -4109,7 +5188,7 @@ Public Partial Class USUARIOS
         Set
             OnCONTRASENAChanging(value)
             ReportPropertyChanging("CONTRASENA")
-            _CONTRASENA = StructuralObject.SetValidValue(value, true)
+            _CONTRASENA = StructuralObject.SetValidValue(value, false)
             ReportPropertyChanged("CONTRASENA")
             OnCONTRASENAChanged()
         End Set
@@ -4247,6 +5326,106 @@ Public Partial Class USUARIOS
     Private Partial Sub OnIDPUESTOChanged()
     End Sub
 
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property IDENTIDAD() As Global.System.String
+        Get
+            Return _IDENTIDAD
+        End Get
+        Set
+            OnIDENTIDADChanging(value)
+            ReportPropertyChanging("IDENTIDAD")
+            _IDENTIDAD = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("IDENTIDAD")
+            OnIDENTIDADChanged()
+        End Set
+    End Property
+
+    Private _IDENTIDAD As Global.System.String
+    Private Partial Sub OnIDENTIDADChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnIDENTIDADChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property VINCULAR_CON() As Nullable(Of Global.System.Decimal)
+        Get
+            Return _VINCULAR_CON
+        End Get
+        Set
+            OnVINCULAR_CONChanging(value)
+            ReportPropertyChanging("VINCULAR_CON")
+            _VINCULAR_CON = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("VINCULAR_CON")
+            OnVINCULAR_CONChanged()
+        End Set
+    End Property
+
+    Private _VINCULAR_CON As Nullable(Of Global.System.Decimal)
+    Private Partial Sub OnVINCULAR_CONChanging(value As Nullable(Of Global.System.Decimal))
+    End Sub
+
+    Private Partial Sub OnVINCULAR_CONChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property TITULO() As Global.System.String
+        Get
+            Return _TITULO
+        End Get
+        Set
+            OnTITULOChanging(value)
+            ReportPropertyChanging("TITULO")
+            _TITULO = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("TITULO")
+            OnTITULOChanged()
+        End Set
+    End Property
+
+    Private _TITULO As Global.System.String
+    Private Partial Sub OnTITULOChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnTITULOChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property LABORANDO() As Nullable(Of Global.System.Decimal)
+        Get
+            Return _LABORANDO
+        End Get
+        Set
+            OnLABORANDOChanging(value)
+            ReportPropertyChanging("LABORANDO")
+            _LABORANDO = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("LABORANDO")
+            OnLABORANDOChanged()
+        End Set
+    End Property
+
+    Private _LABORANDO As Nullable(Of Global.System.Decimal)
+    Private Partial Sub OnLABORANDOChanging(value As Nullable(Of Global.System.Decimal))
+    End Sub
+
+    Private Partial Sub OnLABORANDOChanged()
+    End Sub
+
     #End Region
 
     #Region "Propiedades de navegación"
@@ -4288,14 +5467,14 @@ Public Partial Class USUARIOS
     <XmlIgnoreAttribute()>
     <SoapIgnoreAttribute()>
     <DataMemberAttribute()>
-    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_USUARIOS_PERFILES", "PERFILES")>
-     Public Property PERFILES() As EntityCollection(Of PERFILES)
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_USUARIO_SALTOS_FK1", "DETALLE_USUARIO_SALTOS")>
+     Public Property DETALLE_USUARIO_SALTOS() As EntityCollection(Of DETALLE_USUARIO_SALTOS)
         Get
-            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of PERFILES)("Modelo.DETALLE_USUARIOS_PERFILES", "PERFILES")
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of DETALLE_USUARIO_SALTOS)("Modelo.DETALLE_USUARIO_SALTOS_FK1", "DETALLE_USUARIO_SALTOS")
         End Get
         Set
             If (Not value Is Nothing)
-                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of PERFILES)("Modelo.DETALLE_USUARIOS_PERFILES", "PERFILES", value)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of DETALLE_USUARIO_SALTOS)("Modelo.DETALLE_USUARIO_SALTOS_FK1", "DETALLE_USUARIO_SALTOS", value)
             End If
         End Set
     End Property
@@ -4327,6 +5506,73 @@ Public Partial Class USUARIOS
         Set
             If (Not value Is Nothing)
                 CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of PUESTO)("Modelo.USUARIOS_FK2", "PUESTO", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "USUARIOS_FK3", "USUARIOS1")>
+     Public Property USUARIOS1() As EntityCollection(Of USUARIOS)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of USUARIOS)("Modelo.USUARIOS_FK3", "USUARIOS1")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of USUARIOS)("Modelo.USUARIOS_FK3", "USUARIOS1", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "USUARIOS_FK3", "USUARIOS")>
+    Public Property USUARIOS2() As USUARIOS
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of USUARIOS)("Modelo.USUARIOS_FK3", "USUARIOS").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of USUARIOS)("Modelo.USUARIOS_FK3", "USUARIOS").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property USUARIOS2Reference() As EntityReference(Of USUARIOS)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of USUARIOS)("Modelo.USUARIOS_FK3", "USUARIOS")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of USUARIOS)("Modelo.USUARIOS_FK3", "USUARIOS", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("Modelo", "DETALLE_USUARIOS_PERFILES", "PERFILES")>
+     Public Property PERFILES() As EntityCollection(Of PERFILES)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of PERFILES)("Modelo.DETALLE_USUARIOS_PERFILES", "PERFILES")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of PERFILES)("Modelo.DETALLE_USUARIOS_PERFILES", "PERFILES", value)
             End If
         End Set
     End Property

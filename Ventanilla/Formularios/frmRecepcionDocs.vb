@@ -21,6 +21,7 @@ Public Class frmRecepcionDocs
         Dim cant As Integer = txtCodigoTramite.TextLength
         If cant = 12 Then
             RecepcionarTramite(txtCodigoTramite.Text)
+            eAPPCA.TramitesRecibir(dgvTramites)
         Else
             lblInfo.Text = "Ingrese código de trámite completo"
         End If
@@ -53,7 +54,7 @@ Public Class frmRecepcionDocs
                     lblInfo.Text = "El trámite ingresa corresponde a otra oficina"
                 Else
                     txtCodigoTramite.Text = ""
-                    eAPPCA.TramitesRecibir(dgvTramites)
+                    'eAPPCA.TramitesRecibir(dgvTramites)
                     txtCodigoTramite.Focus()
                     lblInfo.Text = "El trámite fue recibido"
                 End If
@@ -66,11 +67,21 @@ Public Class frmRecepcionDocs
     End Sub
 
     Private Sub btnRecibirTramites_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRecibirTramites.Click
+        If dgvTramites.RowCount = 0 Then
+            lblInfo.Text = "No hay trámites"
+            Exit Sub
+        End If
+
         For Each fila As DataGridViewRow In dgvTramites.Rows
             If Convert.ToBoolean(fila.Cells(4).Value) Then
                 Dim barcode As String = fila.Cells(0).Value
                 RecepcionarTramite(barcode)
             End If
         Next
+
+        txtCodigoTramite.Text = ""
+        eAPPCA.TramitesRecibir(dgvTramites)
+        txtCodigoTramite.Focus()
+        lblInfo.Text = "Los trámites fueron recibidos"
     End Sub
 End Class

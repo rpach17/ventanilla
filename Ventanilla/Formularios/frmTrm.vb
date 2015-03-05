@@ -8,7 +8,7 @@
     End Sub
 
     Private Sub btnCrear_Click(sender As Object, e As EventArgs) Handles btnCrear.Click
-        Close()
+
         If frmVentanilla.IDPeticion <> 0 Then
             Dim infGestion As eAPPCA.InfoGestion = eAPPCA.obtenerIdGestion(frmVentanilla.IDPeticion)
 
@@ -18,7 +18,7 @@
                 .Show()
             End With
         End If
-
+        Close()
     End Sub
 
     Private Sub btnRecepcion_Click(sender As Object, e As EventArgs) Handles btnRecepcion.Click

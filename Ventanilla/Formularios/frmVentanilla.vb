@@ -173,6 +173,7 @@ Public Class frmVentanilla
     End Sub
 
     Private Sub btnLlamar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLlamar.Click
+        Dim codigo, secuencia As String
         Try
             frmTrm.btnCrear.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
             Using myCMD As New OracleCommand() With _
@@ -201,7 +202,9 @@ Public Class frmVentanilla
                 'Obtener el IDGestion en base a la IDPeticion
 
 
-                LlamadoEnPantalla(myCMD.Parameters("CODIGO").Value.ToString, myCMD.Parameters("SECUENCIA").Value.ToString, 0)
+                'LlamadoEnPantalla(myCMD.Parameters("CODIGO").Value.ToString, myCMD.Parameters("SECUENCIA").Value.ToString, 0)
+                codigo = myCMD.Parameters("CODIGO").Value.ToString
+                secuencia = myCMD.Parameters("SECUENCIA").Value.ToString
                 Atencion(IDPeticion, "En este momento no hay Tickets en espera", CType(myCMD.Parameters("CODIGO").Value.ToString, String), CType(myCMD.Parameters("SECUENCIA").Value.ToString, String))
 
                 btnLlamar.Enabled = False
@@ -209,13 +212,18 @@ Public Class frmVentanilla
             End Using
 
             'Refrescar los listados de tickets en cada llamado
-            TicketsAtencionEspecial()
-            TicketsEnEspera()
+            'TicketsAtencionEspecial()
+            'TicketsEnEspera()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Oracle Error")
         Finally
             cnn.Close()
         End Try
+
+        LlamadoEnPantalla(codigo, secuencia, 0)
+        'Refrescar los listados de tickets en cada llamado
+        TicketsAtencionEspecial()
+        TicketsEnEspera()
     End Sub
 
     Private Sub dgvEnEspera_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles dgvEnEspera.DoubleClick
@@ -251,6 +259,9 @@ Public Class frmVentanilla
     End Sub
 
     Private Sub btnLlamarEspecial_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLlamarEspecial.Click
+        Dim codigo As String
+        Dim secuencia As String
+
         Try
             frmTrm.btnCrear.Enabled = True ' Habilita el botón del tramite ya que se desactivó cuando se clickeó
 
@@ -271,7 +282,9 @@ Public Class frmVentanilla
             myCMD.ExecuteNonQuery()
             IDPeticion = Val(myCMD.Parameters("VIDPETICION").Value.ToString)
 
-            LlamadoEnPantalla(myCMD.Parameters("CODIGO").Value.ToString, myCMD.Parameters("SECUENCIA").Value.ToString, 0)
+            codigo = myCMD.Parameters("CODIGO").Value.ToString
+            secuencia = myCMD.Parameters("SECUENCIA").Value.ToString
+            'LlamadoEnPantalla(myCMD.Parameters("CODIGO").Value.ToString, myCMD.Parameters("SECUENCIA").Value.ToString, 0)
 
             Atencion(IDPeticion, "En este momento no hay tickets en espera", CType(myCMD.Parameters("CODIGO").Value.ToString, String), CType(myCMD.Parameters("SECUENCIA").Value.ToString, String))
 
@@ -279,14 +292,16 @@ Public Class frmVentanilla
             Timer2.Enabled = True
 
             'Refrescar los listados de tickets en cada llamado
-            TicketsAtencionEspecial()
-            TicketsEnEspera()
+            'TicketsAtencionEspecial()
+            'TicketsEnEspera()
         Catch ex As Exception
             MessageBox.Show(ex.Message.ToString)
         Finally
             cnn.Close()
         End Try
+        LlamadoEnPantalla(codigo, secuencia, 0)
         TicketsAtencionEspecial()
+        TicketsEnEspera()
     End Sub
 
     Private Sub socketCliente_ConexionTerminada() Handles socketCliente.ConexionTerminada
@@ -324,9 +339,9 @@ Public Class frmVentanilla
     End Sub
 
     Private Sub btnTramite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTramite.Click
-        With frmTrm
-            .ShowDialog()
-        End With
+        'With frmTrm
+        '    .ShowDialog()
+        'End With
         'If IDPeticion <> 0 Then
         '    Dim infGestion As eAPPCA.InfoGestion = eAPPCA.obtenerIdGestion(IDPeticion)
 

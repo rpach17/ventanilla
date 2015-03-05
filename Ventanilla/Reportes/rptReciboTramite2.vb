@@ -7,7 +7,9 @@ Public Class rptReciboTramite2
                    ByVal telf As String, _
                    ByVal cel As String, _
                    ByVal correo As String, _
-                   ByVal nota As String)
+                   ByVal nota As String, _
+                   ByVal reciboNo As String, _
+                   ByVal reciboMonto As String)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -25,6 +27,12 @@ Public Class rptReciboTramite2
         cellCel.Text = cel
         cellCorre.Text = correo
         cellNota.Text = nota
+        cellReciboNo.Text = reciboNo
+        cellReciboMonto.Text = String.Format("L. {0}.00", reciboMonto)
+
+        Dim cuerpo As String = String.Format("Recibí del señor(a)  ___________________________________ que labora en Registro Nacional de las Personas (RNP) el trámite de {0}.  Lugar y Fecha _________________________________", nombreGestion)
+        lblCuerpo.Text = cuerpo
+
     End Sub
 
 
