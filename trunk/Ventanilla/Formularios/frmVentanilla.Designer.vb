@@ -206,6 +206,7 @@ Partial Class frmVentanilla
         Me.btnTramite.TabIndex = 20
         Me.btnTramite.Text = "Trámites"
         Me.btnTramite.UseVisualStyleBackColor = True
+        Me.btnTramite.Visible = False
         '
         'Timer1
         '

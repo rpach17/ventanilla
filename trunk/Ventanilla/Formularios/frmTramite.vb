@@ -2,6 +2,7 @@
 Imports Oracle.DataAccess.Types
 Imports DevExpress.XtraReports.UI
 Imports System.Xml
+Imports System.Threading
 
 Public Class frmTramite
     Dim ReqsObligatorios As Integer
@@ -9,6 +10,8 @@ Public Class frmTramite
     Dim IdGestion As Integer
     Dim NombreGestion As String
     Dim cnn As New OracleConnection(My.Settings.Miconexion)
+    Dim hilo As Thread
+
 
     Public Property IdGestion1() As Integer
         Get
@@ -29,11 +32,13 @@ Public Class frmTramite
     End Property
 
     Private Sub frmTramite_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        eAPPCA.CargarUsuariosDestino(cboEnviarA, IdGestion)
+        eAPPCA.CargarTipoRepresentante(cboRepresentante)
         Text = String.Format("TRAMITE PARA {0}", NombreGestion)
         BottomRightFormLocation(e)
         ReqsObligatorios = 0
         result = 0
-
+        Timer1.Enabled = True
         CargarRequisitos()
     End Sub
 
@@ -93,10 +98,18 @@ Public Class frmTramite
         Dim cant As Integer = txtIdentidad.TextLength
 
         If cant = 13 Then
+            Control.CheckForIllegalCrossThreadCalls = False
+            hilo = New Thread(AddressOf subPrceso)
+            hilo.Start()
             result = eAPPCA.BuscarResponsable(txtIdentidad.Text, txtPrimerNombre, txtSegundoNombre, txtPrimerApellido, txtSegundoApellido, txtTelefonoFijo, txtTelefonoMovil, txtCorreo, lblInfo)
+            hilo.Abort()
         Else
             lblInfo.Visible = False
         End If
+    End Sub
+
+    Sub subPrceso()
+        frmAnimacionProcesando.ShowDialog()
     End Sub
 
     Private Sub txtIdentidad_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtIdentidad.KeyPress
@@ -139,7 +152,7 @@ Public Class frmTramite
                     txtCorreo.Focus()
                     Exit Sub
                 End If
-            
+
             End If
 
             crearTramite(eAPPCA.ActualizarResponsable(txtIdentidad.Text, txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text))
@@ -153,13 +166,14 @@ Public Class frmTramite
                 End If
             End If
 
-            crearTramite(eAPPCA.NuevoResponsable(New RESPONSABLE With _
+            Dim idR As Integer = eAPPCA.NuevoResponsable(New RESPONSABLE With _
                                                  {
                                                      .NUMERO_IDENTIDAD = txtIdentidad.Text,
                                                      .TELEFONO = txtTelefonoFijo.Text,
                                                      .CELULAR = txtTelefonoMovil.Text,
                                                      .CORREO = txtCorreo.Text
-                                                 }))
+                                                 })
+            crearTramite(idR)
 
         End If
     End Sub
@@ -171,6 +185,12 @@ Public Class frmTramite
                 myCMD.Parameters.Add("VNOTA", OracleDbType.NVarchar2, 200, Nothing, ParameterDirection.Input).Value = txtInfoAdicional.Text
                 myCMD.Parameters.Add("VIDDETALLE_SUCURSAL_OFICINA", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = SesionActiva.IdSucursalOficina
                 myCMD.Parameters.Add("VIDUSUARIO", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = SesionActiva.IdUsuario
+                myCMD.Parameters.Add("VIDUSUARIO_DESTINO", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = cboEnviarA.SelectedValue
+                myCMD.Parameters.Add("VRECIBO", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = txtNumeroRecibo.Text
+                myCMD.Parameters.Add("VRECIBO_MONTO", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = txtMontoRecibo.Text
+                myCMD.Parameters.Add("VCANTIDAD_DOCS", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = txtCantidadDocs.Value
+                myCMD.Parameters.Add("VTIPO_REPRESENTANTE", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Input).Value = cboRepresentante.SelectedValue
+                myCMD.Parameters.Add("VCODIGO_OPCIONAL", OracleDbType.NVarchar2, 30, Nothing, ParameterDirection.Input).Value = txtCodigoTramiteS.Text
                 myCMD.Parameters.Add("VTRAMITE", OracleDbType.Decimal, 10, Nothing, ParameterDirection.Output)
                 myCMD.Parameters.Add("VCODIGO", OracleDbType.NVarchar2, 13, Nothing, ParameterDirection.Output)
                 myCMD.Parameters.Add("VFECHA", OracleDbType.NVarchar2, 22, Nothing, ParameterDirection.Output)
@@ -204,7 +224,7 @@ Public Class frmTramite
                 End Using
 
                 ' Imprimir el recibo del trámite
-                Using rpt As New rptReciboTramite2(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text)
+                Using rpt As New rptReciboTramite2(myCMD.Parameters("VCODIGO").Value.ToString, myCMD.Parameters("NGESTION").Value.ToString, myCMD.Parameters("VFECHA").Value.ToString, txtIdentidad.Text, String.Format("{0} {1} {2} {3}", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text), txtTelefonoFijo.Text, txtTelefonoMovil.Text, txtCorreo.Text, txtInfoAdicional.Text, txtNumeroRecibo.Text, txtMontoRecibo.Text)
                     Using preview As New ReportPrintTool(rpt)
                         preview.Print()
                         'preview.ShowPreviewDialog()
@@ -227,5 +247,10 @@ Public Class frmTramite
 
     Private Sub frmTramite_Activated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Activated
         Dim i As Integer = IdGestion
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        txtIdentidad.Focus()
+        Timer1.Enabled = False
     End Sub
 End Class

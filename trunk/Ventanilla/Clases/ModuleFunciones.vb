@@ -43,6 +43,17 @@ Module ModuleFunciones
         End Try
     End Function
 
+    Public Function ProbarConexion1(ByVal cadena As String) As String
+        Try
+            Using conn As New OracleConnection(cadena)
+                conn.Open()
+            End Using
+            Return "OK"
+        Catch ex As Exception
+            Return ex.Message
+        End Try
+    End Function
+
     Public Function ValidarCorreo(ByVal correo As String) As Boolean
         If correo.IndexOf("@") > -1 Then
             If correo.IndexOf(".", correo.IndexOf("@")) > correo.IndexOf("@") Then

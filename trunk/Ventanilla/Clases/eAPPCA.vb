@@ -243,7 +243,7 @@
 
 
         'Se buscan los tramites que se pueden recibir
-        Dim tramites = (From dt In ctx.DETALLE_TRAMITE
+        Dim tramites = (From dt In ctx.DETALLE_SEGUIMIENTO
                        Join u In ctx.USUARIOS On dt.IDUSUARIO Equals u.IDUSUARIO
                        Join s In ctx.SALTOS On dt.IDSALTO Equals s.IDSALTO
                        Where dt.TRAMITES.ACTIVO = 1 And dt.FECHA_ENTREGA Is Nothing AndAlso saltosAtender.Contains(dt.DESTINO)
@@ -264,28 +264,47 @@
         'Lista de los saltos recibidos y son ultimo salto
         Dim tramiteEntregar
         If busqueda = "" Then
-            tramiteEntregar = (From t In ctx.DETALLE_TRAMITE
+            tramiteEntregar = (From t In ctx.DETALLE_SEGUIMIENTO
                                Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
                                Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1
                                Order By t.TRAMITES.CODIGOTRAMITE
-                               Select t.ID_DETALLE_TRAMITE, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
+                               Select t.IDDETALLE_SEGUIMIENTO, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
         Else
-            tramiteEntregar = (From t In ctx.DETALLE_TRAMITE
+            tramiteEntregar = (From t In ctx.DETALLE_SEGUIMIENTO
                                Join s In ctx.SALTOS On t.IDSALTO Equals s.IDSALTO
                                Where t.TRAMITES.ACTIVO = 1 AndAlso t.IDUSUARIO = SesionActiva.IdUsuario AndAlso s.ULTIMOSALTO = 1 AndAlso (t.TRAMITES.CODIGOTRAMITE.StartsWith(busqueda) OrElse t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD.StartsWith(busqueda))
                                Order By t.TRAMITES.CODIGOTRAMITE
-                               Select t.ID_DETALLE_TRAMITE, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
+                               Select t.IDDETALLE_SEGUIMIENTO, t.TRAMITES.CODIGOTRAMITE, t.TRAMITES.GESTIONES.NOMBRE, t.TRAMITES.RESPONSABLE.NUMERO_IDENTIDAD).ToList()
         End If
 
         grid.Rows.Clear()
         For Each tramite In tramiteEntregar
-            grid.Rows.Add(tramite.ID_DETALLE_TRAMITE, tramite.CODIGOTRAMITE, tramite.NOMBRE, tramite.NUMERO_IDENTIDAD,
+            grid.Rows.Add(tramite.IDDETALLE_SEGUIMIENTO, tramite.CODIGOTRAMITE, tramite.NOMBRE, tramite.NUMERO_IDENTIDAD,
                           "Entregar Trámite")
         Next
         'grid.DataSource = saltoEntregar
     End Sub
 
+    Shared Sub CargarUsuariosDestino(cbo As ComboBox, idg As Integer)
+        Dim usuarios = (From u In ctx.DETALLE_USUARIO_SALTOS
+                        Join s In ctx.SALTOS On u.IDSALTO Equals s.IDSALTO
+                        Where s.GRUPO_SALTOS.IDDETALLE_SUCURSAL_OFICINA = SesionActiva.IdSucursalOficina AndAlso s.GRUPO_SALTOS.IDGESTION = idg AndAlso s.GRUPO_SALTOS.ACTIVO = 1 AndAlso s.NUMERO_SALTO = 2
+                        Order By u.PRIORIDAD Descending
+                        Select u.IDUSUARIO, nombre = u.USUARIOS.NOMBRE + " " + u.USUARIOS.APELLIDOS)
 
+        cbo.DataSource = usuarios
+        cbo.DisplayMember = "nombre"
+        cbo.ValueMember = "IDUSUARIO"
+    End Sub
+
+    Shared Sub CargarTipoRepresentante(cbo As ComboBox)
+        Dim tipoRepresentante = (From tp In ctx.TIPO_REPRESENTANTE
+                                 Select tp.IDTIPO_REPRESENTANTE, tp.DESCRIPCION)
+
+        cbo.DataSource = tipoRepresentante
+        cbo.DisplayMember = "DESCRIPCION"
+        cbo.ValueMember = "IDTIPO_REPRESENTANTE"
+    End Sub
 
 #End Region
 
